@@ -1,0 +1,80 @@
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 10% 1fr;
+}
+
+.header {
+  grid-column: span 8;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header__user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__user__icon {
+  padding-left: 0.4rem;
+}
+
+.content__bar {
+  grid-column: 1;
+  background-color: blue;
+}
+
+.content__bar__cat {
+  color: white;
+  padding: 1rem 0;
+}
+
+.content__container {
+  padding-left: 1.5rem;
+  grid-column: span 7;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 15% 10% 77%;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+
+.content__container__category {
+  grid-column: span 7;
+  display: flex;
+  justify-content: center;
+}
+
+.content__container__header {
+  padding-left: 3%;
+  grid-column: span 7;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 0.2rem;
+}
+
+.content__container__header > div {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: rgb(214, 213, 213);
+}
+
+.content__card__container {
+  grid-column: span 7;
+}
+
+.card__container__card {
+  display: grid;
+  grid-template-columns: 3% repeat(6, 1fr);
+}
+
+.card__container__card > div {
+  display: flex;
+  align-items: center;
+  padding-left: 0.2rem;
+}
