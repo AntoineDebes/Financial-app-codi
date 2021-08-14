@@ -10,14 +10,14 @@ export default function Dashboard() {
       <div class="wrapper" id="wrapper">
         <Header />
         <div class="content__bar">
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
-          <div class="content__bar__cat">asdasda</div>
+          <div class="content__bar__cat">Admins</div>
+          <div class="content__bar__cat">categories</div>
+          <div class="content__bar__cat">Fixed incomes</div>
+          <div class="content__bar__cat">fixed expenses</div>
+          <div class="content__bar__cat">recurring incomes</div>
+          <div class="content__bar__cat">recurring expenses</div>
+          <div class="content__bar__cat">Goals</div>
+          <div class="content__bar__cat">Report</div>
         </div>
         <div class="content__container">
           <ProductHeader />

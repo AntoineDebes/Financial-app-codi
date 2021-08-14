@@ -6,6 +6,7 @@
 }
 
 .header {
+  padding: 0 0.5rem;
   grid-column: span 8;
   background-color: red;
   display: flex;
@@ -24,6 +25,7 @@
 }
 
 .content__bar {
+  padding-left: 0.5rem;
   grid-column: 1;
   background-color: blue;
 }
