@@ -1,6 +1,11 @@
 import React from "react";
 
-function ProductCard() {
+function ProductCard(props) {
+  const { title, category, created_at, currency, description, quantity } =
+    props.productInfo;
+
+  const dateTime = created_at.slice(0, 10);
+  console.log(props);
   return (
     <>
       <div class="content__card__container">
@@ -9,22 +14,22 @@ function ProductCard() {
             <input type="checkbox" name="" id="" />
           </div>
           <div>
-            <p>asd</p>
+            <p>{title}</p>
           </div>
           <div>
-            <p>asd</p>
+            <p>{description}</p>
           </div>
           <div>
-            <p>asd</p>
+            <p>{quantity}</p>
           </div>
           <div>
-            <p>asd</p>
+            <p>{currency}</p>
           </div>
           <div>
-            <p>asd</p>
+            <p>{dateTime}</p>
           </div>
           <div>
-            <p>asd</p>
+            <p>{category}</p>
           </div>
         </div>
       </div>

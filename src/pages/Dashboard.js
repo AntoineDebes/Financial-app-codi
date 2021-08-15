@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../components/Header";
-import ProductCard from "../components/ProductCard";
-import ProductHeader from "../components/ProductHeader";
 import "./Dashboard.css";
+
+import ProductDash from "./ProductDash";
 
 export default function Dashboard() {
   return (
@@ -19,10 +19,7 @@ export default function Dashboard() {
           <div class="content__bar__cat">Goals</div>
           <div class="content__bar__cat">Report</div>
         </div>
-        <div class="content__container">
-          <ProductHeader />
-          <ProductCard />
-        </div>
+        <ProductDash />
       </div>
     </>
   );

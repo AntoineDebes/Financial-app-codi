@@ -40,7 +40,7 @@
   grid-column: span 7;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 15% 10% 77%;
+  grid-template-rows: 15% 10% repeat(10, auto-fit);
   justify-content: center;
   column-gap: 0.5rem;
 }
@@ -56,7 +56,7 @@
   grid-column: span 7;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  column-gap: 0.2rem;
+  column-gap: 0.4rem;
 }
 
 .content__container__header > div {
@@ -78,5 +78,6 @@
 .card__container__card > div {
   display: flex;
   align-items: center;
-  padding-left: 0.2rem;
+  justify-content: center;
+  padding-left: 0.5rem;
 }
