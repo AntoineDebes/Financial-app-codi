@@ -40,9 +40,10 @@
   grid-column: span 7;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 15% 10% repeat(10, auto-fit);
+  grid-template-rows: 15% 10% repeat(auto-fit, 6.4%);
   justify-content: center;
   column-gap: 0.5rem;
+  row-gap: 0.5rem;
 }
 
 .content__container__category {
@@ -53,10 +54,12 @@
 
 .content__container__header {
   padding-left: 3%;
+  padding-bottom: 1rem;
   grid-column: span 7;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   column-gap: 0.4rem;
+  height: 100%;
 }
 
 .content__container__header > div {
@@ -64,6 +67,12 @@
   display: grid;
   place-items: center;
   background-color: rgb(214, 213, 213);
+  height: 100%;
+}
+
+.content__container__header > div > h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .content__card__container {
@@ -80,4 +89,5 @@
   align-items: center;
   justify-content: center;
   padding-left: 0.5rem;
+  height: 2rem;
 }

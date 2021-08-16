@@ -13,6 +13,18 @@ export const productApi = () => {
   });
 };
 
+export const adminApi = () => {
+  return new Promise((r, j) => {
+    Axios.get("http://localhost:8000/api/admin")
+      .then((res) => {
+        console.log(res);
+        r(res);
+      })
+      .catch((e) => {
+        j(e);
+      });
+  });
+};
 // class ProductApiController {
 //   test() {
 //     return 2;
