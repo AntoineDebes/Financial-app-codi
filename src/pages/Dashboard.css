@@ -40,7 +40,7 @@
   grid-column: span 7;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 15% 10% repeat(auto-fit, 6.4%);
+  grid-template-rows: 15% 10% repeat(auto-fit, 5.6%);
   justify-content: center;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
@@ -90,4 +90,37 @@
   justify-content: center;
   padding-left: 0.5rem;
   height: 2rem;
+}
+
+.paginationBttns {
+  width: 80%;
+  height: 20px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  grid-column: -1/-2;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #2b2eff;
+  color: #2b2eff;
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: #2b2eff;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #2b2eff;
+}
+
+.paginationDisabled a {
+  color: grey;
+  background-color: grey;
 }
