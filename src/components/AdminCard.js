@@ -7,7 +7,7 @@ function AdminCard(props) {
   const dateTime = created_at.slice(0, 10);
   return (
     <>
-      <div class="card__container__card">
+      <div className="card__container__card">
         <div>
           <input type="checkbox" name="" id="" />
         </div>

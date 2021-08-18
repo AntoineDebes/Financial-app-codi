@@ -28,7 +28,7 @@ export default function ProductDash() {
     const data = products;
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((product) => (
-      <ProductCard key={product} productInfo={product} />
+      <ProductCard key={product.id} productInfo={product} />
     ));
     setData(postData);
     setPageCount(Math.ceil(data.length / perPage));
@@ -40,9 +40,10 @@ export default function ProductDash() {
   useEffect(() => {
     getData();
   }, [products, offset, pageCount]);
+
   return (
     <>
-      <div class="content__container">
+      <div className="content__container">
         <ProductHeader />
         {data && data}
         <ReactPaginate

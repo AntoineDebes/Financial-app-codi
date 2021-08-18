@@ -11,19 +11,19 @@ export default function Dashboard() {
   return (
     <Router>
       <>
-        <div class="wrapper" id="wrapper">
+        <div className="wrapper" id="wrapper">
           <Header />
-          <div class="content__bar">
+          <div className="content__bar">
             <Link className="content__bar__cat" to="/admin">
               Admins
             </Link>
-            <div class="content__bar__cat">categories</div>
-            <div class="content__bar__cat">Fixed incomes</div>
-            <div class="content__bar__cat">fixed expenses</div>
-            <div class="content__bar__cat">recurring incomes</div>
-            <div class="content__bar__cat">recurring expenses</div>
-            <div class="content__bar__cat">Goals</div>
-            <div class="content__bar__cat">Report</div>
+            <div className="content__bar__cat">categories</div>
+            <div className="content__bar__cat">Fixed incomes</div>
+            <div className="content__bar__cat">fixed expenses</div>
+            <div className="content__bar__cat">recurring incomes</div>
+            <div className="content__bar__cat">recurring expenses</div>
+            <div className="content__bar__cat">Goals</div>
+            <div className="content__bar__cat">Report</div>
           </div>
           <Switch>
             <Route exact path="/" component={ProductDash} />

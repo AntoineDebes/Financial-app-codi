@@ -3,10 +3,14 @@ import React from "react";
 function Products() {
   return (
     <>
-      <div class="content__container__category">
+      <div className="content__container__category">
         <h1>Products</h1>
       </div>
-      <div class="content__container__header">
+      <div className="content__container__buttons">
+        <button className="content__container__button--danger">Delete</button>
+        {/* <button>asd</button> */}
+      </div>
+      <div className="content__container__header">
         <div>
           <h2>title</h2>
         </div>

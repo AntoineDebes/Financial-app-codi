@@ -34,15 +34,15 @@ function AdminDash() {
   };
   return (
     <>
-      <div class="content__container">
+      <div className="content__container">
         <AdminHeader />
-        <div class="content__card__container">
+        <div className="content__card__container">
           {admins &&
             admins.map((admin) => {
               return <AdminCard adminInfo={admin} />;
             })}
 
-          <div class="card__container__card">
+          <div className="card__container__card">
             <div></div>
             <div>
               {name}

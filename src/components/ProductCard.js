@@ -8,8 +8,8 @@ function ProductCard(props) {
   console.log(props);
   return (
     <>
-      <div class="content__card__container">
-        <div class="card__container__card">
+      <div className="content__card__container">
+        <div className="card__container__card">
           <div>
             <input type="checkbox" name="" id="" />
           </div>

@@ -3,10 +3,10 @@ import React from "react";
 function AdminHeader() {
   return (
     <>
-      <div class="content__container__category">
+      <div className="content__container__category">
         <h1>Admins</h1>
       </div>
-      <div class="content__container__header">
+      <div className="content__container__header">
         <div>
           <h2>name</h2>
         </div>
