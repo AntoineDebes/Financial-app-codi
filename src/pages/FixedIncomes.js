@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ProductHeader from "../components/ProductHeader";
-import ProductCard from "../components/ProductCard";
+import ContentHeader from "../components/ContentHeader";
+import Card from "../components/Card";
 import { productApi, incomeApiDelete } from "../apis/Api";
 import ReactPaginate from "react-paginate";
+// import chevronLeft from "../svgs/chevron-left-solid.svg";
 
 const ProductDash = () => {
   const [products, setProducts] = useState([]);
@@ -50,7 +51,7 @@ const ProductDash = () => {
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((product) => {
       return (
-        <ProductCard
+        <Card
           key={product.id}
           productInfo={product}
           handleCheckBox={(e) => handleCheckBox(e)}
@@ -70,7 +71,7 @@ const ProductDash = () => {
       <div className="content__container">
         {JSON.stringify(checkedProductIds)}
         {offset}
-        <ProductHeader handleCardDelete={handleCardDelete} />
+        <ContentHeader handleCardDelete={handleCardDelete} />
         {data && data}
         <ReactPaginate
           previousLabel={"Previous"}

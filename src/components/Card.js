@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProductCard(props) {
+function Card(props) {
   const { title, category, created_at, currency, description, quantity, id } =
     props.productInfo;
 
@@ -41,4 +41,4 @@ function ProductCard(props) {
   );
 }
 
-export default ProductCard;
+export default Card;

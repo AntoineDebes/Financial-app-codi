@@ -1,10 +1,10 @@
 import React from "react";
 
-function Products(props) {
+function ContentHeader(props) {
   return (
     <>
       <div className="content__container__category">
-        <h1>Products</h1>
+        <h1>Fixed Incomes</h1>
       </div>
       <div className="content__container__buttons">
         <button
@@ -39,4 +39,4 @@ function Products(props) {
   );
 }
 
-export default Products;
+export default ContentHeader;
