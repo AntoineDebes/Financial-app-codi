@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../components/ContentHeader";
 import Card from "../components/Card";
-import { productApi, incomeApiDelete } from "../apis/Api";
+import { fixedIcomesApi, incomeApiDelete } from "../apis/Api";
 import ReactPaginate from "react-paginate";
 // import chevronLeft from "../svgs/chevron-left-solid.svg";
 
@@ -11,10 +11,10 @@ const ProductDash = () => {
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const [checkedProductIds, setCheckedProductIds] = useState([]);
+  const [checkedItemIds, setCheckedItemIds] = useState([]);
 
   useEffect(() => {
-    productApi()
+    fixedIcomesApi()
       .then((res) => {
         const newProducts = res.data.products.map((product) => ({
           ...product,
@@ -29,30 +29,32 @@ const ProductDash = () => {
 
   useEffect(() => {
     getData();
-  }, [products, offset, pageCount, checkedProductIds]);
+  }, [products, offset, pageCount, checkedItemIds]);
 
   const handleCardDelete = () => {
-    incomeApiDelete(checkedProductIds);
-    setCheckedProductIds([]);
+    incomeApiDelete(checkedItemIds);
+    setCheckedItemIds([]);
   };
 
   const handleCheckBox = (e) => {
     const mainId = e.target.id;
 
     if (e.target.checked) {
-      setCheckedProductIds([...checkedProductIds, mainId]);
+      setCheckedItemIds([...checkedItemIds, mainId]);
     } else {
-      setCheckedProductIds(checkedProductIds.filter((id) => id !== mainId));
+      setCheckedItemIds(checkedItemIds.filter((id) => id !== mainId));
     }
   };
 
   const getData = () => {
+    console.log(checkedItemIds);
     const data = products;
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((product) => {
       return (
         <Card
           key={product.id}
+          checked={checkedItemIds}
           productInfo={product}
           handleCheckBox={(e) => handleCheckBox(e)}
         />
@@ -69,7 +71,7 @@ const ProductDash = () => {
   return (
     <>
       <div className="content__container">
-        {JSON.stringify(checkedProductIds)}
+        {JSON.stringify(checkedItemIds)}
         {offset}
         <ContentHeader handleCardDelete={handleCardDelete} />
         {data && data}

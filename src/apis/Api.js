@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-export const productApi = () => {
+export const fixedIcomesApi = () => {
   return new Promise((resolve, reject) => {
     Axios.get("http://localhost:8000/api/product")
       .then((res) => {
