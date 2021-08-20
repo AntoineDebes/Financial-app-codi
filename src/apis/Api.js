@@ -25,17 +25,14 @@ export const adminApi = () => {
       });
   });
 };
-// class ProductApiController {
-//   test() {
-//     return 2;
-//   }
 
-//   test2() {
-//     return 4;
-//   }
-// }
-
-// const x = new ProductApiController();
-
-// x.test();
-// x.test2();
+export const incomeApiDelete = (data) => {
+  console.log(data);
+  return new Promise((r, j) => {
+    Axios.delete(`http://localhost:8000/api/product`, {
+      id: data,
+    })
+      .then((res) => r(res))
+      .catch((e) => j(e));
+  });
+};

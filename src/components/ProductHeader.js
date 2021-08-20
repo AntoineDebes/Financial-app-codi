@@ -1,13 +1,18 @@
 import React from "react";
 
-function Products() {
+function Products(props) {
   return (
     <>
       <div className="content__container__category">
         <h1>Products</h1>
       </div>
       <div className="content__container__buttons">
-        <button className="content__container__button--danger">Delete</button>
+        <button
+          className="content__container__button--danger"
+          onClick={(e) => props.handleCardDelete(e)}
+        >
+          Delete
+        </button>
         {/* <button>asd</button> */}
       </div>
       <div className="content__container__header">

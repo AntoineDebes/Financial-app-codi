@@ -1,17 +1,21 @@
 import React from "react";
 
 function ProductCard(props) {
-  const { title, category, created_at, currency, description, quantity } =
+  const { title, category, created_at, currency, description, quantity, id } =
     props.productInfo;
 
   const dateTime = created_at.slice(0, 10);
-  console.log(props);
   return (
     <>
       <div className="content__card__container">
         <div className="card__container__card">
           <div>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name=""
+              id={id}
+              onClick={(e) => props.handleCheckBox(e)}
+            />
           </div>
           <div>
             <p>{title}</p>

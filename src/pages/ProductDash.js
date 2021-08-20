@@ -1,50 +1,76 @@
 import React, { useState, useEffect } from "react";
 import ProductHeader from "../components/ProductHeader";
 import ProductCard from "../components/ProductCard";
-import { productApi } from "../apis/Api";
+import { productApi, incomeApiDelete } from "../apis/Api";
 import ReactPaginate from "react-paginate";
 
-export default function ProductDash() {
+const ProductDash = () => {
   const [products, setProducts] = useState([]);
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [checkedProductIds, setCheckedProductIds] = useState([]);
 
   useEffect(() => {
     productApi()
       .then((res) => {
-        setProducts(res.data.products);
-        getData();
+        const newProducts = res.data.products.map((product) => ({
+          ...product,
+          checked: false,
+        }));
+        setProducts(newProducts);
       })
       .catch((error) => {
         console.log("error", error);
       });
   }, []);
 
+  useEffect(() => {
+    getData();
+  }, [products, offset, pageCount, checkedProductIds]);
+
+  const handleCardDelete = () => {
+    incomeApiDelete(checkedProductIds);
+    setCheckedProductIds([]);
+  };
+
+  const handleCheckBox = (e) => {
+    const mainId = e.target.id;
+
+    if (e.target.checked) {
+      setCheckedProductIds([...checkedProductIds, mainId]);
+    } else {
+      setCheckedProductIds(checkedProductIds.filter((id) => id !== mainId));
+    }
+  };
+
   const getData = () => {
-    console.log({ products });
     const data = products;
     const slice = data.slice(offset, offset + perPage);
-    const postData = slice.map((product) => (
-      <ProductCard key={product.id} productInfo={product} />
-    ));
+    const postData = slice.map((product) => {
+      return (
+        <ProductCard
+          key={product.id}
+          productInfo={product}
+          handleCheckBox={(e) => handleCheckBox(e)}
+        />
+      );
+    });
     setData(postData);
     setPageCount(Math.ceil(data.length / perPage));
   };
   const changePage = ({ selected }) => {
-    setOffset(selected);
+    console.log({ selected });
+    setOffset(selected * perPage);
   };
-
-  useEffect(() => {
-    getData();
-  }, [products, offset, pageCount]);
 
   return (
     <>
       <div className="content__container">
-        <ProductHeader />
+        {JSON.stringify(checkedProductIds)}
+        {offset}
+        <ProductHeader handleCardDelete={handleCardDelete} />
         {data && data}
         <ReactPaginate
           previousLabel={"Previous"}
@@ -59,4 +85,6 @@ export default function ProductDash() {
       </div>
     </>
   );
-}
+};
+
+export default ProductDash;
