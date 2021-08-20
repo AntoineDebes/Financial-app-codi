@@ -3,6 +3,7 @@ import React from "react";
 function Card(props) {
   const { title, category, created_at, currency, description, quantity, id } =
     props.productInfo;
+  const{}
 
   const dateTime = created_at.slice(0, 10);
   console.log(props.checked);
