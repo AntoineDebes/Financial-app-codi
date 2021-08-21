@@ -27,10 +27,7 @@ function LoginPage(props) {
         password,
       }),
     })
-      .then((res) => {
-        console.log(res);
-        res.json();
-      })
+      .then((res) => res.json())
       .catch((e) => {
         console.log(e);
       });
