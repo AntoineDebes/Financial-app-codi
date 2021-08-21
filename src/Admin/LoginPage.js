@@ -26,19 +26,15 @@ function LoginPage(props) {
         email,
         password,
       }),
-    })
-      .then((res) => res.json())
-      .catch((e) => {
-        console.log(e);
-      });
+    }).then((res) => res.json());
 
     if (result.success) {
-      console.log(result);
+      console.log({ result });
       localStorage.setItem(
         "login",
         result.token_type + " " + result.access_token
       );
-      console.log("front-token", result.token_type + " " + result.access_token);
+      // console.log("front-token", result.token_type + " " + result.access_token);
       props.history.push({
         pathname: "/dashboard",
       });

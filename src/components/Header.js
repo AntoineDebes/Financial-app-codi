@@ -18,11 +18,11 @@ function Header(props) {
         Authorization: token,
       },
     }).then((res) => res.json());
-    console.log(result.message);
+    console.log({ result });
     console.log(result.success);
     if (result.success) {
       props.history.push({
-        pathname: "/login",
+        pathname: "/",
       });
     } else {
       console.log("dddd");
@@ -30,10 +30,15 @@ function Header(props) {
   };
   return (
     <div class="header">
-      <button type="submit">Add Admins</button>
+      <div class="header__user">
+        <i class="icon-user-tie header__user__icon"></i>
+        <p>antoine</p>
+        <i class="header__user__icon icon-caret-down"></i>
+      </div>
+      {/* <button type="submit">Add Admins</button>
       <button onClick={changeonClick} type="submit">
         Logout{" "}
-      </button>
+      </button> */}
     </div>
   );
 }
