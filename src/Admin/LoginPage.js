@@ -77,4 +77,8 @@ function LoginPage(props) {
     </div>
   );
 }
+<<<<<<< Updated upstream
 export default LoginPage;
+=======
+export default withRouter(LoginPage);
+>>>>>>> Stashed changes

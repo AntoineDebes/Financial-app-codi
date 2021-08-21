@@ -9,7 +9,11 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Route exact path="/" component={LoginPage} />
+<<<<<<< Updated upstream
         <Route path="/dashboard" component={Dashboard} />
+=======
+        <Route exact path="/dashboard" component={Dashboard} />
+>>>>>>> Stashed changes
       </div>
     </BrowserRouter>
   );
