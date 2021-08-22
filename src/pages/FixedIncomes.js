@@ -3,7 +3,6 @@ import ContentHeader from "../components/ContentHeader";
 import Card from "../components/Card";
 import { fixedIcomesApi, incomeApiDelete } from "../apis/Api";
 import ReactPaginate from "react-paginate";
-// import chevronLeft from "../svgs/chevron-left-solid.svg";
 
 const ProductDash = () => {
   const [products, setProducts] = useState([]);
@@ -75,16 +74,18 @@ const ProductDash = () => {
         {offset}
         <ContentHeader handleCardDelete={handleCardDelete} />
         {data && data}
-        <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"paginationBttns"}
-          previousLinkClassName={"previousBttn"}
-          nextLinkClassName={"nextBttn"}
-          activeClassName={"paginationActive"}
-        />
+        <div className="content__container__pagination">
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationBttns"}
+            previousLinkClassName={"previousBttn"}
+            nextLinkClassName={"nextBttn"}
+            activeClassName={"paginationActive"}
+          />
+        </div>
       </div>
     </>
   );

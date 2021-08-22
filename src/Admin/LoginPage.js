@@ -40,6 +40,7 @@ function LoginPage(props) {
       });
     }
   };
+
   ///////////////////////////////////////////////////////////////////
   return (
     <div data-aos="fade-left" className="login">

@@ -7,14 +7,14 @@ function Routes() {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={FixedIncomes} />
-        <Route path="/admin" component={AdminDash} />
-        <Route path="/FixedIncomes" component={AdminDash} />
-        <Route path="/FixedExpenses" component={AdminDash} />
-        <Route path="/RecurringIncomes" component={AdminDash} />
-        <Route path="/RecurringExpenses" component={AdminDash} />
-        <Route path="/Goals" component={AdminDash} />
-        <Route path="/Report" component={AdminDash} />
+        <Route exact path="/Dashboard" component={FixedIncomes} />
+        <Route path="/Dashboard/Admin" component={AdminDash} />
+        <Route path="/Dashboard/FixedIncomes" component={AdminDash} />
+        <Route path="/Dashboard/FixedExpenses" component={AdminDash} />
+        <Route path="/Dashboard/RecurringIncomes" component={AdminDash} />
+        <Route path="/Dashboard/RecurringExpenses" component={AdminDash} />
+        <Route path="/Dashboard/Goals" component={AdminDash} />
+        <Route path="/Dashboard/Report" component={AdminDash} />
       </Switch>
     </>
   );
