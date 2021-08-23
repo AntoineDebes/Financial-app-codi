@@ -2,7 +2,7 @@ import Axios from "axios";
 
 export const fixedIcomesApi = () => {
   return new Promise((resolve, reject) => {
-    Axios.get("http://localhost:8000/api/product")
+    Axios.get(`${process.env.REACT_APP_API_URL}api/product`)
       .then((res) => {
         console.log(res);
         resolve(res);
@@ -15,7 +15,7 @@ export const fixedIcomesApi = () => {
 
 export const adminApi = () => {
   return new Promise((r, j) => {
-    Axios.get("http://localhost:8000/api/admin")
+    Axios.get(`${process.env.REACT_APP_API_URL}api/admin`)
       .then((res) => {
         console.log(res);
         r(res);
@@ -29,8 +29,13 @@ export const adminApi = () => {
 export const incomeApiDelete = (data) => {
   console.log(data);
   return new Promise((r, j) => {
-    Axios.delete(`http://localhost:8000/api/product`, {
-      id: data,
+    Axios.delete(`${process.env.REACT_APP_API_URL}api/product`, {
+      data: {
+        ids: data,
+      },
+      // headers: {
+      //   // "Content-Type": "application/x-www-form-urlencoded",
+      // },
     })
       .then((res) => r(res))
       .catch((e) => j(e));

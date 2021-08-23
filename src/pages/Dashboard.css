@@ -169,7 +169,7 @@
   background-color: grey;
 }
 
-button {
+.button {
   display: flex;
   width: 10%;
   margin: 1rem;
