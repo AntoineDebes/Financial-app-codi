@@ -9,7 +9,7 @@ import { useAuth } from "../useContext/IsAuthContext";
 
 function Header(props) {
   const [profileMenuIsOpen, setProfileMenuIsOpen] = useState(false);
-  const setIsAuth = useAuth();
+  const { setIsAuth } = useAuth();
   const history = useHistory();
 
   const changeonClick = async (e) => {

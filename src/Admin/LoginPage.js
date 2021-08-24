@@ -10,7 +10,7 @@ function LoginPage(props) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const setIsAuth = useAuth();
+  const { setIsAuth } = useAuth();
 
   const changeonClick = async (e) => {
     e.preventDefault();
