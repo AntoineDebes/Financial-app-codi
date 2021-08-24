@@ -12,14 +12,7 @@ function App() {
     <IsAuthProvider>
       <BrowserRouter>
         <div className="App">
-          <Route
-            exact
-            path="/"
-            component={LoginPage}
-            // component={(routeProps) => (
-            //   <LoginPage {...routeProps} setIsAuth={setIsAuth} />
-            // )}
-          />
+          <Route exact path="/" component={LoginPage} />
           <ProtectedRoute path="/dashboard" component={Dashboard} />
         </div>
       </BrowserRouter>
