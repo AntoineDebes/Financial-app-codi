@@ -5,11 +5,11 @@ import { CgProfile, CgChevronDown } from "react-icons/cg";
 import "../pages/Dashboard.css";
 import { CSSTransition } from "react-transition-group";
 import Hamburger from "hamburger-react";
-import { useAuthUpdate } from "../useContext/IsAuthContext";
+import { useAuth } from "../useContext/IsAuthContext";
 
 function Header(props) {
   const [profileMenuIsOpen, setProfileMenuIsOpen] = useState(false);
-  const setIsAuth = useAuthUpdate();
+  const setIsAuth = useAuth();
   const history = useHistory();
 
   const changeonClick = async (e) => {

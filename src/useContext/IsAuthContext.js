@@ -1,14 +1,9 @@
 import React, { useState, useContext, createContext } from "react";
 
 const IsAuthContext = createContext();
-const IsAuthUpdateContext = createContext();
 
 export function useAuth() {
   return useContext(IsAuthContext);
-}
-
-export function useAuthUpdate() {
-  return useContext(IsAuthUpdateContext);
 }
 
 export function IsAuthProvider({ children }) {
@@ -16,10 +11,8 @@ export function IsAuthProvider({ children }) {
 
   return (
     <>
-      <IsAuthContext.Provider value={isAuth}>
-        <IsAuthUpdateContext.Provider value={setIsAuth}>
-          {children}
-        </IsAuthUpdateContext.Provider>
+      <IsAuthContext.Provider value={{ isAuth, setIsAuth }}>
+        {children}
       </IsAuthContext.Provider>
     </>
   );

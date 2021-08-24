@@ -4,13 +4,13 @@ import "./LoginPage.css";
 
 import img from "../images/login.jpg";
 import { FaLock } from "react-icons/fa";
-import { useAuthUpdate } from "../useContext/IsAuthContext";
+import { useAuth } from "../useContext/IsAuthContext";
 
 function LoginPage(props) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const setIsAuth = useAuthUpdate();
+  const setIsAuth = useAuth();
 
   const changeonClick = async (e) => {
     e.preventDefault();
