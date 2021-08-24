@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { Redirect, Route, withRouter } from "react-router";
 import "./LoginPage.css";
-
-import Dashboard from "../pages/Dashboard";
 
 import img from "../images/login.jpg";
 import { FaLock } from "react-icons/fa";
+import { useAuthUpdate } from "../useContext/IsAuthContext";
 
 function LoginPage(props) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const setIsAuth = useAuthUpdate();
 
   const changeonClick = async (e) => {
     e.preventDefault();
@@ -30,12 +29,11 @@ function LoginPage(props) {
 
     if (result.success) {
       console.log({ result });
-      props.setIsAuth(true);
+      setIsAuth(true);
       localStorage.setItem(
         "login",
         result.token_type + " " + result.access_token
       );
-      // console.log("front-token", result.token_type + " " + result.access_token);
       props.history.push({
         pathname: "/dashboard",
       });
