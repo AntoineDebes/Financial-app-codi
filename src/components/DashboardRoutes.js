@@ -6,7 +6,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 function DashboardRoutes() {
   return (
     <>
-      <ProtectedRoute path="/Dashboard" component={FixedIncomes} />
+      <ProtectedRoute path="/Dashboard/categories" component={FixedIncomes} />
       <ProtectedRoute path="/Dashboard/Admin" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedIncomes" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedExpenses" component={AdminDash} />

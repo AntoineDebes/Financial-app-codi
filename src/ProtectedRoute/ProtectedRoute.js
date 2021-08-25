@@ -7,7 +7,7 @@ function ProtectedRoute({ component: Component, ...rest }) {
   const localStorageIsAuth = localStorage.getItem("isAuth");
   const localStorageIsAuthValue = localStorageIsAuth === "true" ? true : false;
 
-  console.log(isAuth);
+  console.log(isAuth, localStorageIsAuth);
   return (
     <Route
       {...rest}
