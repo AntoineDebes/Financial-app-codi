@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../components/ContentHeader";
 import Card from "../components/Card";
-import { fixedIcomesApi, incomeApiDelete } from "../apis/Api";
+import { fixedIcomesApi, incomeApiDelete, testApi } from "../apis/Api";
 import ReactPaginate from "react-paginate";
 
 const ProductDash = () => {
@@ -10,9 +10,21 @@ const ProductDash = () => {
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const [checkedItemIds, setCheckedItemIds] = useState([]);
+  const [checkedItemIds, setCheckedItemIds] = useState({ data: [] });
 
   useEffect(() => {
+    // testApi("get", "api/product")
+    //   .then((res) => {
+    //     const newProducts = res.data.products.map((product) => ({
+    //       ...product,
+    //       checked: false,
+    //     }));
+    //     setProducts(newProducts);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error", error);
+    //   });
+
     fixedIcomesApi()
       .then((res) => {
         const newProducts = res.data.products.map((product) => ({
@@ -32,6 +44,7 @@ const ProductDash = () => {
 
   const handleCardDelete = () => {
     incomeApiDelete(checkedItemIds);
+    // "delete", "api/product",
     setCheckedItemIds([]);
   };
 
@@ -39,21 +52,22 @@ const ProductDash = () => {
     const mainId = e.target.id;
 
     if (e.target.checked) {
-      setCheckedItemIds([...checkedItemIds, mainId]);
+      setCheckedItemIds({ data: [...checkedItemIds.data, mainId] });
+      // console.log({ checkedItemIds });
     } else {
       setCheckedItemIds(checkedItemIds.filter((id) => id !== mainId));
     }
   };
 
   const getData = () => {
-    console.log(checkedItemIds);
+    // console.log(checkedItemIds);
     const data = products;
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((product) => {
       return (
         <Card
           key={product.id}
-          checked={checkedItemIds}
+          checked={checkedItemIds.data}
           productInfo={product}
           handleCheckBox={(e) => handleCheckBox(e)}
         />

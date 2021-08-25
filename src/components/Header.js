@@ -15,12 +15,13 @@ function Header(props) {
   const changeonClick = async (e) => {
     e.preventDefault();
     localStorage.removeItem("login");
+
     console.log({ firstTime: history });
     props.history.push({
       pathname: "/",
     });
-    localStorage.setItem("isAuth", false);
     setIsAuth(false);
+    localStorage.setItem("isAuth", false);
     console.log({ SecondTime: history });
 
     // const token = localStorage.getItem("login");

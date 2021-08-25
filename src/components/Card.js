@@ -5,7 +5,6 @@ function Card(props) {
     props.productInfo;
 
   const dateTime = created_at.slice(0, 10);
-  console.log(props.checked);
   return (
     <>
       <div className="content__card__container">
@@ -13,7 +12,7 @@ function Card(props) {
           <div>
             <input
               type="checkbox"
-              Checked={props.checked.includes(id) ? true : false}
+              // checked={props.checked.includes(id) ? true : false}
               id={id}
               onClick={(e) => props.handleCheckBox(e)}
             />

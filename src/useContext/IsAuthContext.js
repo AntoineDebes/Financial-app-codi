@@ -9,7 +9,7 @@ export function useAuth() {
 export function IsAuthProvider({ children }) {
   const localStorageIsAuth = localStorage.getItem("isAuth");
   const [isAuth, setIsAuth] = useState(
-    localStorageIsAuth ? localStorageIsAuth : false
+    localStorageIsAuth == true ? true : false
   );
 
   return (
