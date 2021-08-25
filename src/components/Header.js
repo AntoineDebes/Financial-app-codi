@@ -19,6 +19,7 @@ function Header(props) {
     props.history.push({
       pathname: "/",
     });
+    localStorage.setItem("isAuth", false);
     setIsAuth(false);
     console.log({ SecondTime: history });
 
