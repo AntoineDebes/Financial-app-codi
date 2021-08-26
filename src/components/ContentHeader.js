@@ -4,7 +4,7 @@ function ContentHeader(props) {
   return (
     <>
       <div className="content__container__category">
-        <h1>Fixed Incomes</h1>
+        <h1>{props.headerName}</h1>
       </div>
       <div className="content__container__buttons">
         <button

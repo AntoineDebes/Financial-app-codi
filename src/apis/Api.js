@@ -1,17 +1,17 @@
 import Axios from "axios";
 
-export const fixedIcomesApi = () => {
-  return new Promise((resolve, reject) => {
-    Axios.get(`${process.env.REACT_APP_API_URL}api/product`)
-      .then((res) => {
-        console.log(res);
-        resolve(res);
-      })
-      .catch((e) => {
-        reject(e);
-      });
-  });
-};
+// export const fixedIcomesApi = () => {
+//   return new Promise((resolve, reject) => {
+//     Axios.get(`${process.env.REACT_APP_API_URL}api/product`)
+//       .then((res) => {
+//         console.log(res);
+//         resolve(res);
+//       })
+//       .catch((e) => {
+//         reject(e);
+//       });
+//   });
+// };
 
 export const adminApi = () => {
   return new Promise((r, j) => {
@@ -26,18 +26,36 @@ export const adminApi = () => {
   });
 };
 
-export const incomeApiDelete = (data) => {
-  console.log(data);
+// export const incomeApiDelete = (data) => {
+//   console.log(data);
+//   return new Promise((r, j) => {
+//     Axios.delete(`${process.env.REACT_APP_API_URL}api/product`, {
+//       data: {
+//         ids: data,
+//       },
+//       // headers: {
+//       //   // "Content-Type": "application/x-www-form-urlencoded",
+//       // },
+//     })
+//       .then((res) => r(res))
+//       .catch((e) => j(e));
+//   });
+// };
+
+export const fetchApi = (method, url_path, body) => {
+  console.log(method, url_path, body);
   return new Promise((r, j) => {
-    Axios.delete(`${process.env.REACT_APP_API_URL}api/product`, {
+    Axios[method](`${process.env.REACT_APP_API_URL}${url_path}`, {
       data: {
-        ids: data,
+        ids: body,
       },
-      // headers: {
-      //   // "Content-Type": "application/x-www-form-urlencoded",
-      // },
     })
-      .then((res) => r(res))
-      .catch((e) => j(e));
+      .then((res) => {
+        console.log(res);
+        r(res);
+      })
+      .catch((e) => {
+        j(e);
+      });
   });
 };

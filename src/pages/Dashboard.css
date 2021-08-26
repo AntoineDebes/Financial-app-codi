@@ -49,7 +49,8 @@
 
 .content__bar {
   padding-left: 0.5rem;
-  grid-column: 1;
+  width: 17%;
+  max-width: 211px;
   background-color: rgb(88, 88, 134);
 }
 
@@ -65,7 +66,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 7.5% 7.5% 10% repeat(auto-fit, 5.6%);
+  grid-template-rows: 7.5% 7.5% 8% repeat(auto-fit, 5.6%);
   justify-content: center;
   column-gap: 0.5rem;
   row-gap: 0.5rem;

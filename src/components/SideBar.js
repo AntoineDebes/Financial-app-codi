@@ -22,18 +22,18 @@ function SideBar(props) {
             Fixed incomes
           </Link>
           <Link className="content__bar__cat" to="/Dashboard/FixedExpenses">
-            Fixed
+            Fixed expenses
           </Link>
-          <Link className="content__bar__cat" to="/Dashboard/RecurringIncomes">
+          <Link className="content__bar__cat" to="/Dashboard/CurrentIncomes">
             Recurring incomes
           </Link>
-          <Link className="content__bar__cat" to="Dashboard/RecurringExpenses">
+          <Link className="content__bar__cat" to="/Dashboard/CurrentExpenses">
             Recurring expenses
           </Link>
-          <Link className="content__bar__cat" to="Dashboard/Goals">
+          <Link className="content__bar__cat" to="/Dashboard/Goals">
             Goals
           </Link>
-          <Link className="content__bar__cat" to="Dashboard/Report">
+          <Link className="content__bar__cat" to="/Dashboard/Report">
             Report
           </Link>
         </div>

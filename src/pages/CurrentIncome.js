@@ -1,67 +1,73 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../components/ContentHeader";
 import Card from "../components/Card";
-import { fixedIcomesApi, incomeApiDelete, testApi } from "../apis/Api";
+import { fetchApi } from "../apis/Api";
 import ReactPaginate from "react-paginate";
 
-const ProductDash = () => {
-  const [products, setProducts] = useState([]);
+const CurrentIncome = () => {
+  const [items, setItems] = useState([]);
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const [checkedItemIds, setCheckedItemIds] = useState({ data: [] });
+  const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
 
   useEffect(() => {
-    // testApi("get", "api/product")
-    //   .then((res) => {
-    //     const newProducts = res.data.products.map((product) => ({
-    //       ...product,
-    //       checked: false,
-    //     }));
-    //     setProducts(newProducts);
-    //   })
-    //   .catch((error) => {
-    //     console.log("error", error);
-    //   });
-
-    fixedIcomesApi()
+    fetchApi("get", "api/currentincome")
       .then((res) => {
-        const newProducts = res.data.products.map((product) => ({
-          ...product,
+        const newItems = res.data.items.map((item) => ({
+          ...item,
           checked: false,
         }));
-        setProducts(newProducts);
+        console.log({ newItems });
+        setItems(newItems);
       })
       .catch((error) => {
         console.log("error", error);
       });
-  }, []);
+  }, [checkedItemIds]);
 
   useEffect(() => {
     getData();
-  }, [products, offset, pageCount, checkedItemIds]);
+  }, [items, offset, pageCount, checkedItemIds.ids]);
 
   const handleCardDelete = () => {
-    incomeApiDelete(checkedItemIds);
-    // "delete", "api/product",
-    setCheckedItemIds([]);
+    // incomeApiDelete(checkedItemIds);
+    fetchApi("delete", "api/currentincome", checkedItemIds.ids);
+    console.log("items");
+    console.log(items);
+    console.log("checkedItemIds.ids");
+    console.log(checkedItemIds.ids);
+
+    // setItems(
+    //   items.filter((item) => {
+    //     return !checkedItemIds.ids.includes(item.id);
+    //   })
+    // );
+    console.log(items);
+    // getData();
+    setCheckedItemIds({ ids: [] });
   };
 
   const handleCheckBox = (e) => {
     const mainId = e.target.id;
-
+    console.log(checkedItemIds.ids);
     if (e.target.checked) {
-      setCheckedItemIds({ data: [...checkedItemIds.data, mainId] });
-      // console.log({ checkedItemIds });
+      setCheckedItemIds({ ids: [...checkedItemIds.ids, mainId] });
     } else {
-      setCheckedItemIds(checkedItemIds.filter((id) => id !== mainId));
+      console.log("first", checkedItemIds.ids);
+      setCheckedItemIds({
+        ids: checkedItemIds.ids.filter((id) => id !== mainId),
+      });
+
+      console.log("second", checkedItemIds.ids);
     }
   };
 
   const getData = () => {
     // console.log(checkedItemIds);
-    const data = products;
+    const data = items;
+    console.log(data);
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((product) => {
       return (
@@ -84,9 +90,10 @@ const ProductDash = () => {
   return (
     <>
       <div className="content__container">
-        {JSON.stringify(checkedItemIds)}
-        {offset}
-        <ContentHeader handleCardDelete={handleCardDelete} />
+        <ContentHeader
+          handleCardDelete={handleCardDelete}
+          headerName="Current Incomes"
+        />
         {data && data}
         <div className="content__container__pagination">
           <ReactPaginate
@@ -105,4 +112,4 @@ const ProductDash = () => {
   );
 };
 
-export default ProductDash;
+export default CurrentIncome;
