@@ -11,9 +11,10 @@ const CurrentIncome = () => {
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
+  const fetchApiUrl = "api/currentincome";
 
   useEffect(() => {
-    fetchApi("get", "api/currentincome")
+    fetchApi("get", fetchApiUrl)
       .then((res) => {
         const newItems = res.data.items.map((item) => ({
           ...item,
@@ -33,7 +34,7 @@ const CurrentIncome = () => {
 
   const handleCardDelete = () => {
     // incomeApiDelete(checkedItemIds);
-    fetchApi("delete", "api/currentincome", checkedItemIds.ids);
+    fetchApi("delete", fetchApiUrl, checkedItemIds.ids);
     console.log("items");
     console.log(items);
     console.log("checkedItemIds.ids");
