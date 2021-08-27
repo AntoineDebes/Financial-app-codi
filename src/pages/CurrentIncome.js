@@ -8,7 +8,7 @@ const CurrentIncome = () => {
   const [items, setItems] = useState([]);
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
-  const [perPage] = useState(10);
+  const perPage = 10;
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
   const fetchApiUrl = "api/currentincome";

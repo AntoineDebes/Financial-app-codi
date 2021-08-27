@@ -21,7 +21,7 @@ function Header(props) {
       pathname: "/",
     });
     setIsAuth(false);
-    localStorage.setItem("isAuth", false);
+    localStorage.clear();
     console.log({ SecondTime: history });
 
     // const token = localStorage.getItem("login");

@@ -42,20 +42,20 @@ export const adminApi = () => {
 //   });
 // };
 
-export const fetchApi = (method, url_path, body) => {
-  console.log(method, url_path, body);
-  return new Promise((r, j) => {
+export const fetchApi = (method, url_path, dataIds) => {
+  console.log(method, url_path, dataIds);
+  return new Promise((res, rej) => {
     Axios[method](`${process.env.REACT_APP_API_URL}${url_path}`, {
       data: {
-        ids: body,
+        ids: dataIds,
       },
     })
-      .then((res) => {
-        console.log(res);
-        r(res);
+      .then((response) => {
+        console.log(response);
+        res(response);
       })
       .catch((e) => {
-        j(e);
+        rej(e);
       });
   });
 };
