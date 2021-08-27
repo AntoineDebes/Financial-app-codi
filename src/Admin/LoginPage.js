@@ -31,7 +31,6 @@ function LoginPage(props) {
       console.log({ result });
       localStorage.setItem("isAuth", true);
       setIsAuth(true);
-      localStorage.setItem("isAuth", true);
       localStorage.setItem(
         "login",
         result.token_type + " " + result.access_token
