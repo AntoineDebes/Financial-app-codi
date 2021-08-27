@@ -70,8 +70,8 @@ const FixedIncome = () => {
     // console.log(checkedItemIds);
     const data = items;
     console.log(data);
-    const slice = data.slice(offset, offset + perPage);
-    const postData = slice.map((product) => {
+    const slicedData = data.slice(offset, offset + perPage);
+    const postData = slicedData.map((product) => {
       return (
         <Card
           key={product.id}
