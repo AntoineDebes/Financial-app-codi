@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../components/ContentHeader";
 import Card from "../components/Card";
-import { fetchApi } from "../apis/Api";
 import ReactPaginate from "react-paginate";
 import {
   getDataCall,
