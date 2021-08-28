@@ -9,14 +9,13 @@ import {
   fetchApiCall,
 } from "../customPageComponents/PageFunctions";
 
-const FixedExpense = () => {
+const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
   const perPage = 10;
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
-  const fetchApiUrl = "api/fixedexpense";
 
   useEffect(() => {
     fetchApiCall("get", fetchApiUrl, setItems);
@@ -60,7 +59,7 @@ const FixedExpense = () => {
       <div className="content__container">
         <ContentHeader
           handleCardDelete={handleCardDelete}
-          headerName="Fixed Expenses"
+          headerName={headerName}
         />
         {data && data}
         <div className="content__container__pagination">
@@ -80,4 +79,4 @@ const FixedExpense = () => {
   );
 };
 
-export default FixedExpense;
+export default PageComponent;

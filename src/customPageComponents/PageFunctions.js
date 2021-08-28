@@ -67,3 +67,13 @@ export const fetchApiCall = (method, fetchApiUrl, setItems) => {
       console.log("error", error);
     });
 };
+
+export const pageUseState = () => {
+  const [items, setItems] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [data, setData] = useState([]);
+  const perPage = 10;
+  const [pageCount, setPageCount] = useState(0);
+  const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
+  const fetchApiUrl = "api/fixedexpense";
+};
