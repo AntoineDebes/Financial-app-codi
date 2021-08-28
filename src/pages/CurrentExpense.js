@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../components/ContentHeader";
 import Card from "../components/Card";
-import { fetchApi } from "../apis/Api";
+import { fixedIcomesApi, incomeApiDelete, testApi } from "../apis/Api";
 import ReactPaginate from "react-paginate";
 
 const CurrentExpense = () => {
@@ -10,11 +10,22 @@ const CurrentExpense = () => {
   const [data, setData] = useState([]);
   const perPage = 10;
   const [pageCount, setPageCount] = useState(0);
-  const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
-  const fetchApiUrl = "api/currentexpense";
+  const [checkedItemIds, setCheckedItemIds] = useState({ data: [] });
 
   useEffect(() => {
-    fetchApi("get", fetchApiUrl)
+    // testApi("get", "api/product")
+    //   .then((res) => {
+    //     const newProducts = res.data.products.map((product) => ({
+    //       ...product,
+    //       checked: false,
+    //     }));
+    //     setProducts(newProducts);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error", error);
+    //   });
+
+    fixedIcomesApi()
       .then((res) => {
         const newItems = res.data.items.map((item) => ({
           ...item,
@@ -33,28 +44,17 @@ const CurrentExpense = () => {
   }, [items, offset, pageCount, checkedItemIds.ids]);
 
   const handleCardDelete = () => {
-    // incomeApiDelete(checkedItemIds);
-    fetchApi("delete", fetchApiUrl, checkedItemIds.ids);
-    console.log("items");
-    console.log(items);
-    console.log("checkedItemIds.ids");
-    console.log(checkedItemIds.ids);
-
-    // setItems(
-    //   items.filter((item) => {
-    //     return !checkedItemIds.ids.includes(item.id);
-    //   })
-    // );
-    console.log(items);
-    // getData();
-    setCheckedItemIds({ ids: [] });
+    incomeApiDelete(checkedItemIds);
+    // "delete", "api/product",
+    setCheckedItemIds([]);
   };
 
   const handleCheckBox = (e) => {
     const mainId = e.target.id;
     console.log(checkedItemIds.ids);
     if (e.target.checked) {
-      setCheckedItemIds({ ids: [...checkedItemIds.ids, mainId] });
+      setCheckedItemIds({ data: [...checkedItemIds.data, mainId] });
+      // console.log({ checkedItemIds });
     } else {
       console.log("first", checkedItemIds.ids);
       setCheckedItemIds({
@@ -67,8 +67,7 @@ const CurrentExpense = () => {
 
   const getData = () => {
     // console.log(checkedItemIds);
-    const data = items;
-    console.log(data);
+    const data = products;
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((product) => {
       return (
