@@ -3,7 +3,10 @@ import PageComponent from "../customPageComponents/PageComponent";
 
 const FixedIncome = () => {
   return (
-    <PageComponent fetchApiUrl="api/fixedincome" headerName="Fixed Incomes" />
+    <PageComponent
+      fetchApiUrl="api/auth/fixedincome"
+      headerName="Fixed Incomes"
+    />
   );
 };
 

@@ -50,7 +50,7 @@ function Header(props) {
     <div className="header">
       {props.isHamburgureOpen ? (
         <Hamburger
-          onToggle={() => props.setSideBarOpen(!props.isSideBarOpen)}
+          onToggle={() => props.setIsSideBarOpen(!props.isSideBarOpen)}
         />
       ) : null}
 
