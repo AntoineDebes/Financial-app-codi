@@ -3,13 +3,13 @@ import Header from "../components/Header";
 import "./Dashboard.css";
 import DashboardRoutes from "../components/DashboardRoutes";
 import SideBar from "../components/SideBar";
-import useWindowSize from "../customHooks/useWindowSize";
+import {useScreenWidth} from "../useContext/IsAuthContext";
 
 export default function Dashboard() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isHamburgureOpen, setIsHamburgureOpen] = useState(false);
   const [test, setTest] = useState(false);
-  const { width } = useWindowSize();
+  const { width } = useScreenWidth();
 
   useEffect(() => {
     if (width < 1000) {

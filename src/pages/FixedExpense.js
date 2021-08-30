@@ -7,4 +7,6 @@ const FixedExpense = () => {
   );
 };
 
+
+
 export default FixedExpense;

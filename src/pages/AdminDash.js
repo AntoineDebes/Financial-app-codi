@@ -13,7 +13,7 @@ function AdminDash() {
     admin: Boolean,
   });
 
-  const { name, email, password, verified, admin } = inputs;
+  const { name, email, password} = inputs;
 
   useEffect(() => {
     adminApi()
@@ -24,7 +24,7 @@ function AdminDash() {
       .catch((error) => {
         console.log("error", error);
       });
-  }, []);
+  }, [admins]);
 
   const insertAdmin = (e) => {
     setInputs({

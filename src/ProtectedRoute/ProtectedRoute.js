@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { useAuth } from "../useContext/IsAuthContext";
+import { useAuth,useScreenWidth } from "../useContext/IsAuthContext";
 
 function ProtectedRoute({ component: Component, ...rest }) {
   const { isAuth } = useAuth();
+  const {width} = useScreenWidth()
   const localStorageIsAuth = localStorage.getItem("isAuth") === "true";
 
-  console.log(isAuth, localStorageIsAuth);
+console.log("screenWidth",width)
   return (
     <Route
       {...rest}
