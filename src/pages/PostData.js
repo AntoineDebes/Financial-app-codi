@@ -4,17 +4,25 @@ import axios from "axios";
 
 function PostData(props) {
   const [Categories, setCategories] = useState([]);
+  const [MCategory, SetMCategory] = useState([]);
   const [MainCategories] = useState([
-    { name: "Fixed Expense" },
-    { name: "Fixed Income" },
-    { name: "Recurring Expense" },
-    { name: "Recurring Income" },
+    { name: "Fixed Expense", id: 1, value: "fixedexpense" },
+    { name: "Fixed Income", id: 2, value: "fixedincome" },
+    { name: "Recurring Expense", id: 3, value: "recurringexpense" },
+    { name: "Recurring Income", id: 4, value: "recurringincome" },
   ]);
   const [title, setTitle] = useState("salim slam");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("");
   const [categoryId, setCategoryId] = useState("");
+
+  useEffect(async () => {
+    const anwar = await fetch("http://localhost:8000/api/categories");
+
+    const facesResult = await anwar.json();
+    setCategories(facesResult);
+  }, []);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -35,7 +43,16 @@ function PostData(props) {
     // const option = el.getAttribute("id");
     // setCategoryId(option);
     setCategoryId(e.option);
-    console.log(categoryId);
+    console.log({ categoryId });
+  };
+
+  useEffect(() => {
+    console.log({ categoryId });
+  }, []);
+
+  const getCategoryValue = (e) => {
+    SetMCategory(e.value);
+    console.log(MCategory);
   };
   const onChangeHandler = (e) => {
     e.preventDefault();
@@ -52,6 +69,7 @@ function PostData(props) {
     // const data = { title: e.target.title.value , description:e.target.description.value,
     //     amount : e.target.amount.value , currency:e.target.currency.value
     //     ,categories:e.target.categories.id  };
+
     e.preventDefault();
     try {
       const headers = {
@@ -64,7 +82,8 @@ function PostData(props) {
         category_id: categoryId,
         currency: currency,
       };
-      await axios.post("http://localhost:8000/api/postfixedincome", article, {
+      console.log(MCategory);
+      await axios.post(`http://localhost:8000/api/post${MCategory}`, article, {
         headers,
       });
       console.log("done");
@@ -92,13 +111,6 @@ function PostData(props) {
     //   console.error('Error:', error);
     // });
   };
-
-  useEffect(async () => {
-    const anwar = await fetch("http://localhost:8000/api/categories");
-
-    const facesResult = await anwar.json();
-    setCategories(facesResult);
-  }, []);
 
   return (
     <div>
@@ -139,10 +151,10 @@ function PostData(props) {
         <DropDownButton
           test={Categories}
           name="categories"
-          onChange={onChangeHandler}
+          //   onChange={onChangeHandler}
           addImage={addImage}
         />
-        <DropDownButton test={MainCategories} />
+        <DropDownButton test={MainCategories} addImage={getCategoryValue} />
         <input type="Submit" />
       </form>
     </div>

@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 
-function DropDownButton(props) {
+function DropDownButton({ addImage, test }) {
   const onTrigger = (e) => {
+    e.preventDefault();
     const index = e.target.selectedIndex;
     const el = e.target.childNodes[index];
     const option = el.getAttribute("id");
-    props.addImage({ option });
-    e.preventDefault();
+    const value = e.target.value;
+    addImage({ option, value });
   };
 
   return (
     <div>
       <select name="selectList" id="selectList" onChange={onTrigger}>
         <option></option>
-        {props.test.map((option, index) => (
-          <option id={option.id} value={option.name} key={index}>
+        {test.map((option, index) => (
+          <option id={option.id} value={option.value} key={index}>
             {option.name}{" "}
           </option>
         ))}

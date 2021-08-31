@@ -19,6 +19,7 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
 
   useEffect(() => {
     fetchApiCall("get", fetchApiUrl, setItems);
+    console.log(items);
   }, [checkedItemIds]);
 
   useEffect(() => {
