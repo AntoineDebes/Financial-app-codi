@@ -5,11 +5,12 @@ import CurrentIncome from "../pages/CurrentIncome";
 import CurrentExpense from "../pages/CurrentExpense";
 import AdminDash from "../pages/AdminDash";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import PostData from "../pages/PostData";
 
 function DashboardRoutes() {
   return (
     <>
-      <ProtectedRoute path="/Dashboard/categories" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/categories" component={PostData} />
       <ProtectedRoute path="/Dashboard/Admin" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedIncomes" component={FixedIncome} />
       <ProtectedRoute

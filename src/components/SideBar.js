@@ -12,7 +12,7 @@ function SideBar(props) {
         classNames="side-bar-transition"
       >
         <div className="content__bar">
-          <Link className="content__bar__cat" to="/Dashboard/">
+          <Link className="content__bar__cat" to="/Dashboard/categories">
             categories
           </Link>
           <Link className="content__bar__cat" to="/Dashboard/Admin">
