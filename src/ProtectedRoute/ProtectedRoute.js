@@ -4,15 +4,14 @@ import { useAuth } from "../useContext/IsAuthContext";
 
 function ProtectedRoute({ component: Component, ...rest }) {
   const { isAuth } = useAuth();
-  const localStorageIsAuth = localStorage.getItem("isAuth");
-  const localStorageIsAuthValue = localStorageIsAuth === "true" ? true : false;
+  const localStorageIsAuth = localStorage.getItem("isAuth") === "true";
 
   console.log(isAuth, localStorageIsAuth);
   return (
     <Route
       {...rest}
       render={() => {
-        if (isAuth || localStorageIsAuthValue) {
+        if (isAuth || localStorageIsAuth) {
           return <Component />;
         } else {
           return <Redirect to="/" />;

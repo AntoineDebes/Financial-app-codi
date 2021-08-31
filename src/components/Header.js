@@ -21,7 +21,7 @@ function Header(props) {
       pathname: "/",
     });
     setIsAuth(false);
-    localStorage.setItem("isAuth", false);
+    localStorage.clear();
     console.log({ SecondTime: history });
 
     // const token = localStorage.getItem("login");
@@ -50,7 +50,7 @@ function Header(props) {
     <div className="header">
       {props.isHamburgureOpen ? (
         <Hamburger
-          onToggle={() => props.setSideBarOpen(!props.isSideBarOpen)}
+          onToggle={() => props.setIsSideBarOpen(!props.isSideBarOpen)}
         />
       ) : null}
 

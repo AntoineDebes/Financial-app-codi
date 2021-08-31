@@ -2,21 +2,23 @@
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: minmax(45px, 8%) 1fr;
+  grid-template-rows: 6% 1fr;
+  background-color: rgb(235 235 235 / 59%);
 }
 
 .header {
   grid-column: span 8;
-  background-color: rgb(177, 168, 168);
+  background-color: rgb(64 104 214 / 99%);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   z-index: 999;
+  box-shadow: 0 0 10px 3px rgb(95, 91, 91);
 }
 
 .header__user {
   position: relative;
-  background-color: gray;
+  background-color: rgb(204 204 204);
 }
 
 .header__user__profile {
@@ -33,8 +35,9 @@
   overflow: hidden;
   width: 100%;
   top: 100%;
-  background-color: red;
+  background-color: rgb(204 204 204);
   z-index: 100;
+  box-shadow: 0 5px 9px 1px rgb(95, 91, 91);
 }
 
 .header__user__menu > p:hover {
@@ -43,22 +46,41 @@
 
 .wrapper__content__container {
   grid-column: span 8;
+  position: relative;
   display: flex;
   flex-direction: row;
 }
 
 .content__bar {
-  padding-left: 0.5rem;
   width: 17%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
   max-width: 211px;
-  background-color: rgb(88, 88, 134);
+  background-color: rgb(223 223 223);
+  box-shadow: 0 0 50px 20px rgb(95, 91, 91);
 }
 
 .content__bar__cat {
+  padding-left: 0.5rem;
   display: block;
   text-decoration: none;
-  color: white;
-  padding: 1rem 0;
+  color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  transition: 0.4s;
+}
+
+.content__bar__cat:hover {
+  color: rgb(0 62 235 / 99%);
+  background-color: rgb(195 202 221 / 99%);
+  font-weight: 500;
+}
+
+.content__bar__cat:focus {
+  color: rgb(0 62 235 / 99%);
+  background-color: rgb(195 202 221 / 99%);
+  font-weight: 500;
 }
 
 .content__container {
@@ -81,7 +103,7 @@
 }
 
 .content__container__buttons {
-  grid-column: -1/-2;
+  grid-column: -1/-3;
   display: grid;
   place-content: center;
 }
@@ -94,26 +116,26 @@
 }
 
 .content__container__header {
-  padding-left: 3%;
   padding-bottom: 1rem;
   grid-column: span 7;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 0.4rem;
+  grid-template-columns: 6% 17% 27% 7% 6% 14% 14%;
+  column-gap: 1.5%;
   height: 100%;
 }
 
-.content__container__header > div {
+.content__container__header > div:not(:first-child) {
   width: 100%;
   display: grid;
   place-items: center;
-  background-color: rgb(214, 213, 213);
+  background-color: rgb(223 223 223);
   height: 100%;
 }
 
 .content__container__header > div > h2 {
   margin-block-start: 0;
   margin-block-end: 0;
+  font-size: 1rem;
 }
 
 .content__container__pagination {
@@ -128,15 +150,17 @@
 
 .card__container__card {
   display: grid;
-  grid-template-columns: 3% repeat(6, 1fr);
+  grid-template-columns: 6% 17% 27% 7% 6% 14% 14%;
+  column-gap: 1.5%;
 }
 
 .card__container__card > div {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-left: 0.5rem;
+  justify-content: start;
+  padding-left: 0.1rem;
   height: 2rem;
+  overflow: hidden;
 }
 
 .paginationBttns {
@@ -156,13 +180,13 @@
 }
 
 .paginationBttns a:hover {
-  color: white;
-  background-color: #2b2eff;
+  color: rgb(0 62 235 / 99%);
+  background-color: rgb(195 202 221 / 99%);
 }
 
 .paginationActive a {
-  color: white;
-  background-color: #2b2eff;
+  color: rgb(0 62 235 / 99%);
+  background-color: rgb(195 202 221 / 99%);
 }
 
 .paginationDisabled a {
@@ -227,29 +251,58 @@ button:hover {
 .side-bar-transition-enter {
   /*We give the list the initial dimension of the list button*/
   left: -150%;
-  position: relative;
+  position: absolute;
   color: transparent;
 }
 /* This is where we can add the transition*/
 .side-bar-transition-enter-active {
   left: 0;
-  position: relative;
+  position: absolute;
   transition: all 400ms;
 }
 /* This fires as soon as the this.state.showList is false */
 .side-bar-transition-exit {
   left: 0;
-  position: relative;
+  position: absolute;
 }
 /* fires as element leaves the DOM*/
 .side-bar-transition-exit-active {
   left: -150%;
-  position: relative;
+  position: absolute;
   transition: all 400ms;
 }
 
 @media (min-width: 1000px) {
+  .wrapper {
+    display: grid;
+    grid-template-rows: 7% 1fr;
+  }
   .header {
     justify-content: flex-end;
+  }
+  .content__bar {
+    position: relative;
+    box-shadow: 0 0 10px 3px rgb(95, 91, 91);
+  }
+}
+
+@media (min-width: 400px) {
+  .card__container__card {
+    grid-template-columns: 6% repeat(6, 1fr);
+  }
+  .content__container__header {
+    padding-left: 8%;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .card__container__card > div {
+    justify-content: center;
+    padding-left: 0.5rem;
+  }
+  .content__container__header > div {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: rgb(223 223 223);
+    height: 100%;
   }
 }

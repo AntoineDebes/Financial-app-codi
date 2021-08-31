@@ -6,17 +6,18 @@ import SideBar from "../components/SideBar";
 import useWindowSize from "../customHooks/useWindowSize";
 
 export default function Dashboard() {
-  const [isSideBarOpen, setSideBarOpen] = useState(false);
-  const [isHamburgureOpen, setISHamburgureOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isHamburgureOpen, setIsHamburgureOpen] = useState(false);
+  const [test, setTest] = useState(false);
   const { width } = useWindowSize();
 
   useEffect(() => {
     if (width < 1000) {
-      setSideBarOpen(false);
-      setISHamburgureOpen(true);
+      setIsSideBarOpen(false);
+      setIsHamburgureOpen(true);
     } else {
-      setSideBarOpen(true);
-      setISHamburgureOpen(false);
+      setIsSideBarOpen(true);
+      setIsHamburgureOpen(false);
     }
   }, [width]);
 
@@ -25,8 +26,10 @@ export default function Dashboard() {
       <div className="wrapper" id="wrapper">
         <Header
           isSideBarOpen={isSideBarOpen}
-          setSideBarOpen={setSideBarOpen}
+          setIsSideBarOpen={setIsSideBarOpen}
           isHamburgureOpen={isHamburgureOpen}
+          setTest={setTest}
+          test={test}
         />
         <div className="wrapper__content__container">
           <SideBar isSideBarOpen={isSideBarOpen} />

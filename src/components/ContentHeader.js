@@ -1,6 +1,10 @@
 import React from "react";
+import useWindowSize from "../customHooks/useWindowSize";
 
 function ContentHeader(props) {
+  const { width } = useWindowSize();
+  const screenWidth = width < 400 ? true : false;
+  console.log(screenWidth);
   return (
     <>
       <div className="content__container__category">
@@ -16,23 +20,30 @@ function ContentHeader(props) {
         {/* <button>asd</button> */}
       </div>
       <div className="content__container__header">
+        {screenWidth ? (
+          <div className="content__container__header__first-div"></div>
+        ) : null}
+
         <div>
-          <h2>title</h2>
+          <h2>Title</h2>
         </div>
         <div>
-          <h2>description</h2>
+          <h2>
+            {screenWidth ? "Desc" : "Description"}
+            {/* description */}
+          </h2>
         </div>
         <div>
-          <h2>amount</h2>
+          <h2>{screenWidth ? "Q" : "Quantity"}</h2>
         </div>
         <div>
-          <h2>currency</h2>
+          <h2>{screenWidth ? "Cr" : "Currency"}</h2>
         </div>
         <div>
-          <h2>date time</h2>
+          <h2>{screenWidth ? "Date" : "Date-time"}</h2>
         </div>
         <div>
-          <h2>category</h2>
+          <h2>{screenWidth ? "Cat" : "Category"}</h2>
         </div>
       </div>
     </>
