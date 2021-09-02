@@ -1,5 +1,7 @@
 import Axios from "axios";
 
+const token = localStorage.getItem("login") ?? "";
+
 // export const fixedIcomesApi = () => {
 //   return new Promise((resolve, reject) => {
 //     Axios.get(`${process.env.REACT_APP_API_URL}api/product`)
@@ -14,14 +16,14 @@ import Axios from "axios";
 // };
 
 export const adminApi = () => {
-  return new Promise((r, j) => {
+  return new Promise((res, rej) => {
     Axios.get(`${process.env.REACT_APP_API_URL}api/admin`)
-      .then((res) => {
-        console.log(res);
-        r(res);
+      .then((response) => {
+        console.log(response);
+        res(response);
       })
       .catch((e) => {
-        j(e);
+        rej(e);
       });
   });
 };
@@ -45,11 +47,19 @@ export const adminApi = () => {
 export const fetchApi = (method, url_path, dataIds) => {
   console.log(method, url_path, dataIds);
   return new Promise((res, rej) => {
-    Axios[method](`${process.env.REACT_APP_API_URL}${url_path}`, {
-      data: {
-        ids: dataIds,
+    Axios[method](
+      `${process.env.REACT_APP_API_URL}${url_path}`,
+      {
+        headers: {
+          Authorization: token,
+        },
       },
-    })
+      {
+        data: {
+          ids: dataIds,
+        },
+      }
+    )
       .then((response) => {
         console.log(response);
         res(response);
