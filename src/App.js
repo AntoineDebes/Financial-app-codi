@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./normalize.css";
 import Routes from "./components/Routes";
 import { IsAuthProvider } from "./useContext/IsAuthContext";

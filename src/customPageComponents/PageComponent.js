@@ -19,11 +19,26 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
 
   useEffect(() => {
     fetchApiCall("get", fetchApiUrl, setItems);
-  }, [checkedItemIds]);
+  }, [checkedItemIds, fetchApiUrl]);
 
   useEffect(() => {
+    const getData = () => {
+      getDataCall(
+        items,
+        offset,
+        perPage,
+        handleCheckBox,
+        setData,
+        setPageCount,
+        Card,
+        checkedItemIds
+      );
+    };
+    const handleCheckBox = (e) => {
+      handleCheckBoxCall(e, checkedItemIds, setCheckedItemIds);
+    };
     getData();
-  }, [items, offset, pageCount, checkedItemIds.ids]);
+  }, [items, offset, pageCount, checkedItemIds]);
 
   const handleCardDelete = () =>
     handleCardDeleteCall(
@@ -32,23 +47,6 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
       checkedItemIds.ids,
       setCheckedItemIds
     );
-
-  const handleCheckBox = (e) => {
-    handleCheckBoxCall(e, checkedItemIds, setCheckedItemIds);
-  };
-
-  const getData = () => {
-    getDataCall(
-      items,
-      offset,
-      perPage,
-      handleCheckBox,
-      setData,
-      setPageCount,
-      Card,
-      checkedItemIds
-    );
-  };
 
   const changePage = ({ selected }) => {
     setOffset(selected * perPage);

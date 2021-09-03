@@ -17,7 +17,7 @@ const token = localStorage.getItem("login") ?? "";
 
 export const adminApi = () => {
   return new Promise((res, rej) => {
-    Axios.get(`${process.env.REACT_APP_API_URL}api/admin`)
+    Axios.get(`${process.env.REACT_APP_API_URL}api/auth/admin`)
       .then((response) => {
         console.log(response);
         res(response);

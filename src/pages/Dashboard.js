@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import "./Dashboard.css";
+import "./dashboard.css";
 import DashboardRoutes from "../components/DashboardRoutes";
 import SideBar from "../components/SideBar";
 import useWindowSize from "../customHooks/useWindowSize";

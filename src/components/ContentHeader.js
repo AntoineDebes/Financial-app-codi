@@ -1,19 +1,19 @@
 import React from "react";
 import useWindowSize from "../customHooks/useWindowSize";
 
-function ContentHeader(props) {
+function ContentHeader({ headerName, handleCardDelete }) {
   const { width } = useWindowSize();
   const screenWidth = width < 400 ? true : false;
   console.log(screenWidth);
   return (
     <>
       <div className="content__container__category">
-        <h1>{props.headerName}</h1>
+        <h1>{headerName}</h1>
       </div>
       <div className="content__container__buttons">
         <button
           className="content__container__button--danger"
-          onClick={(e) => props.handleCardDelete(e)}
+          onClick={(e) => handleCardDelete(e)}
         >
           Delete
         </button>

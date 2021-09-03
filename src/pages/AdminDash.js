@@ -23,7 +23,7 @@ function AdminDash() {
       .catch((error) => {
         console.log("error", error);
       });
-  }, []);
+  }, [admins]);
 
   const insertAdmin = (e) => {
     setInputs({

@@ -1,8 +1,8 @@
 import React from "react";
 
-function Card(props) {
+function Card({ productInfo, handleCheckBox }) {
   const { title, category, created_at, currency, description, quantity, id } =
-    props.productInfo;
+    productInfo;
 
   const dateTime = created_at.slice(0, 10);
   return (
@@ -14,7 +14,7 @@ function Card(props) {
               type="checkbox"
               // checked={props.checked.includes(id) ? true : false}
               id={id}
-              onClick={(e) => props.handleCheckBox(e)}
+              onClick={(e) => handleCheckBox(e)}
             />
           </div>
 

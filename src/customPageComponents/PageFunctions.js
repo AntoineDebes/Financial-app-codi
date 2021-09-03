@@ -36,7 +36,6 @@ export const getDataCall = (
   checkedItemIds
 ) => {
   const data = items;
-  console.log(data);
   const slice = data.slice(offset, offset + perPage);
   const postData = slice.map((item) => {
     return (
@@ -59,7 +58,6 @@ export const fetchApiCall = (method, fetchApiUrl, setItems) => {
         ...item,
         checked: false,
       }));
-      console.log({ newItems });
       setItems(newItems);
     })
     .catch((error) => {
