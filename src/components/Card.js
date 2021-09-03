@@ -1,22 +1,27 @@
 import React from "react";
+import useWindowSize from "../customHooks/useWindowSize";
 
 function Card({ productInfo, handleCheckBox }) {
   const { title, category, created_at, currency, description, quantity, id } =
     productInfo;
 
   const dateTime = created_at.slice(0, 10);
+  const { width } = useWindowSize();
   return (
     <>
       <div className="content__card__container">
         <div className="card__container__card">
-          <div>
-            <input
-              type="checkbox"
-              // checked={props.checked.includes(id) ? true : false}
-              id={id}
-              onClick={(e) => handleCheckBox(e)}
-            />
-          </div>
+          {width && width > 400 ? (
+            <div>
+              <input
+                type="checkbox"
+                // checked={props.checked.includes(id) ? true : false}
+                id={id}
+                className="card__container__card__checkbox"
+                onClick={(e) => handleCheckBox(e)}
+              />
+            </div>
+          ) : null}
 
           <div>
             <p>{title}</p>

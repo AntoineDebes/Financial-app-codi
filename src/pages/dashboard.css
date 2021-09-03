@@ -148,10 +148,19 @@
   grid-column: span 7;
 }
 
-.card__container__card {
+/* .card__container__card {
   display: grid;
   grid-template-columns: 6% 17% 27% 7% 6% 14% 14%;
   column-gap: 1.5%;
+} */
+
+.card__container__card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card__container__card > div:first-child {
+  grid-column: span 4;
 }
 
 .card__container__card > div {
@@ -211,7 +220,7 @@
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
     0 0 0 0.1px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
-button:hover {
+.button:hover {
   transform: scale(1.2);
   transition: 1s;
 }
