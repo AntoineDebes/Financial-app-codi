@@ -58,6 +58,7 @@ export const fetchApiCall = (method, fetchApiUrl, setItems) => {
         ...item,
         checked: false,
       }));
+      console.log("newItems", newItems);
       setItems(newItems);
     })
     .catch((error) => {

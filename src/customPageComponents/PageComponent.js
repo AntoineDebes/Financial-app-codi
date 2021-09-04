@@ -38,15 +38,17 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
       handleCheckBoxCall(e, checkedItemIds, setCheckedItemIds);
     };
     getData();
-  }, [items, offset, pageCount, checkedItemIds]);
+  }, [items, offset, pageCount, checkedItemIds, checkedItemIds.ids]);
 
-  const handleCardDelete = () =>
+  const handleCardDelete = () => {
+    console.log("ids", checkedItemIds.ids);
     handleCardDeleteCall(
       "delete",
       fetchApiUrl,
       checkedItemIds.ids,
       setCheckedItemIds
     );
+  };
 
   const changePage = ({ selected }) => {
     setOffset(selected * perPage);
@@ -60,18 +62,18 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
           headerName={headerName}
         />
         {data && data}
-        <div className="content__container__pagination">
-          <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={"paginationBttns"}
-            previousLinkClassName={"previousBttn"}
-            nextLinkClassName={"nextBttn"}
-            activeClassName={"paginationActive"}
-          />
-        </div>
+      </div>
+      <div className="content__container__pagination">
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          activeClassName={"paginationActive"}
+        />
       </div>
     </>
   );

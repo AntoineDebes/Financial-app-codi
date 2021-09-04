@@ -15,28 +15,26 @@ export const adminApi = () => {
   });
 };
 
-export const fetchApi = (method, url_path, dataIds) => {
-  console.log(method, url_path, dataIds);
+export const fetchApi = (methodAxios, url_path, dataIds) => {
+  console.log(methodAxios, url_path, dataIds);
   return new Promise((res, rej) => {
-    Axios[method](
-      `${process.env.REACT_APP_API_URL}${url_path}`,
-      {
-        headers: {
-          Authorization: token,
-        },
+    Axios({
+      method: methodAxios,
+      url: `${process.env.REACT_APP_API_URL}${url_path}`,
+      headers: {
+        Authorization: token,
       },
-      {
-        data: {
-          ids: dataIds,
-        },
-      }
-    )
+      data: {
+        ids: dataIds,
+      },
+    })
       .then((response) => {
         console.log(response);
         res(response);
       })
       .catch((e) => {
         localStorage.clear();
+        console.log(e);
         rej(e);
       });
   });

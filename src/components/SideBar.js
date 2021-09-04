@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-function SideBar({ isSideBarOpen }) {
+function SideBar({ isSideBarOpen, domNode }) {
   return (
     <>
       <CSSTransition

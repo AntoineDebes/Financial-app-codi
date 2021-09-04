@@ -4,6 +4,7 @@ import "./dashboard.css";
 import DashboardRoutes from "../components/DashboardRoutes";
 import SideBar from "../components/SideBar";
 import useWindowSize from "../customHooks/useWindowSize";
+// import { useClickOutside } from "../customHooks/useClickOutside";
 
 export default function Dashboard() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
