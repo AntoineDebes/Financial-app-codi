@@ -4,11 +4,14 @@ import FixedExpense from "../pages/FixedExpense";
 import CurrentIncome from "../pages/CurrentIncome";
 import CurrentExpense from "../pages/CurrentExpense";
 import AdminDash from "../pages/AdminDash";
+import Report from "../pages/Report"
+import AddAdmin from "../pages/AddAdmin"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function DashboardRoutes() {
   return (
     <>
+      <ProtectedRoute path="/Dashboard/AddAdmin" component={AddAdmin} />
       <ProtectedRoute path="/Dashboard/categories" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/Admin" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedIncomes" component={FixedIncome} />
@@ -25,7 +28,7 @@ function DashboardRoutes() {
         component={CurrentExpense}
       />
       <ProtectedRoute path="/Dashboard/Goals" component={AdminDash} />
-      <ProtectedRoute path="/Dashboard/Report" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Report" component={Report} />
     </>
   );
 }

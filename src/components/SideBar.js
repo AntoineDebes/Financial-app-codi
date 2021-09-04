@@ -12,6 +12,9 @@ function SideBar(props) {
         classNames="side-bar-transition"
       >
         <div className="content__bar">
+        <Link className="content__bar__cat" to="/Dashboard/AddAdmin">
+            Add Admins
+          </Link>
           <Link className="content__bar__cat" to="/Dashboard/">
             categories
           </Link>
