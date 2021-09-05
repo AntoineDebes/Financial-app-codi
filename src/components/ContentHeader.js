@@ -4,7 +4,6 @@ import useWindowSize from "../customHooks/useWindowSize";
 function ContentHeader({ headerName, handleCardDelete }) {
   const { width } = useWindowSize();
   const screenWidth = width > 400 ? true : false;
-  console.log(screenWidth);
   return (
     <>
       <div className="content__container__category">

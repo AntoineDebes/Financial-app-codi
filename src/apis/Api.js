@@ -15,7 +15,7 @@ export const adminApi = () => {
   });
 };
 
-export const fetchApi = (methodAxios, url_path, dataIds) => {
+export const FetchApi = (methodAxios, url_path, dataIds) => {
   console.log(methodAxios, url_path, dataIds);
   return new Promise((res, rej) => {
     Axios({
@@ -33,7 +33,7 @@ export const fetchApi = (methodAxios, url_path, dataIds) => {
         res(response);
       })
       .catch((e) => {
-        localStorage.clear();
+        localStorage.setItem("isAuth", "false");
         console.log(e);
         rej(e);
       });

@@ -8,6 +8,7 @@ import {
   handleCheckBoxCall,
   fetchApiCall,
 } from "../customPageComponents/PageFunctions";
+import { useAuth } from "../useContext/IsAuthContext";
 
 const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
@@ -16,10 +17,15 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   const perPage = 10;
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
+  const { setIsAuth } = useAuth();
+
+  const mobileDeleteOneId = (id) => {
+    handleCardDelete(id);
+  };
 
   useEffect(() => {
-    fetchApiCall("get", fetchApiUrl, setItems);
-  }, [checkedItemIds, fetchApiUrl]);
+    fetchApiCall("get", fetchApiUrl, setItems, setIsAuth);
+  }, [checkedItemIds, fetchApiUrl, setIsAuth]);
 
   useEffect(() => {
     const getData = () => {
@@ -31,7 +37,8 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
         setData,
         setPageCount,
         Card,
-        checkedItemIds
+        checkedItemIds,
+        mobileDeleteOneId
       );
     };
     const handleCheckBox = (e) => {
@@ -40,13 +47,14 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
     getData();
   }, [items, offset, pageCount, checkedItemIds, checkedItemIds.ids]);
 
-  const handleCardDelete = () => {
+  const handleCardDelete = (id) => {
     console.log("ids", checkedItemIds.ids);
     handleCardDeleteCall(
       "delete",
       fetchApiUrl,
-      checkedItemIds.ids,
-      setCheckedItemIds
+      checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
+      setCheckedItemIds,
+      setIsAuth
     );
   };
 

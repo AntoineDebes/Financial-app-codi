@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import useWindowSize from "../customHooks/useWindowSize";
 import { useClickOutside } from "../customHooks/useClickOutside";
 import { CgClose } from "react-icons/cg";
+// import { handleCardDeleteCall } from "../customPageComponents/PageFunctions";
 
-function Card({ productInfo, handleCheckBox }) {
+function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
   const [isWidthMobile, setisWidthMobile] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -60,6 +61,7 @@ function Card({ productInfo, handleCheckBox }) {
                 <p>{category}</p>
               </div>
             </div>
+            <button onClick={() => mobileDeleteOneId([id])}>Delete</button>
           </div>
         </>
       ) : null}
