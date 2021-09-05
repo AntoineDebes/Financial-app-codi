@@ -1,16 +1,25 @@
-import { fetchApi } from "../apis/Api";
+import { FetchApi } from "../apis/Api";
 
 export const handleCardDeleteCall = (
+  // function that sends an API to the backend with the respective ids to delete them and resets the array
   method,
   fetchApiUrl,
   data_ids,
-  setCheckedItemIds
+  setCheckedItemIds,
+  setIsAuth
 ) => {
-  fetchApi(method, fetchApiUrl, data_ids);
-  setCheckedItemIds({ ids: [] });
+  FetchApi(method, fetchApiUrl, data_ids)
+    .then(() => {
+      setCheckedItemIds && setCheckedItemIds({ ids: [] });
+    })
+    .catch((e) => {
+      setIsAuth(false);
+      console.log(e);
+    });
 };
 
 export const handleCheckBoxCall = (e, checkedItemIds, setCheckedItemIds) => {
+  // function for inserting and removing inside the ids array to send them to the backend
   const mainId = e.target.id;
   console.log(checkedItemIds.ids);
   if (e.target.checked) {
@@ -26,6 +35,7 @@ export const handleCheckBoxCall = (e, checkedItemIds, setCheckedItemIds) => {
 };
 
 export const getDataCall = (
+  // function that distribute the items data to the card to be disaplyed
   items,
   offset,
   perPage,
@@ -33,10 +43,10 @@ export const getDataCall = (
   setData,
   setPageCount,
   Card,
-  checkedItemIds
+  checkedItemIds,
+  mobileDeleteOneId
 ) => {
   const data = items;
-  console.log(data);
   const slice = data.slice(offset, offset + perPage);
   const postData = slice.map((item) => {
     return (
@@ -44,6 +54,7 @@ export const getDataCall = (
         key={item.id}
         checked={checkedItemIds.data}
         productInfo={item}
+        mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
         handleCheckBox={(e) => handleCheckBox(e)}
       />
     );
@@ -52,17 +63,19 @@ export const getDataCall = (
   setPageCount(Math.ceil(data.length / perPage));
 };
 
-export const fetchApiCall = (method, fetchApiUrl, setItems) => {
-  fetchApi(method, fetchApiUrl)
+export const fetchApiCall = (method, fetchApiUrl, setItems, setIsAuth) => {
+  // function that can be called to fetch the ids usually after deleting or when logging in
+  FetchApi(method, fetchApiUrl)
     .then((res) => {
       const newItems = res.data.items.map((item) => ({
         ...item,
         checked: false,
       }));
-      console.log({ newItems });
+      // console.log("newItems", newItems);
       setItems(newItems);
     })
     .catch((error) => {
+      setIsAuth(false);
       console.log("error", error);
     });
 };

@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { CgProfile, CgChevronDown } from "react-icons/cg";
-import "../pages/Dashboard.css";
 import { CSSTransition } from "react-transition-group";
 import Hamburger from "hamburger-react";
 import { useAuth } from "../useContext/IsAuthContext";
 
-function Header(props) {
+function Header({
+  isHamburgureOpen,
+  setIsSideBarOpen,
+  isSideBarOpen,
+  ...props
+}) {
   const [profileMenuIsOpen, setProfileMenuIsOpen] = useState(false);
   const { setIsAuth } = useAuth();
   const history = useHistory();
@@ -48,10 +52,8 @@ function Header(props) {
 
   return (
     <div className="header">
-      {props.isHamburgureOpen ? (
-        <Hamburger
-          onToggle={() => props.setSideBarOpen(!props.isSideBarOpen)}
-        />
+      {isHamburgureOpen ? (
+        <Hamburger onToggle={() => setIsSideBarOpen(!isSideBarOpen)} />
       ) : null}
 
       <div

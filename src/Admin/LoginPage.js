@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import "./LoginPage.css";
 
 import img from "../images/login.jpg";
@@ -7,7 +6,6 @@ import { FaLock } from "react-icons/fa";
 import { useAuth } from "../useContext/IsAuthContext";
 
 function LoginPage(props) {
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setIsAuth } = useAuth();
@@ -29,9 +27,8 @@ function LoginPage(props) {
 
     if (result.success) {
       console.log({ result });
-      localStorage.setItem("isAuth", true);
+      localStorage.setItem("isAuth", "true");
       setIsAuth(true);
-      localStorage.setItem("isAuth", true);
       localStorage.setItem(
         "login",
         result.token_type + " " + result.access_token

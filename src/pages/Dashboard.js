@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import "./Dashboard.css";
+import "./dashboard.css";
 import DashboardRoutes from "../components/DashboardRoutes";
 import SideBar from "../components/SideBar";
 import useWindowSize from "../customHooks/useWindowSize";
+// import { useClickOutside } from "../customHooks/useClickOutside";
 
 export default function Dashboard() {
-  const [isSideBarOpen, setSideBarOpen] = useState(false);
-  const [isHamburgureOpen, setISHamburgureOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isHamburgureOpen, setIsHamburgureOpen] = useState(false);
+  const [test, setTest] = useState(false);
   const { width } = useWindowSize();
 
   useEffect(() => {
     if (width < 1000) {
-      setSideBarOpen(false);
-      setISHamburgureOpen(true);
+      setIsSideBarOpen(false);
+      setIsHamburgureOpen(true);
     } else {
-      setSideBarOpen(true);
-      setISHamburgureOpen(false);
+      setIsSideBarOpen(true);
+      setIsHamburgureOpen(false);
     }
   }, [width]);
 
@@ -25,8 +27,10 @@ export default function Dashboard() {
       <div className="wrapper" id="wrapper">
         <Header
           isSideBarOpen={isSideBarOpen}
-          setSideBarOpen={setSideBarOpen}
+          setIsSideBarOpen={setIsSideBarOpen}
           isHamburgureOpen={isHamburgureOpen}
+          setTest={setTest}
+          test={test}
         />
         <div className="wrapper__content__container">
           <SideBar isSideBarOpen={isSideBarOpen} />

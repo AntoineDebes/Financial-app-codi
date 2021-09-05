@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-function SideBar(props) {
+function SideBar({ isSideBarOpen, domNode }) {
   return (
     <>
       <CSSTransition
-        in={props.isSideBarOpen}
+        in={isSideBarOpen}
         timeout={200}
         unmountOnExit
         classNames="side-bar-transition"
