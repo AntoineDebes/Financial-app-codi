@@ -1,9 +1,9 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Report.css";
 
-import { Pie, defaults } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 const Report = () => {
   const [items, setItems] = useState([]);
