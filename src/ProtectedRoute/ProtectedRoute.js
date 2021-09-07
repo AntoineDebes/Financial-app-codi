@@ -5,7 +5,6 @@ import { useAuth } from "../useContext/IsAuthContext";
 function ProtectedRoute({ component: Component, ...rest }) {
   const { isAuth } = useAuth();
 
-  console.log({ isAuth });
   return (
     <Route
       {...rest}

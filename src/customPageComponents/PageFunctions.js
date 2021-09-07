@@ -75,7 +75,6 @@ export const fetchApiCall = (method, fetchApiUrl, setItems, setIsAuth) => {
       setItems(newItems);
     })
     .catch((error) => {
-      setIsAuth(false);
       console.log("error", error);
     });
 };

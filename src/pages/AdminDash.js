@@ -33,7 +33,7 @@ function AdminDash() {
   };
   return (
     <>
-      <div className="content__container">
+      {/* <div className="content__container">
         <AdminHeader />
         <div className="content__card__container">
           {admins &&
@@ -89,7 +89,7 @@ function AdminDash() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

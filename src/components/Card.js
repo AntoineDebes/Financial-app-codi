@@ -15,14 +15,10 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
 
   useEffect(() => {
     setisWidthMobile(width < 400 ? true : false);
-    console.log("isWidthMobile", isWidthMobile);
   }, [width, isWidthMobile]);
 
   const domNode = useClickOutside(() => {
-    console.log("here");
-    console.log(isPopupOpen);
     setIsPopupOpen(!isPopupOpen);
-    console.log(isPopupOpen);
   });
 
   return (

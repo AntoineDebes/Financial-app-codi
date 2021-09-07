@@ -4,7 +4,11 @@ const token = localStorage.getItem("login") ?? "";
 
 export const adminApi = () => {
   return new Promise((res, rej) => {
-    Axios.get(`${process.env.REACT_APP_API_URL}api/auth/admin`)
+    Axios.get(`${process.env.REACT_APP_API_URL}api/admin`, {
+      headers: {
+        Authorization: token,
+      },
+    })
       .then((response) => {
         console.log(response);
         res(response);
@@ -33,7 +37,6 @@ export const FetchApi = (methodAxios, url_path, dataIds) => {
         res(response);
       })
       .catch((e) => {
-        localStorage.setItem("isAuth", "false");
         console.log(e);
         rej(e);
       });

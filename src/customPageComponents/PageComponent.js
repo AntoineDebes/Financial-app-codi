@@ -13,7 +13,7 @@ import { useAuth } from "../useContext/IsAuthContext";
 const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const perPage = 10;
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
@@ -24,8 +24,8 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   };
 
   useEffect(() => {
-    fetchApiCall("get", fetchApiUrl, setItems, setIsAuth);
-  }, [checkedItemIds, fetchApiUrl, setIsAuth]);
+    fetchApiCall("get", fetchApiUrl, setItems);
+  }, [checkedItemIds, fetchApiUrl]);
 
   useEffect(() => {
     const getData = () => {
@@ -48,7 +48,6 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   }, [items, offset, pageCount, checkedItemIds, checkedItemIds.ids]);
 
   const handleCardDelete = (id) => {
-    console.log("ids", checkedItemIds.ids);
     handleCardDeleteCall(
       "delete",
       fetchApiUrl,
