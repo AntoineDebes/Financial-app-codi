@@ -19,17 +19,17 @@ export const adminApi = () => {
   });
 };
 
-export const FetchApi = (methodAxios, url_path, dataIds) => {
-  console.log(methodAxios, url_path, dataIds);
+export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
+  console.log(method, fetchApiUrl, selectedIds);
   return new Promise((res, rej) => {
     Axios({
-      method: methodAxios,
-      url: `${process.env.REACT_APP_API_URL}${url_path}`,
+      method: method,
+      url: `${process.env.REACT_APP_API_URL}${fetchApiUrl}`,
       headers: {
         Authorization: token,
       },
       data: {
-        ids: dataIds,
+        ids: selectedIds,
       },
     })
       .then((response) => {

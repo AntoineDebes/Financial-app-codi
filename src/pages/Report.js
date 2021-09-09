@@ -39,7 +39,7 @@ const Report = () => {
 
   return (
     <div className="Container">
-      {items && JSON.stringify(items)}
+      {/* {items && JSON.stringify(items)} */}
       {
         <ul className="ul">
           {items &&
@@ -48,7 +48,7 @@ const Report = () => {
                 to={`/Dashboard/Report/${item.id}`}
                 onClick={() => onsubmitHandler(item.id)}
               >
-                {item.name}
+                {item.title}
               </Link>
             ))}
         </ul>

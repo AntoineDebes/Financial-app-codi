@@ -27,34 +27,13 @@ function Header({
     setIsAuth(false);
     localStorage.clear();
     console.log({ SecondTime: history });
-
-    // const token = localStorage.getItem("login");
-    // const result = await fetch("http://localhost:8000/api/auth/logout", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: token,
-    //   },
-    // }).then((res) => res.json());
-    // console.log({ result });
-    // console.log(result.success);
-    // if (result.success) {
-    //   props.history.push({
-    //     pathname: "/",
-    //   });
-    //   history.location.push({ pathname: "/" });
-    //   console.log(history);
-    // } else {
-    //   console.log("dddd");
-    // }
   };
 
   return (
     <div className="header">
-      {isHamburgureOpen ? (
+      {isHamburgureOpen && (
         <Hamburger onToggle={() => setIsSideBarOpen(!isSideBarOpen)} />
-      ) : null}
+      )}
 
       <div
         className="header__user"

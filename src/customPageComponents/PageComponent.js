@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../components/ContentHeader";
-import Card from "../components/Card";
 import ReactPaginate from "react-paginate";
 import {
   getDataCall,
@@ -13,48 +12,48 @@ import { useAuth } from "../useContext/IsAuthContext";
 const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [data, setData] = useState(null);
+  const [cardData, setCardData] = useState(null);
   const perPage = 10;
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
   const { setIsAuth } = useAuth();
 
-  const mobileDeleteOneId = (id) => {
-    handleCardDelete(id);
-  };
-
   useEffect(() => {
-    fetchApiCall("get", fetchApiUrl, setItems);
+    fetchApiCall({ method: "get", fetchApiUrl, setItems });
   }, [checkedItemIds, fetchApiUrl]);
 
   useEffect(() => {
     const getData = () => {
-      getDataCall(
+      getDataCall({
         items,
         offset,
         perPage,
         handleCheckBox,
-        setData,
+        setCardData,
         setPageCount,
-        Card,
         checkedItemIds,
-        mobileDeleteOneId
-      );
+        mobileDeleteOneId,
+      });
     };
     const handleCheckBox = (e) => {
-      handleCheckBoxCall(e, checkedItemIds, setCheckedItemIds);
+      handleCheckBoxCall({ e, checkedItemIds, setCheckedItemIds });
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, offset, pageCount, checkedItemIds, checkedItemIds.ids]);
 
+  const mobileDeleteOneId = (id) => {
+    handleCardDelete(id);
+  };
+
   const handleCardDelete = (id) => {
-    handleCardDeleteCall(
-      "delete",
+    handleCardDeleteCall({
+      method: "delete",
       fetchApiUrl,
-      checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
+      selectedIds: checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
       setCheckedItemIds,
-      setIsAuth
-    );
+      setIsAuth,
+    });
   };
 
   const changePage = ({ selected }) => {
@@ -68,7 +67,7 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
           handleCardDelete={handleCardDelete}
           headerName={headerName}
         />
-        {data && data}
+        {cardData && cardData}
       </div>
       <div className="content__container__pagination">
         <ReactPaginate

@@ -1,14 +1,16 @@
 import { FetchApi } from "../apis/Api";
+import Card from "../components/Card";
 
-export const handleCardDeleteCall = (
+export const handleCardDeleteCall = ({
   // function that sends an API to the backend with the respective ids to delete them and resets the array
   method,
   fetchApiUrl,
-  data_ids,
+  selectedIds,
   setCheckedItemIds,
-  setIsAuth
-) => {
-  FetchApi(method, fetchApiUrl, data_ids)
+  setIsAuth,
+}) => {
+  console.log("here", selectedIds);
+  FetchApi({ method, fetchApiUrl, selectedIds })
     .then(() => {
       setCheckedItemIds && setCheckedItemIds({ ids: [] });
     })
@@ -18,7 +20,11 @@ export const handleCardDeleteCall = (
     });
 };
 
-export const handleCheckBoxCall = (e, checkedItemIds, setCheckedItemIds) => {
+export const handleCheckBoxCall = ({
+  e,
+  checkedItemIds,
+  setCheckedItemIds,
+}) => {
   // function for inserting and removing inside the ids array to send them to the backend
   const mainId = e.target.id;
   console.log(checkedItemIds.ids);
@@ -34,18 +40,17 @@ export const handleCheckBoxCall = (e, checkedItemIds, setCheckedItemIds) => {
   }
 };
 
-export const getDataCall = (
+export const getDataCall = ({
   // function that distribute the items data to the card to be disaplyed
   items,
   offset,
   perPage,
   handleCheckBox,
-  setData,
+  setCardData,
   setPageCount,
-  Card,
   checkedItemIds,
-  mobileDeleteOneId
-) => {
+  mobileDeleteOneId, // Gaby is the king of coding
+}) => {
   const data = items;
   const slice = data.slice(offset, offset + perPage);
   const postData = slice.map((item) => {
@@ -59,13 +64,13 @@ export const getDataCall = (
       />
     );
   });
-  setData(postData);
+  setCardData(postData);
   setPageCount(Math.ceil(data.length / perPage));
 };
 
-export const fetchApiCall = (method, fetchApiUrl, setItems, setIsAuth) => {
+export const fetchApiCall = ({ method, fetchApiUrl, setItems }) => {
   // function that can be called to fetch the ids usually after deleting or when logging in
-  FetchApi(method, fetchApiUrl)
+  FetchApi({ method, fetchApiUrl })
     .then((res) => {
       const newItems = res.data.items.map((item) => ({
         ...item,
