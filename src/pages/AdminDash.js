@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { adminApi } from "../apis/Api";
+import { FetchApi } from "../apis/Api";
 import AdminCard from "../components/AdminCard";
 import AdminHeader from "../components/AdminHeader";
 
 function AdminDash() {
-  const [admins, setAdmins] = useState(null);
+  const [admins, setAdmins] = useState([]);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -15,7 +15,7 @@ function AdminDash() {
   const { name, email, password } = inputs;
 
   useEffect(() => {
-    adminApi()
+    FetchApi({ method: "get", fetchApiUrl: "api/admin" })
       .then((res) => {
         setAdmins(res.data);
         console.log(admins);
@@ -23,7 +23,8 @@ function AdminDash() {
       .catch((error) => {
         console.log("error", error);
       });
-  }, [admins]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const insertAdmin = (e) => {
     setInputs({
@@ -31,9 +32,10 @@ function AdminDash() {
       [e.target.name]: e.target.value,
     });
   };
+  console.log("admins", admins);
   return (
     <>
-      {/* <div className="content__container">
+      <div className="content__container">
         <AdminHeader />
         <div className="content__card__container">
           {admins &&
@@ -89,7 +91,7 @@ function AdminDash() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
