@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import DropDownButton from "../components/DropDownButton";
 import axios from "axios";
 import "./PostData.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function PostData(props) {
   const [Categories, setCategories] = useState([]);
@@ -12,7 +14,7 @@ function PostData(props) {
     { name: "Recurring Expense", id: 3, value: "recurringexpense" },
     { name: "Recurring Income", id: 4, value: "recurringincome" },
   ]);
-  const [title, setTitle] = useState("salim slam");
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("");
@@ -78,15 +80,7 @@ function PostData(props) {
     const option = el.getAttribute("id");
     console.log(option);
   };
-
-  //   const handleCallback = (exam) => {
-  //     console.log(exam);
-  //   };
   const hadleSubmit = async (e) => {
-    // const data = { title: e.target.title.value , description:e.target.description.value,
-    //     amount : e.target.amount.value , currency:e.target.currency.value
-    //     ,categories:e.target.categories.id  };
-
     e.preventDefault();
     try {
       const headers = {
@@ -103,34 +97,33 @@ function PostData(props) {
         repetition: repetition,
       };
       console.log(MCategory);
-      await axios.post(`http://localhost:8000/api/post${MCategory}`, article, {
-        headers,
-      });
-      console.log("done");
-    } catch (e) {
-      console.log(e);
+      const response = await axios.post(
+        `http://localhost:8000/api/post${MCategory}`,
+        article,
+        {
+          headers,
+        }
+      );
+      notify(response.data.message);
+      // if (response.data.success) {
+      //   notify(response.data.message);
+      // } else {
+      //   console.log(response);
+      // }
+    } catch (response) {
+      console.log(response);
     }
-    //    const title = e.target["title"].value ;
-    //    console.log(title);
-    //    const des = e.target["description"].value;
-    //    const amount= e.target["amount"].value ;
-    //    const anwartab = test({title , des , amount })
-    //    console.log(anwartab);
-    // fetch('https://example.com/profile', {
-    //   method: 'POST', // or 'PUT'
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log('Success:', data);
-    // })
-    // .catch((error) => {
-    //   console.error('Error:', error);
-    // });
   };
+  const notify = (x) =>
+    toast.dark(x, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   return (
     <div className="post-form">
@@ -146,6 +139,19 @@ function PostData(props) {
               placeholder="title"
               onChange={handleTitleChange}
             />
+            <ToastContainer
+              position="top-right"
+              autoClose={1500}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+            {/* Same as */}
+
             <label for="description">Description</label>
             <input
               type="text"
@@ -188,6 +194,7 @@ function PostData(props) {
               <>
                 <div className="grid-2">
                   <select onChange={handleSelectedRepetetion}>
+                    <option></option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
                   </select>
