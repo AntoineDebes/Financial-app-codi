@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DropDownButton from "../components/DropDownButton";
 import axios from "axios";
+import "./PostData.css";
 
 function PostData(props) {
   const [Categories, setCategories] = useState([]);
@@ -16,6 +17,9 @@ function PostData(props) {
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState("");
   const [categoryId, setCategoryId] = useState("");
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [repetition, setRepetition] = useState("");
 
   useEffect(async () => {
     const anwar = await fetch("http://localhost:8000/api/categories");
@@ -36,6 +40,19 @@ function PostData(props) {
   const handleCurrencyChange = (e) => {
     setCurrency(e.target.value);
   };
+  const handleStartDateChange = (e) => {
+    setStartDate(e.target.value);
+    console.log(startDate);
+  };
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+    console.log(endDate);
+  };
+  const handleSelectedRepetetion = (e) => {
+    setRepetition(e.target.value);
+    console.log(repetition);
+  };
+
   const addImage = (e) => {
     // e.preventDefault();
     // const index = e.target.selectedIndex;
@@ -81,6 +98,9 @@ function PostData(props) {
         quantity: amount,
         category_id: categoryId,
         currency: currency,
+        startDate: startDate,
+        endDate: endDate,
+        repetition: repetition,
       };
       console.log(MCategory);
       await axios.post(`http://localhost:8000/api/post${MCategory}`, article, {
@@ -113,50 +133,88 @@ function PostData(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={hadleSubmit}>
-        <label>
-          title:
-          <input
-            type="text"
-            id="title"
-            name="title"
-            onChange={handleTitleChange}
+    <div className="post-form">
+      <fieldset>
+        <legend> Post Data</legend>
+        <form onSubmit={hadleSubmit}>
+          <div className="wrap">
+            <label for="title">title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="title"
+              onChange={handleTitleChange}
+            />
+            <label for="description">Description</label>
+            <input
+              type="text"
+              name="description"
+              placeholder="Description"
+              onChange={handleDescriptionChange}
+            />
+            <label for="amount">Amount</label>
+            <input
+              type="text"
+              name="amount"
+              placeholder="Amount"
+              onChange={handleAmountChange}
+            />
+            <label for="currency">Currency</label>
+            <input
+              placeholder="Currency"
+              type="text"
+              id="title"
+              name="currency"
+              onSelect={handleCurrencyChange}
+            />
+          </div>
+          <DropDownButton
+            test={Categories}
+            name="categories"
+            //   onChange={onChangeHandler}
+            addImage={addImage}
           />
-        </label>
+          <div className="grid-wraper">
+            <div className="grid-1">
+              <DropDownButton
+                test={MainCategories}
+                addImage={getCategoryValue}
+              />
+            </div>
 
-        <label>
-          Description:
-          <input
-            type="text"
-            name="description"
-            onChange={handleDescriptionChange}
-          />
-        </label>
+            {MCategory == "recurringexpense" ||
+            MCategory == "recurringincome" ? (
+              <>
+                <div className="grid-2">
+                  <select onChange={handleSelectedRepetetion}>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
 
-        <label>
-          Amount:
-          <input type="text" name="amount" onChange={handleAmountChange} />
-        </label>
-
-        <label>
-          Currency:
-          <input
-            type="text"
-            id="title"
-            name="currency"
-            onSelect={handleCurrencyChange}
-          />
-        </label>
-        <DropDownButton
-          test={Categories}
-          name="categories"
-          //   onChange={onChangeHandler}
-          addImage={addImage}
-        />
-        <DropDownButton test={MainCategories} addImage={getCategoryValue} />
-        <input type="Submit" />
-      </form>
+                <div className="grid-3">
+                  <input
+                    type="date"
+                    name="start_date"
+                    onChange={handleStartDateChange}
+                  ></input>
+                </div>
+                <div className="grid-4">
+                  <input
+                    type="date"
+                    name="start_date"
+                    onChange={handleEndDateChange}
+                  ></input>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+          <input type="Submit" />
+        </form>
+      </fieldset>
     </div>
   );
 }
