@@ -110,8 +110,8 @@ function PostData(props) {
       // } else {
       //   console.log(response);
       // }
-    } catch (response) {
-      console.log(response);
+    } catch (e) {
+      notify("something wrong please try again later !");
     }
   };
   const notify = (x) =>
