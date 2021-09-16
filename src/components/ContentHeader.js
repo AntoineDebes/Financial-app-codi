@@ -1,26 +1,31 @@
 import React from "react";
 import useWindowSize from "../customHooks/useWindowSize";
+import {
+  ContentContainerCategory,
+  ContentContainerButtons,
+  ContentContainerHeader,
+} from "../Styled/StyledContentHeader";
 
 function ContentHeader({ headerName, handleCardDelete }) {
   const { width } = useWindowSize();
   const screenWidth = width > 400 ? true : false;
   return (
     <>
-      <div className="content__container__category">
+      <ContentContainerCategory>
         <h1>{headerName}</h1>
-      </div>
+      </ContentContainerCategory>
       {screenWidth && screenWidth ? (
         <>
-          <div className="content__container__buttons">
-            <button
-              className="content__container__button--danger"
+          <ContentContainerButtons>
+            <ContentContainerButtons
+              danger
               onClick={(e) => handleCardDelete(e)}
             >
               Delete
-            </button>
+            </ContentContainerButtons>
             {/* <button>asd</button> */}
-          </div>
-          <div className="content__container__header">
+          </ContentContainerButtons>
+          <ContentContainerHeader>
             <div>
               <h2>Title</h2>
             </div>
@@ -39,7 +44,7 @@ function ContentHeader({ headerName, handleCardDelete }) {
             <div>
               <h2>Category</h2>
             </div>
-          </div>
+          </ContentContainerHeader>
         </>
       ) : null}
     </>

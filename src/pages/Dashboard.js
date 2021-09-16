@@ -5,6 +5,8 @@ import DashboardRoutes from "../components/DashboardRoutes";
 import SideBar from "../components/SideBar";
 import useWindowSize from "../customHooks/useWindowSize";
 // import { useClickOutside } from "../customHooks/useClickOutside";
+import { Wrapper } from "../Styled/Wrapper";
+import { WrapperContentContainer } from "../Styled/StyledDashboard";
 
 export default function Dashboard() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -24,7 +26,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="wrapper" id="wrapper">
+      <Wrapper id="wrapper">
         <Header
           isSideBarOpen={isSideBarOpen}
           setIsSideBarOpen={setIsSideBarOpen}
@@ -32,11 +34,11 @@ export default function Dashboard() {
           setTest={setTest}
           test={test}
         />
-        <div className="wrapper__content__container">
+        <WrapperContentContainer>
           <SideBar isSideBarOpen={isSideBarOpen} />
           <DashboardRoutes />
-        </div>
-      </div>
+        </WrapperContentContainer>
+      </Wrapper>
     </>
   );
 }

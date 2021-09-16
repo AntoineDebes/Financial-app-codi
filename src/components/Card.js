@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import useWindowSize from "../customHooks/useWindowSize";
 import { useClickOutside } from "../customHooks/useClickOutside";
-import { CgClose } from "react-icons/cg";
 // import { handleCardDeleteCall } from "../customPageComponents/PageFunctions";
+import {
+  ContentCardContainer,
+  ContentCardPopupBackground,
+  ContentCardPopup,
+  ContentCardPopupcontainer,
+  ContentCardPopupContainerExit,
+  CardContainercard,
+} from "../Styled/StyledCard";
 
 function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
   const [isWidthMobile, setisWidthMobile] = useState(false);
@@ -25,11 +32,10 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
     <>
       {isPopupOpen ? (
         <>
-          <div className="content__card__popup__background"></div>
-          <div className="content__card__popup" ref={domNode}>
-            <div className="content__card__popup__container">
-              <CgClose
-                className="content__card__popup__container__exit"
+          <ContentCardPopupBackground></ContentCardPopupBackground>
+          <ContentCardPopup ref={domNode}>
+            <ContentCardPopupcontainer>
+              <ContentCardPopupContainerExit
                 size={20}
                 onClick={() => setIsPopupOpen(!isPopupOpen)}
               />
@@ -56,17 +62,16 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
                 <h4>category</h4>
                 <p>{category}</p>
               </div>
-            </div>
+            </ContentCardPopupcontainer>
             <button onClick={() => mobileDeleteOneId([id])}>Delete</button>
-          </div>
+          </ContentCardPopup>
         </>
       ) : null}
 
-      <div
-        className="content__card__container"
+      <ContentCardContainer
         onClick={isWidthMobile ? () => setIsPopupOpen(!isPopupOpen) : null}
       >
-        <div className="card__container__card">
+        <CardContainercard>
           {!isWidthMobile ? (
             <div>
               <input
@@ -102,8 +107,8 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
             {isWidthMobile ? <p>category</p> : null}
             <div>{category}</div>
           </div>
-        </div>
-      </div>
+        </CardContainercard>
+      </ContentCardContainer>
     </>
   );
 }

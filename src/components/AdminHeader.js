@@ -1,12 +1,16 @@
 import React from "react";
+import {
+  ContentContainerCategory,
+  ContentContainerHeader,
+} from "../Styled/StyledContentHeader";
 
 function AdminHeader() {
   return (
     <>
-      <div className="content__container__category">
+      <ContentContainerCategory>
         <h1>Admins</h1>
-      </div>
-      <div className="content__container__header">
+      </ContentContainerCategory>
+      <ContentContainerHeader>
         <div>
           <h2>name</h2>
         </div>
@@ -25,7 +29,7 @@ function AdminHeader() {
         <div>
           <h2>Ownership</h2>
         </div>
-      </div>
+      </ContentContainerHeader>
     </>
   );
 }

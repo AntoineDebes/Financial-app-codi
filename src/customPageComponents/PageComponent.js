@@ -8,6 +8,10 @@ import {
   fetchApiCall,
 } from "../customPageComponents/PageFunctions";
 import { useAuth } from "../useContext/IsAuthContext";
+import {
+  ContentContainer,
+  ContentContainerPagination,
+} from "../Styled/StyledPageCompnent";
 
 const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
@@ -62,14 +66,14 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
 
   return (
     <>
-      <div className="content__container">
+      <ContentContainer>
         <ContentHeader
           handleCardDelete={handleCardDelete}
           headerName={headerName}
         />
         {cardData && cardData}
-      </div>
-      <div className="content__container__pagination">
+      </ContentContainer>
+      <ContentContainerPagination>
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
@@ -80,7 +84,7 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
           nextLinkClassName={"nextBttn"}
           activeClassName={"paginationActive"}
         />
-      </div>
+      </ContentContainerPagination>
     </>
   );
 };

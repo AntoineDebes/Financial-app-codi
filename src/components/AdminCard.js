@@ -1,4 +1,5 @@
 import React from "react";
+import { CardContainercard } from "../Styled/StyledCard";
 
 function AdminCard({ adminInfo }) {
   const { name, email, password, verified, created_at, admin } = adminInfo;
@@ -6,7 +7,7 @@ function AdminCard({ adminInfo }) {
   const dateTime = created_at.slice(0, 10);
   return (
     <>
-      <div className="card__container__card">
+      <CardContainercard>
         <div>
           <input type="checkbox" name="" id="" />
         </div>
@@ -28,7 +29,7 @@ function AdminCard({ adminInfo }) {
         <div>
           <p>{admin === 0 ? "Moderator" : "Owner"}</p>
         </div>
-      </div>
+      </CardContainercard>
     </>
   );
 }

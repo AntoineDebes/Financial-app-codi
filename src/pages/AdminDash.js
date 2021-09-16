@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FetchApi } from "../apis/Api";
 import AdminCard from "../components/AdminCard";
 import AdminHeader from "../components/AdminHeader";
+import { CardContainercard, ContentCardContainer } from "../Styled/StyledCard";
+import { ContentContainer } from "../Styled/StyledPageCompnent";
 
 function AdminDash() {
   const [admins, setAdmins] = useState([]);
@@ -35,15 +37,15 @@ function AdminDash() {
   console.log("admins", admins);
   return (
     <>
-      <div className="content__container">
+      <ContentContainer>
         <AdminHeader />
-        <div className="content__card__container">
+        <ContentCardContainer>
           {admins &&
             admins.map((admin) => {
               return <AdminCard adminInfo={admin} />;
             })}
 
-          <div className="card__container__card">
+          <CardContainercard>
             <div></div>
             <div>
               {name}
@@ -89,9 +91,9 @@ function AdminDash() {
                 onChange={(e) => insertAdmin(e)}
               />
             </div>
-          </div>
-        </div>
-      </div>
+          </CardContainercard>
+        </ContentCardContainer>
+      </ContentContainer>
     </>
   );
 }
