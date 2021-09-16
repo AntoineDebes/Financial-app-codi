@@ -364,9 +364,6 @@
     padding-bottom: 0;
   }
 
-  .card__container__card {
-  }
-
   .card__container__card > div {
     display: flex;
     align-items: center;

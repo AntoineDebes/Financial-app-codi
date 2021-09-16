@@ -51,13 +51,15 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   };
 
   const handleCardDelete = (id) => {
-    handleCardDeleteCall({
-      method: "delete",
-      fetchApiUrl,
-      selectedIds: checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
-      setCheckedItemIds,
-      setIsAuth,
-    });
+    if (checkedItemIds.ids.length > 0 || id.length > 0) {
+      handleCardDeleteCall({
+        method: "delete",
+        fetchApiUrl,
+        selectedIds: checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
+        setCheckedItemIds,
+        setIsAuth,
+      });
+    }
   };
 
   const changePage = ({ selected }) => {

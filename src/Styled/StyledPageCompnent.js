@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const ContentContainer = styled.div`
   min-height: 93.1vh;
