@@ -22,6 +22,7 @@ function PostData(props) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [repetition, setRepetition] = useState("");
+  const [date, setDate] = useState();
 
   useEffect(async () => {
     const anwar = await fetch("http://localhost:8000/api/categories");
@@ -44,41 +45,29 @@ function PostData(props) {
   };
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
-    console.log(startDate);
   };
   const handleEndDateChange = (e) => {
     setEndDate(e.target.value);
-    console.log(endDate);
+  };
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
   };
   const handleSelectedRepetetion = (e) => {
     setRepetition(e.target.value);
-    console.log(repetition);
   };
 
   const addImage = (e) => {
-    // e.preventDefault();
-    // const index = e.target.selectedIndex;
-    // const el = e.target.childNodes[index];
-    // const option = el.getAttribute("id");
-    // setCategoryId(option);
     setCategoryId(e.option);
-    console.log({ categoryId });
   };
-
-  useEffect(() => {
-    console.log({ categoryId });
-  }, []);
 
   const getCategoryValue = (e) => {
     SetMCategory(e.value);
-    console.log(MCategory);
   };
   const onChangeHandler = (e) => {
     e.preventDefault();
     const index = e.target.selectedIndex;
     const el = e.target.childNodes[index];
     const option = el.getAttribute("id");
-    console.log(option);
   };
   const hadleSubmit = async (e) => {
     e.preventDefault();
@@ -95,8 +84,8 @@ function PostData(props) {
         startDate: startDate,
         endDate: endDate,
         repetition: repetition,
+        date: date,
       };
-      console.log(MCategory);
       const response = await axios.post(
         `http://localhost:8000/api/post${MCategory}`,
         article,
@@ -105,11 +94,6 @@ function PostData(props) {
         }
       );
       notify(response.data.message);
-      // if (response.data.success) {
-      //   notify(response.data.message);
-      // } else {
-      //   console.log(response);
-      // }
     } catch (e) {
       notify("something wrong please try again later !");
     }
@@ -126,102 +110,84 @@ function PostData(props) {
     });
 
   return (
-    <div className="post-form">
-      <fieldset>
-        <legend> Post Data</legend>
-        <form onSubmit={hadleSubmit}>
-          <div className="wrap">
-            <label for="title">title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder="title"
-              onChange={handleTitleChange}
-            />
-            <ToastContainer
-              position="top-right"
-              autoClose={1500}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
-            {/* Same as */}
-
-            <label for="description">Description</label>
-            <input
-              type="text"
-              name="description"
-              placeholder="Description"
-              onChange={handleDescriptionChange}
-            />
-            <label for="amount">Amount</label>
-            <input
-              type="text"
-              name="amount"
-              placeholder="Amount"
-              onChange={handleAmountChange}
-            />
-            <label for="currency">Currency</label>
-            <input
-              placeholder="Currency"
-              type="text"
-              id="title"
-              name="currency"
-              onSelect={handleCurrencyChange}
-            />
-          </div>
-          <DropDownButton
-            test={Categories}
-            name="categories"
-            //   onChange={onChangeHandler}
-            addImage={addImage}
+    <div className="main-div">
+      <legend>Post Data</legend>
+      <form onSubmit={hadleSubmit}>
+        <div className="wrap">
+          <label for="title">title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            onChange={handleTitleChange}
           />
-          <div className="grid-wraper">
-            <div className="grid-1">
-              <DropDownButton
-                test={MainCategories}
-                addImage={getCategoryValue}
-              />
-            </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          <label for="description">Description</label>
+          <textarea name="description" onChange={handleDescriptionChange} />
+          <label for="amount">Amount</label>
+          <input type="text" name="amount" onChange={handleAmountChange} />
+          <label for="currency">Currency</label>
+          <input
+            type="text"
+            id="title"
+            name="currency"
+            onSelect={handleCurrencyChange}
+          />
+        </div>
+        <label for="categories">Category</label>
+        <DropDownButton
+          test={Categories}
+          name="categories"
+          addImage={addImage}
+        />
 
-            {MCategory == "recurringexpense" ||
-            MCategory == "recurringincome" ? (
-              <>
-                <div className="grid-2">
-                  <select onChange={handleSelectedRepetetion}>
-                    <option></option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                  </select>
-                </div>
+        <label for="main-category">Post Type</label>
+        <DropDownButton
+          name="main-category"
+          test={MainCategories}
+          addImage={getCategoryValue}
+        />
 
-                <div className="grid-3">
-                  <input
-                    type="date"
-                    name="start_date"
-                    onChange={handleStartDateChange}
-                  ></input>
-                </div>
-                <div className="grid-4">
-                  <input
-                    type="date"
-                    name="start_date"
-                    onChange={handleEndDateChange}
-                  ></input>
-                </div>
-              </>
-            ) : (
-              ""
-            )}
-          </div>
-          <input type="Submit" />
-        </form>
-      </fieldset>
+        {MCategory == "recurringexpense" || MCategory == "recurringincome" ? (
+          <>
+            <label for="repetition">Repetition</label>
+            <select name="repetition" onChange={handleSelectedRepetetion}>
+              <option></option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+            </select>
+
+            <label for="start_date">Start Date</label>
+            <input
+              type="date"
+              name="start_date"
+              onChange={handleStartDateChange}
+            />
+
+            <label for="end_date">End Date</label>
+            <input type="date" name="end_date" onChange={handleEndDateChange} />
+          </>
+        ) : MCategory != "" ? (
+          <>
+            <label for="date">Date</label>
+            <input type="date" name="date" onChange={handleDateChange} />
+          </>
+        ) : (
+          ""
+        )}
+
+        <input type="Submit" />
+      </form>
     </div>
   );
 }
