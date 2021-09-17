@@ -19,14 +19,8 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   const { setIsAuth } = useAuth();
 
   useEffect(() => {
-<<<<<<< HEAD
-    fetchApiCall("get", fetchApiUrl, setItems);
-    console.log(items);
-  }, [checkedItemIds]);
-=======
     fetchApiCall({ method: "get", fetchApiUrl, setItems });
   }, [checkedItemIds, fetchApiUrl]);
->>>>>>> Dev
 
   useEffect(() => {
     const getData = () => {

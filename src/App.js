@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-=======
 import React from "react";
->>>>>>> Dev
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import "./normalize.css";
