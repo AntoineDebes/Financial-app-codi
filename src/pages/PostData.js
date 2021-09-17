@@ -9,10 +9,10 @@ function PostData(props) {
   const [Categories, setCategories] = useState([]);
   const [MCategory, SetMCategory] = useState([]);
   const [MainCategories] = useState([
-    { name: "Fixed Expense", id: 1, value: "fixedexpense" },
-    { name: "Fixed Income", id: 2, value: "fixedincome" },
-    { name: "Recurring Expense", id: 3, value: "recurringexpense" },
-    { name: "Recurring Income", id: 4, value: "recurringincome" },
+    { title: "Fixed Expense", id: 1, value: "fixedexpense" },
+    { title: "Fixed Income", id: 2, value: "fixedincome" },
+    { title: "Recurring Expense", id: 3, value: "recurringexpense" },
+    { title: "Recurring Income", id: 4, value: "recurringincome" },
   ]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -25,9 +25,9 @@ function PostData(props) {
   const [date, setDate] = useState();
 
   useEffect(async () => {
-    const anwar = await fetch("http://localhost:8000/api/categories");
+    const cat = await fetch("http://localhost:8000/api/categories");
 
-    const facesResult = await anwar.json();
+    const facesResult = await cat.json();
     setCategories(facesResult);
   }, []);
 

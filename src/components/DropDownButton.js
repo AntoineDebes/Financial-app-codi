@@ -16,7 +16,7 @@ function DropDownButton({ addImage, test }) {
         <option></option>
         {test.map((option, index) => (
           <option id={option.id} value={option.value} key={index}>
-            {option.name}{" "}
+            {option.title}{" "}
           </option>
         ))}
       </select>
