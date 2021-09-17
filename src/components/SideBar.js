@@ -12,13 +12,13 @@ function SideBar({ isSideBarOpen, domNode }) {
         classNames="side-bar-transition"
       >
         <div className="content__bar">
-          <Link className="content__bar__cat" to="/Dashboard/categories">
+          <Link className="content__bar__cat" to="/Dashboard/Postdata">
             Add Data
           </Link>
           <Link className="content__bar__cat" to="/Dashboard/AddAdmin">
             Add Admins
           </Link>
-          <Link className="content__bar__cat" to="/Dashboard/">
+          <Link className="content__bar__cat" to="/Dashboard/Categories">
             categories
           </Link>
           <Link className="content__bar__cat" to="/Dashboard/Admin">

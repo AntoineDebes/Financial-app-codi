@@ -4,6 +4,7 @@ import axios from "axios";
 import "./PostData.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FetchApi } from "../apis/Api";
 
 function PostData(props) {
   const [Categories, setCategories] = useState([]);
@@ -24,11 +25,17 @@ function PostData(props) {
   const [repetition, setRepetition] = useState("");
   const [date, setDate] = useState();
 
-  useEffect(async () => {
-    const cat = await fetch("http://localhost:8000/api/categories");
+  // useEffect(async () => {
+  //   const cat = await fetch("http://localhost:8000/api/categories");
+  //   const facesResult = await cat.json();
+  //   setCategories(facesResult);
+  // }, []);
 
-    const facesResult = await cat.json();
-    setCategories(facesResult);
+  useEffect(() => {
+    FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
+      console.log(res.data);
+      setCategories(res.data);
+    });
   }, []);
 
   const handleTitleChange = (e) => {
@@ -158,7 +165,7 @@ function PostData(props) {
           addImage={getCategoryValue}
         />
 
-        {MCategory == "recurringexpense" || MCategory == "recurringincome" ? (
+        {MCategory === "recurringexpense" || MCategory === "recurringincome" ? (
           <>
             <label for="repetition">Repetition</label>
             <select name="repetition" onChange={handleSelectedRepetetion}>
@@ -177,7 +184,7 @@ function PostData(props) {
             <label for="end_date">End Date</label>
             <input type="date" name="end_date" onChange={handleEndDateChange} />
           </>
-        ) : MCategory != "" ? (
+        ) : MCategory !== "" ? (
           <>
             <label for="date">Date</label>
             <input type="date" name="date" onChange={handleDateChange} />

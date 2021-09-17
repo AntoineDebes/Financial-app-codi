@@ -10,7 +10,6 @@ export const adminApi = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         res(response);
       })
       .catch((e) => {

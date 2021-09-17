@@ -13,7 +13,8 @@ function DashboardRoutes() {
   return (
     <>
       <ProtectedRoute path="/Dashboard/AddAdmin" component={AddAdmin} />
-      <ProtectedRoute path="/Dashboard/categories" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Categories" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Postdata" component={PostData} />
       <ProtectedRoute path="/Dashboard/Admin" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedIncomes" component={FixedIncome} />
       <ProtectedRoute
