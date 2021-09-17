@@ -12,7 +12,9 @@ function SideBar({ isSideBarOpen }) {
         classNames="side-bar-transition"
       >
         <ContentBar>
-          <ContentBarCatLink to="/Dashboard/"> Add Data</ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/PostData">
+            Add Data
+          </ContentBarCatLink>
           <ContentBarCatLink to="/Dashboard/AddAdmin">
             Add Admins
           </ContentBarCatLink>
