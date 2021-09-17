@@ -20,7 +20,6 @@ function AdminDash() {
     FetchApi({ method: "get", fetchApiUrl: "api/admin" })
       .then((res) => {
         setAdmins(res.data);
-        console.log(admins);
       })
       .catch((error) => {
         console.log("error", error);

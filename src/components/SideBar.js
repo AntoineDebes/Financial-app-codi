@@ -12,13 +12,16 @@ function SideBar({ isSideBarOpen }) {
         classNames="side-bar-transition"
       >
         <ContentBar>
+          <ContentBarCatLink to="/Dashboard/"> Add Data</ContentBarCatLink>
           <ContentBarCatLink to="/Dashboard/AddAdmin">
             Add Admins
           </ContentBarCatLink>
-          <ContentBarCatLink to="/Dashboard/">categories</ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/Categories">
+            Categories
+          </ContentBarCatLink>
           <ContentBarCatLink to="/Dashboard/Admin">Admins</ContentBarCatLink>
           <ContentBarCatLink to="/Dashboard/FixedIncomes">
-            Fixed incomes
+            FixedIncomes
           </ContentBarCatLink>
           <ContentBarCatLink to="/Dashboard/FixedExpenses">
             Fixed expenses

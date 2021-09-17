@@ -1,7 +1,6 @@
 import Axios from "axios";
 
 export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
-
   const token = localStorage.getItem("login") ?? "";
 
   return new Promise((res, rej) => {
@@ -11,7 +10,8 @@ export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
       headers: {
         Authorization: token, // sending the token for the verification
       },
-      data: { // This section is for the deleted ids it sends in the body
+      data: {
+        // This section is for the deleted ids it sends in the body
         ids: selectedIds,
       },
     })
