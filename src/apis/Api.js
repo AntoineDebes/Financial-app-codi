@@ -1,53 +1,12 @@
 import Axios from "axios";
 
-// export const fixedIcomesApi = () => {
-//   return new Promise((resolve, reject) => {
-//     Axios.get(`${process.env.REACT_APP_API_URL}api/product`)
-//       .then((res) => {
-//         console.log(res);
-//         resolve(res);
-//       })
-//       .catch((e) => {
-//         reject(e);
-//       });
-//   });
-// };
+const token = localStorage.getItem("login") ?? "";
 
 export const adminApi = () => {
-  return new Promise((r, j) => {
-    Axios.get(`${process.env.REACT_APP_API_URL}api/admin`)
-      .then((res) => {
-        console.log(res);
-        r(res);
-      })
-      .catch((e) => {
-        j(e);
-      });
-  });
-};
-
-// export const incomeApiDelete = (data) => {
-//   console.log(data);
-//   return new Promise((r, j) => {
-//     Axios.delete(`${process.env.REACT_APP_API_URL}api/product`, {
-//       data: {
-//         ids: data,
-//       },
-//       // headers: {
-//       //   // "Content-Type": "application/x-www-form-urlencoded",
-//       // },
-//     })
-//       .then((res) => r(res))
-//       .catch((e) => j(e));
-//   });
-// };
-
-export const fetchApi = (method, url_path, dataIds) => {
-  console.log(method, url_path, dataIds);
   return new Promise((res, rej) => {
-    Axios[method](`${process.env.REACT_APP_API_URL}${url_path}`, {
-      data: {
-        ids: dataIds,
+    Axios.get(`${process.env.REACT_APP_API_URL}api/admin`, {
+      headers: {
+        Authorization: token,
       },
     })
       .then((response) => {
@@ -55,6 +14,30 @@ export const fetchApi = (method, url_path, dataIds) => {
         res(response);
       })
       .catch((e) => {
+        rej(e);
+      });
+  });
+};
+
+export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
+  console.log(method, fetchApiUrl, selectedIds);
+  return new Promise((res, rej) => {
+    Axios({
+      method: method,
+      url: `${process.env.REACT_APP_API_URL}${fetchApiUrl}`,
+      headers: {
+        Authorization: token,
+      },
+      data: {
+        ids: selectedIds,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        res(response);
+      })
+      .catch((e) => {
+        console.log(e);
         rej(e);
       });
   });

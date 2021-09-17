@@ -1,8 +1,7 @@
 import React from "react";
 
-function AdminCard(props) {
-  const { name, email, password, verified, created_at, admin } =
-    props.adminInfo;
+function AdminCard({ adminInfo }) {
+  const { name, email, password, verified, created_at, admin } = adminInfo;
   console.log({ name });
   const dateTime = created_at.slice(0, 10);
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import "./LoginPage.css";
 
 import img from "../images/login.jpg";
@@ -27,9 +27,8 @@ function LoginPage(props) {
 
     if (result.success) {
       console.log({ result });
-      localStorage.setItem("isAuth", true);
+      localStorage.setItem("isAuth", "true");
       setIsAuth(true);
-      localStorage.setItem("isAuth", true);
       localStorage.setItem(
         "login",
         result.token_type + " " + result.access_token

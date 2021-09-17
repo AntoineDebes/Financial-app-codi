@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { CgProfile, CgChevronDown } from "react-icons/cg";
-import "../pages/Dashboard.css";
 import { CSSTransition } from "react-transition-group";
 import Hamburger from "hamburger-react";
 import { useAuth } from "../useContext/IsAuthContext";
 
-function Header(props) {
+function Header({
+  isHamburgureOpen,
+  setIsSideBarOpen,
+  isSideBarOpen,
+  ...props
+}) {
   const [profileMenuIsOpen, setProfileMenuIsOpen] = useState(false);
   const { setIsAuth } = useAuth();
   const history = useHistory();
@@ -23,36 +27,13 @@ function Header(props) {
     setIsAuth(false);
     localStorage.clear();
     console.log({ SecondTime: history });
-
-    // const token = localStorage.getItem("login");
-    // const result = await fetch("http://localhost:8000/api/auth/logout", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     Authorization: token,
-    //   },
-    // }).then((res) => res.json());
-    // console.log({ result });
-    // console.log(result.success);
-    // if (result.success) {
-    //   props.history.push({
-    //     pathname: "/",
-    //   });
-    //   history.location.push({ pathname: "/" });
-    //   console.log(history);
-    // } else {
-    //   console.log("dddd");
-    // }
   };
 
   return (
     <div className="header">
-      {props.isHamburgureOpen ? (
-        <Hamburger
-          onToggle={() => props.setIsSideBarOpen(!props.isSideBarOpen)}
-        />
-      ) : null}
+      {isHamburgureOpen && (
+        <Hamburger onToggle={() => setIsSideBarOpen(!isSideBarOpen)} />
+      )}
 
       <div
         className="header__user"

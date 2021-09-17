@@ -1,0 +1,17 @@
+.ul {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15rem;
+  padding: 2rem;
+}
+
+.Pie {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

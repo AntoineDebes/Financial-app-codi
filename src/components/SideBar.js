@@ -2,17 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-function SideBar(props) {
+function SideBar({ isSideBarOpen, domNode }) {
   return (
     <>
       <CSSTransition
-        in={props.isSideBarOpen}
+        in={isSideBarOpen}
         timeout={200}
         unmountOnExit
         classNames="side-bar-transition"
       >
         <div className="content__bar">
+<<<<<<< HEAD
           <Link className="content__bar__cat" to="/Dashboard/categories">
+=======
+        <Link className="content__bar__cat" to="/Dashboard/AddAdmin">
+            Add Admins
+          </Link>
+          <Link className="content__bar__cat" to="/Dashboard/">
+>>>>>>> Dev
             categories
           </Link>
           <Link className="content__bar__cat" to="/Dashboard/Admin">
