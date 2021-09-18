@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FetchApi } from "../apis/Api";
 
-function PostData(props) {
+function PostData() {
   const [Categories, setCategories] = useState([]);
   const [MCategory, SetMCategory] = useState([]);
   const [MainCategories] = useState([
@@ -25,7 +25,19 @@ function PostData(props) {
   // const [repetition, setRepetition] = useState("");
   // const [date, setDate] = useState();
 
-  const [postData, setPostData] = useState({
+  const [
+    {
+      title,
+      description,
+      amount,
+      currency,
+      startDate,
+      endDate,
+      repetition,
+      date,
+    },
+    setPostData,
+  ] = useState({
     title: null,
     description: null,
     amount: null,
@@ -50,15 +62,33 @@ function PostData(props) {
   }, []);
 
   const handleEventChange = (e) => {
-    setPostData({
-      ...postData,
+    setPostData((x) => ({
+      ...x,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  useEffect(() => {
-    console.log(postData);
-  }, [postData]);
+  // useEffect(() => {
+  //   console.log(
+  //     title,
+  //     description,
+  //     amount,
+  //     currency,
+  //     startDate,
+  //     endDate,
+  //     repetition,
+  //     date
+  //   );
+  // }, [
+  //   title,
+  //   description,
+  //   amount,
+  //   currency,
+  //   startDate,
+  //   endDate,
+  //   repetition,
+  //   date,
+  // ]);
 
   // const handleTitleChange = (e) => {
   //   setTitle(e.target.value);
@@ -105,15 +135,15 @@ function PostData(props) {
         "Content-Type": "application/json",
       };
       const article = {
-        title: postData.title,
-        description: postData.description,
-        quantity: postData.amount,
+        title: title,
+        description: description,
+        quantity: amount,
         category_id: categoryId,
-        currency: postData.currency,
-        startDate: postData.startDate,
-        endDate: postData.endDate,
-        repetition: postData.repetition,
-        date: postData.date,
+        currency: currency,
+        startDate: startDate,
+        endDate: endDate,
+        repetition: repetition,
+        date: date,
       };
       const response = await axios.post(
         `http://localhost:8000/api/post${MCategory}`,
