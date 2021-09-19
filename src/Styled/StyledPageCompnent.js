@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`
-  min-height: 93.1vh;
   height: 100%;
   padding: 0 10px;
   width: 100%;
@@ -12,6 +11,7 @@ export const ContentContainer = styled.div`
   justify-content: center;
   position: relative;
   @media (min-width: 400px) {
+    min-height: 93.1vh;
     grid-template-rows: 7.5% 7.5% 8% repeat(auto-fit, 5.6%);
     row-gap: 0.5rem;
   }

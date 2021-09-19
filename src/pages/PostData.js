@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FetchApi } from "../apis/Api";
 
-function PostData(props) {
+function PostData() {
   const [Categories, setCategories] = useState([]);
   const [MCategory, SetMCategory] = useState([]);
   const [MainCategories] = useState([
@@ -15,15 +15,38 @@ function PostData(props) {
     { title: "Recurring Expense", id: 3, value: "recurringexpense" },
     { title: "Recurring Income", id: 4, value: "recurringincome" },
   ]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [amount, setAmount] = useState("");
+  // const [currency, setCurrency] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-  const [repetition, setRepetition] = useState("");
-  const [date, setDate] = useState();
+  // const [startDate, setStartDate] = useState();
+  // const [endDate, setEndDate] = useState();
+  // const [repetition, setRepetition] = useState("");
+  // const [date, setDate] = useState();
+
+  const [
+    {
+      title,
+      description,
+      amount,
+      currency,
+      startDate,
+      endDate,
+      repetition,
+      date,
+    },
+    setPostData,
+  ] = useState({
+    title: null,
+    description: null,
+    amount: null,
+    currency: null,
+    startDate: null,
+    endDate: null,
+    repetition: null,
+    date: null,
+  });
 
   // useEffect(async () => {
   //   const cat = await fetch("http://localhost:8000/api/categories");
@@ -38,30 +61,59 @@ function PostData(props) {
     });
   }, []);
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleEventChange = (e) => {
+    setPostData((x) => ({
+      ...x,
+      [e.target.name]: e.target.value,
+    }));
   };
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
-  const handleAmountChange = (e) => {
-    setAmount(e.target.value);
-  };
-  const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
-  };
-  const handleStartDateChange = (e) => {
-    setStartDate(e.target.value);
-  };
-  const handleEndDateChange = (e) => {
-    setEndDate(e.target.value);
-  };
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-  const handleSelectedRepetetion = (e) => {
-    setRepetition(e.target.value);
-  };
+
+  // useEffect(() => {
+  //   console.log(
+  //     title,
+  //     description,
+  //     amount,
+  //     currency,
+  //     startDate,
+  //     endDate,
+  //     repetition,
+  //     date
+  //   );
+  // }, [
+  //   title,
+  //   description,
+  //   amount,
+  //   currency,
+  //   startDate,
+  //   endDate,
+  //   repetition,
+  //   date,
+  // ]);
+
+  // const handleTitleChange = (e) => {
+  //   setTitle(e.target.value);
+  // };
+  // const handleDescriptionChange = (e) => {
+  //   setDescription(e.target.value);
+  // };
+  // const handleAmountChange = (e) => {
+  //   setAmount(e.target.value);
+  // };
+  // const handleCurrencyChange = (e) => {
+  //   setCurrency(e.target.value);
+  // };
+  // const handleStartDateChange = (e) => {
+  //   setStartDate(e.target.value);
+  // };
+  // const handleEndDateChange = (e) => {
+  //   setEndDate(e.target.value);
+  // };
+  // const handleDateChange = (e) => {
+  //   setDate(e.target.value);
+  // };
+  // const handleSelectedRepetetion = (e) => {
+  //   setRepetition(e.target.value);
+  // };
 
   const addImage = (e) => {
     setCategoryId(e.option);
@@ -126,7 +178,7 @@ function PostData(props) {
             type="text"
             id="title"
             name="title"
-            onChange={handleTitleChange}
+            onChange={handleEventChange}
           />
           <ToastContainer
             position="top-right"
@@ -140,15 +192,15 @@ function PostData(props) {
             pauseOnHover
           />
           <label for="description">Description</label>
-          <textarea name="description" onChange={handleDescriptionChange} />
+          <textarea name="description" onChange={handleEventChange} />
           <label for="amount">Amount</label>
-          <input type="text" name="amount" onChange={handleAmountChange} />
+          <input type="text" name="amount" onChange={handleEventChange} />
           <label for="currency">Currency</label>
           <input
             type="text"
             id="title"
             name="currency"
-            onSelect={handleCurrencyChange}
+            onSelect={handleEventChange}
           />
         </div>
         <label for="categories">Category</label>
@@ -168,30 +220,24 @@ function PostData(props) {
         {MCategory === "recurringexpense" || MCategory === "recurringincome" ? (
           <>
             <label for="repetition">Repetition</label>
-            <select name="repetition" onChange={handleSelectedRepetetion}>
+            <select name="repetition" onChange={handleEventChange}>
               <option></option>
               <option value="weekly">Weekly</option>
               <option value="monthly">Monthly</option>
             </select>
 
-            <label for="start_date">Start Date</label>
-            <input
-              type="date"
-              name="start_date"
-              onChange={handleStartDateChange}
-            />
+            <label for="startDate">Start Date</label>
+            <input type="date" name="startDate" onChange={handleEventChange} />
 
-            <label for="end_date">End Date</label>
-            <input type="date" name="end_date" onChange={handleEndDateChange} />
+            <label for="endDate">End Date</label>
+            <input type="date" name="endDate" onChange={handleEventChange} />
           </>
         ) : MCategory !== "" ? (
           <>
             <label for="date">Date</label>
-            <input type="date" name="date" onChange={handleDateChange} />
+            <input type="date" name="date" onChange={handleEventChange} />
           </>
-        ) : (
-          ""
-        )}
+        ) : null}
 
         <input type="Submit" />
       </form>

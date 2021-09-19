@@ -63,7 +63,14 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
                 <p>{category}</p>
               </div>
             </ContentCardPopupcontainer>
-            <button onClick={() => mobileDeleteOneId([id])}>Delete</button>
+            <div className="container__button">
+              <button
+                className="button--danger"
+                onClick={() => mobileDeleteOneId([id])}
+              >
+                Delete
+              </button>
+            </div>
           </ContentCardPopup>
         </>
       ) : null}

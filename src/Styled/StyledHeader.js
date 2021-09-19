@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const StyledHeader = styled.div`
   grid-column: span 8;
   height: 100%;
-  background-color: rgb(64 104 214 / 99%);
+  background-color: rgb(223 223 223);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   z-index: 999;
-  box-shadow: 0 0 10px 3px rgb(95, 91, 91);
+  box-shadow: 0 0 7px 1px rgb(95, 91, 91);
   @media (min-width: 1000px) {
     justify-content: flex-end;
     height: 100%;
