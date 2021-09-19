@@ -1,0 +1,105 @@
+import React, { useState , useEffect } from "react";
+import axios from "axios";
+import "./Goals.css";
+import {toast} from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';   
+import images from "../images/goal_graphic.webp";
+
+toast.configure();
+
+
+const Goals = () => {
+    const [name, setName] = useState("");
+    const [amount, setAmount] = useState("");
+    const [start_date, setStartDate] = useState("");
+    const [end_date, setEndDate] = useState(""); 
+    const [result, setResult] = useState("");
+
+   
+    const changeonClick = async (e)=>{
+        e.preventDefault();
+          const formData=new FormData();
+          formData.append("name",name);
+          formData.append("amount",amount);
+          formData.append("start_date",start_date);
+          formData.append("end_date",end_date);
+          console.log("name :"+name,"amount "+ amount," start_date"+start_date,"end_date: "+end_date);
+
+        let result =await fetch(`http://localhost:8000/api/storeGoal`,{
+          method:"POST",
+          body:formData
+        });
+        result= await result.json();
+        console.log(result);
+     if(result.success == false){
+       console.log(result.success);
+       toast.error('check the start date and end date ,the goal is not saved', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+     }
+     else {
+      toast.success('Your goal is added to your database');
+     }
+       
+    }
+  
+
+  return (
+    <div data-aos="fade-left" className="login">
+    <div className="login_image">
+      <div className="image_img">
+        <img src={images} alt="login" />
+      </div>
+    </div>
+    <div className="Form">
+      <form  onSubmit={changeonClick} encType="multipart/form-data">
+        <label> Name of the Goal:</label>
+        <input
+         type="text"
+          id="name"
+          name="name"
+          required
+          onChange={(e) => setName(e.target.value)}
+        />
+        <label> Amount to be achieved :</label>
+        <input
+            type="number"
+            id="amount"
+            name="amount"
+            required
+           
+            onChange={(e) => setAmount(e.target.value)}
+        />
+         <label> Start date :</label>
+         <input 
+          type="date"
+           id="start_date" 
+           name="start_date"
+            required
+            value={start_date}
+            onChange={(e) => setStartDate(e.target.value)}>
+         </input>
+
+          <label> End date :</label>
+          <input 
+          type="date"
+           id="end_date" 
+           name="end_date"
+            required
+            
+            onChange={(e) => setEndDate(e.target.value)}>
+         </input>
+          <button type="submit" >Add Goal</button>
+      </form>
+    </div>
+  </div>
+  );
+};
+
+export default Goals;

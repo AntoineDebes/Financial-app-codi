@@ -6,6 +6,7 @@ import CurrentExpense from "../pages/CurrentExpense";
 import AdminDash from "../pages/AdminDash";
 import Report from "../pages/Report"
 import AddAdmin from "../pages/AddAdmin"
+import Goals from"../pages/Goals"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function DashboardRoutes() {
@@ -27,7 +28,7 @@ function DashboardRoutes() {
         path="/Dashboard/CurrentExpenses"
         component={CurrentExpense}
       />
-      <ProtectedRoute path="/Dashboard/Goals" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Goals" component={Goals} />
       <ProtectedRoute path="/Dashboard/Report" component={Report} />
     </>
   );

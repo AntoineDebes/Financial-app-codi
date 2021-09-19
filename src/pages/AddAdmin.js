@@ -1,12 +1,10 @@
-import react, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-import {Link,Redirect} from 'react-router-dom';
 import img from "../images/login.jpg";
 import { FaLock } from "react-icons/fa";
 
-const AddAdmin = (props) => {
-    const history = useHistory();
+const AddAdmin = () => {
+   
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

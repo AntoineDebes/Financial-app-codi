@@ -1,0 +1,67 @@
+.login {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 14.5%;
+    overflow-y: hidden;
+    border: 1px solid rgb(247, 224, 224);
+    height: 50vh;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 0.1px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+
+}
+  .login_image,
+  .Form,
+  .image_img {
+    width: 100%;
+    text-align: center;
+  }
+  .login_image {
+    position: relative;
+  }
+  .Form {
+    position: relative;
+  }
+  .Form label {
+    font-size: 1em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 5%;
+  }
+  .Form label span.Form_span {
+    color: white;
+  }
+  .Form form input:focus {
+    background-color: rgb(150, 146, 146);
+    color: white;
+    font-size: 1em;
+    outline: 0;
+  }
+  .Form form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .Form form input::placeholder {
+    color: black;
+    opacity: 0.5;
+  }
+  .image_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .login_image img {
+    width: 100%;
+  }
+  .Form form input {
+    width: 90%;
+    margin-bottom: 7%;
+    padding: 10px;
+    margin-top: 1%;
+    background: transparent;
+  }
+  
