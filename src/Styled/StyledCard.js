@@ -14,11 +14,12 @@ export const ContentCardPopupBackground = styled.div`
 
 export const ContentCardPopup = styled.div`
   position: fixed;
+  top: 50%;
   left: 50%;
   min-width: 50%;
   width: max-content;
   max-width: 80%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   padding-left: 16px;
   background-color: white;
   box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5);

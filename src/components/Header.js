@@ -54,10 +54,10 @@ function Header({
           classNames="list-transition"
           unmountOnExit
         >
-          <HeaderUserMenu>
+          <div className="header__user__menu">
             <p>Add Admins</p>
             <p onClick={changeonClick}>Logout </p>
-          </HeaderUserMenu>
+          </div>
         </CSSTransition>
       </HeaderUser>
     </StyledHeader>

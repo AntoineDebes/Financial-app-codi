@@ -11,7 +11,7 @@ export const ContentBar = styled.div`
   box-shadow: 0 0 0 2000px rgb(0 0 0 / 50%);
   @media (min-width: 1000px) {
     position: relative;
-    box-shadow: 0 0 10px 3px rgb(95, 91, 91);
+    box-shadow: 0 0 7px 1px rgb(95, 91, 91);
   }
 `;
 
