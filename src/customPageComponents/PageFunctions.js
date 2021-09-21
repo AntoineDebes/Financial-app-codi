@@ -1,4 +1,5 @@
 import { FetchApi } from "../apis/Api";
+import AdminCard from "../components/AdminCard";
 import Card from "../components/Card";
 
 export const handleCardDeleteCall = ({
@@ -42,6 +43,7 @@ export const handleCheckBoxCall = ({
 
 export const getDataCall = ({
   // function that distribute the items data to the card to be disaplyed
+  headerName,
   items,
   offset,
   perPage,
@@ -53,15 +55,28 @@ export const getDataCall = ({
 }) => {
   const data = items;
   const slice = data.slice(offset, offset + perPage);
+  console.log(data);
   const postData = slice.map((item) => {
     return (
-      <Card
-        key={item.id}
-        checked={checkedItemIds.data}
-        productInfo={item}
-        mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
-        handleCheckBox={(e) => handleCheckBox(e)}
-      />
+      <>
+        {headerName === "Admins" ? (
+          <AdminCard
+            key={item.id}
+            checked={checkedItemIds.data}
+            productInfo={item}
+            mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
+            handleCheckBox={(e) => handleCheckBox(e)}
+          />
+        ) : (
+          <Card
+            key={item.id}
+            checked={checkedItemIds.data}
+            productInfo={item}
+            mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
+            handleCheckBox={(e) => handleCheckBox(e)}
+          />
+        )}
+      </>
     );
   });
   setCardData(postData);
@@ -72,6 +87,7 @@ export const fetchApiCall = ({ method, fetchApiUrl, setItems }) => {
   // function that can be called to fetch the ids usually after deleting or when logging in
   FetchApi({ method, fetchApiUrl })
     .then((res) => {
+      console.log(res);
       const newItems = res.data.items.map((item) => ({
         ...item,
         checked: false,

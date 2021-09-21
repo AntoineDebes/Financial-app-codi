@@ -26,11 +26,15 @@ export const ContentContainerHeader = styled.div`
   display: grid;
   column-gap: 1.5%;
   height: 100%;
-  div > h2 {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    font-size: 1rem;
+  div {
+    min-height: 70px;
+    > h2 {
+      margin-block-start: 0;
+      margin-block-end: 0;
+      font-size: 1rem;
+    }
   }
+
   @media (min-width: 400px) {
     padding-left: 7%;
     grid-template-columns: 16% 23% 9% 8% 17% 17%;
