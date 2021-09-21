@@ -19,6 +19,7 @@ function AdminCard({ productInfo, handleCheckBox, mobileDeleteOneId }) {
     productInfo;
   const createdAtAdmin = created_at.slice(0, 10);
   const updatedAtAdmin = updated_at.slice(0, 10);
+  const verifiedValue = verified === 1 ? "true" : "false";
   const { width } = useWindowSize();
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function AdminCard({ productInfo, handleCheckBox, mobileDeleteOneId }) {
               </div>
               <div>
                 <h4>Verified</h4>
-                <p>{verified}</p>
+                <p>{verifiedValue}</p>
               </div>
               <div>
                 <h4>Created_at</h4>
@@ -103,7 +104,7 @@ function AdminCard({ productInfo, handleCheckBox, mobileDeleteOneId }) {
           )}
           <div>
             {isWidthMobile ? <p>Verified</p> : null}
-            <div>{verified}</div>
+            <div>{verifiedValue}</div>
           </div>
           <div>
             {isWidthMobile ? <p>Created_at</p> : null}

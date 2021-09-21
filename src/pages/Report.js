@@ -32,14 +32,14 @@ const Report = () => {
   // console.log(items);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/getcategory")
+      .get("http://localhost:8000/api/categories")
       .then((res) => setItems(res.data.items))
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div className="Container">
-      {/* {items && JSON.stringify(items)} */}
+      {items && JSON.stringify(items)}
       {
         <ul className="ul">
           {items &&
