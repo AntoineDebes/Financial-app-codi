@@ -32,8 +32,8 @@ const Report = () => {
   // console.log(items);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/getcategory")
-      .then((res) => setItems(res.data.items))
+      .get("http://localhost:8000/api/categories")
+      .then((res) => setItems(res.data))
       .catch((error) => console.log(error));
   }, []);
 

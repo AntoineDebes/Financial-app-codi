@@ -4,7 +4,7 @@ import "./Goals.css";
 import {toast} from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';   
 import images from "../images/goal_graphic.webp";
-
+import Popup from "../pages/Popup"
 toast.configure();
 
 
@@ -13,9 +13,27 @@ const Goals = () => {
     const [amount, setAmount] = useState("");
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState(""); 
-    const [result, setResult] = useState("");
+    const [data, setData] = useState([]);
+    const[buttonPopUp,setButtonPopUp]=useState(false);
 
-   
+
+    const handleChange = async (e)=>{ 
+      e.preventDefault();
+       let result =  await fetch(`http://localhost:8000/api/goals`);
+       let datarecieved =await result.json();
+       setData(state=>state,datarecieved)
+        console.log(datarecieved);
+      // .then(
+      //   (res) => setData(res.data),
+       
+      //   console.log("data:"+res.data)
+      // )
+      // .catch((error) => {
+      //   console.log(error);
+      // });
+      setButtonPopUp(true);
+    }
+   ////////////////////////////////////////////////////////////////
     const changeonClick = async (e)=>{
         e.preventDefault();
           const formData=new FormData();
@@ -51,53 +69,81 @@ const Goals = () => {
   
 
   return (
+    
     <div data-aos="fade-left" className="login">
-    <div className="login_image">
-      <div className="image_img">
-        <img src={images} alt="login" />
-      </div>
-    </div>
-    <div className="Form">
-      <form  onSubmit={changeonClick} encType="multipart/form-data">
-        <label> Name of the Goal:</label>
-        <input
-         type="text"
-          id="name"
-          name="name"
-          required
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label> Amount to be achieved :</label>
-        <input
-            type="number"
-            id="amount"
-            name="amount"
-            required
-           
-            onChange={(e) => setAmount(e.target.value)}
-        />
-         <label> Start date :</label>
-         <input 
-          type="date"
-           id="start_date" 
-           name="start_date"
-            required
-            value={start_date}
-            onChange={(e) => setStartDate(e.target.value)}>
-         </input>
+     
+        <div className="login_image">
+          <div className="image_img">
+            <img src={images} alt="login" />
+          </div>
+        </div>
+        <div className="Form">
+          <form encType="multipart/form-data">
+            <label> Name of the Goal:</label>
+            <input
+            type="text"
+              id="name"
+              name="name"
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label> Amount to be achieved :</label>
+            <input
+                type="number"
+                id="amount"
+                name="amount"
+                required
+              
+                onChange={(e) => setAmount(e.target.value)}
+            />
+            <label> Start date :</label>
+            <input 
+              type="date"
+              id="start_date" 
+              name="start_date"
+               required
+                value={start_date}
+                onChange={(e) => setStartDate(e.target.value)}>
+            </input>
 
-          <label> End date :</label>
-          <input 
-          type="date"
-           id="end_date" 
-           name="end_date"
-            required
-            
-            onChange={(e) => setEndDate(e.target.value)}>
-         </input>
-          <button type="submit" >Add Goal</button>
-      </form>
-    </div>
+              <label> End date :</label>
+              <input 
+              type="date"
+              id="end_date" 
+              name="end_date"
+               required
+                
+                onChange={(e) => setEndDate(e.target.value)}>
+            </input>
+              <button onClick={changeonClick} >Add Goal</button>
+              <button onClick={handleChange}  >Check Goals</button>
+          </form>
+             <Popup trigger={buttonPopUp}>
+            <table id="allData" >
+                <thead >
+                  <tr>
+                    <th>Name</th>
+                    <th >Amount</th>
+                    <th >Start_Date</th>
+                    <th >End_Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+            {  data.map((item,index) => (
+                <tr key={index}>
+                  <td>{ item.name   }</td> 
+                  <td>{ item.amount }</td>
+                  <td>{ item.start_date       }</td>
+                  <td>{ item.end_date}</td>
+                 
+                </tr>
+              ))
+            }
+          </tbody>
+          </table>
+
+           </Popup> 
+        </div>
   </div>
   );
 };

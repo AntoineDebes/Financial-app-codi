@@ -1,0 +1,25 @@
+.popup{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0%;
+    margin-bottom: 14.5%;
+    overflow-y: hidden;
+    border: 1px solid rgb(107, 85, 85);
+    height:100%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 0.1px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  }
+ .popup-inner{
+     position:relative;
+     padding:32px;
+     width:100%;
+     max-width: 640px;
+     background-color: skyblue;
+ }  
+ .popup-inner  .close-btn{
+     position:absolute;
+     top:16px;
+     right:16px;
+ }   

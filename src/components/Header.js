@@ -5,6 +5,12 @@ import { CgProfile, CgChevronDown } from "react-icons/cg";
 import { CSSTransition } from "react-transition-group";
 import Hamburger from "hamburger-react";
 import { useAuth } from "../useContext/IsAuthContext";
+import {
+  StyledHeader,
+  HeaderUser,
+  HeaderUserProfile,
+  HeaderUserMenu,
+} from "../Styled/StyledHeader";
 
 function Header({
   isHamburgureOpen,
@@ -30,20 +36,17 @@ function Header({
   };
 
   return (
-    <div className="header">
+    <StyledHeader>
       {isHamburgureOpen && (
         <Hamburger onToggle={() => setIsSideBarOpen(!isSideBarOpen)} />
       )}
 
-      <div
-        className="header__user"
-        onClick={() => setProfileMenuIsOpen(!profileMenuIsOpen)}
-      >
-        <div className="header__user__profile">
+      <HeaderUser onClick={() => setProfileMenuIsOpen(!profileMenuIsOpen)}>
+        <HeaderUserProfile>
           <CgChevronDown />
           <p>antoine</p>
           <CgProfile size={20} />
-        </div>
+        </HeaderUserProfile>
 
         <CSSTransition
           in={profileMenuIsOpen}
@@ -55,8 +58,8 @@ function Header({
             <p onClick={changeonClick}>Logout </p>
           </div>
         </CSSTransition>
-      </div>
-    </div>
+      </HeaderUser>
+    </StyledHeader>
   );
 }
 

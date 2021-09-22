@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import { ContentBar, ContentBarCatLink } from "../Styled/StyledSiderBar";
 
-function SideBar({ isSideBarOpen, domNode }) {
+function SideBar({ isSideBarOpen }) {
   return (
     <>
       <CSSTransition
@@ -11,35 +11,32 @@ function SideBar({ isSideBarOpen, domNode }) {
         unmountOnExit
         classNames="side-bar-transition"
       >
-        <div className="content__bar">
-        <Link className="content__bar__cat" to="/Dashboard/AddAdmin">
+        <ContentBar>
+          <ContentBarCatLink to="/Dashboard/PostData">
+            Add Data
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/AddAdmin">
             Add Admins
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/">
-            categories
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/Admin">
-            Admins
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/FixedIncomes">
-            Fixed incomes
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/FixedExpenses">
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/Categories">
+            Categories
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/Admin">Admins</ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/FixedIncomes">
+            FixedIncomes
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/FixedExpenses">
             Fixed expenses
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/CurrentIncomes">
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/CurrentIncomes">
             Recurring incomes
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/CurrentExpenses">
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/CurrentExpenses">
             Recurring expenses
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/Goals">
-            Goals
-          </Link>
-          <Link className="content__bar__cat" to="/Dashboard/Report">
-            Report
-          </Link>
-        </div>
+          </ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/Goals">Goals</ContentBarCatLink>
+          <ContentBarCatLink to="/Dashboard/Report">Report</ContentBarCatLink>
+        </ContentBar>
       </CSSTransition>
     </>
   );

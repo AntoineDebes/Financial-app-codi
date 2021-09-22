@@ -8,6 +8,10 @@ import {
   fetchApiCall,
 } from "../customPageComponents/PageFunctions";
 import { useAuth } from "../useContext/IsAuthContext";
+import {
+  ContentContainer,
+  ContentContainerPagination,
+} from "../Styled/StyledPageCompnent";
 
 const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
@@ -47,13 +51,15 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   };
 
   const handleCardDelete = (id) => {
-    handleCardDeleteCall({
-      method: "delete",
-      fetchApiUrl,
-      selectedIds: checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
-      setCheckedItemIds,
-      setIsAuth,
-    });
+    if (checkedItemIds.ids.length > 0 || id.length > 0) {
+      handleCardDeleteCall({
+        method: "delete",
+        fetchApiUrl,
+        selectedIds: checkedItemIds.ids.length !== 0 ? checkedItemIds.ids : id,
+        setCheckedItemIds,
+        setIsAuth,
+      });
+    }
   };
 
   const changePage = ({ selected }) => {
@@ -62,14 +68,14 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
 
   return (
     <>
-      <div className="content__container">
+      <ContentContainer>
         <ContentHeader
           handleCardDelete={handleCardDelete}
           headerName={headerName}
         />
         {cardData && cardData}
-      </div>
-      <div className="content__container__pagination">
+      </ContentContainer>
+      <ContentContainerPagination>
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
@@ -80,7 +86,7 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
           nextLinkClassName={"nextBttn"}
           activeClassName={"paginationActive"}
         />
-      </div>
+      </ContentContainerPagination>
     </>
   );
 };

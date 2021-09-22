@@ -8,12 +8,14 @@ import Report from "../pages/Report"
 import AddAdmin from "../pages/AddAdmin"
 import Goals from"../pages/Goals"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import PostData from "../pages/PostData";
 
 function DashboardRoutes() {
   return (
     <>
       <ProtectedRoute path="/Dashboard/AddAdmin" component={AddAdmin} />
-      <ProtectedRoute path="/Dashboard/categories" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Categories" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Postdata" component={PostData} />
       <ProtectedRoute path="/Dashboard/Admin" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedIncomes" component={FixedIncome} />
       <ProtectedRoute

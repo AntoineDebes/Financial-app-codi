@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { adminApi } from "../apis/Api";
+import { FetchApi } from "../apis/Api";
 import AdminCard from "../components/AdminCard";
 import AdminHeader from "../components/AdminHeader";
+import { CardContainercard, ContentCardContainer } from "../Styled/StyledCard";
+import { ContentContainer } from "../Styled/StyledPageCompnent";
 
 function AdminDash() {
-  const [admins, setAdmins] = useState(null);
+  const [admins, setAdmins] = useState([]);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -15,15 +17,15 @@ function AdminDash() {
   const { name, email, password } = inputs;
 
   useEffect(() => {
-    adminApi()
+    FetchApi({ method: "get", fetchApiUrl: "api/admin" })
       .then((res) => {
         setAdmins(res.data);
-        console.log(admins);
       })
       .catch((error) => {
         console.log("error", error);
       });
-  }, [admins]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const insertAdmin = (e) => {
     setInputs({
@@ -31,17 +33,18 @@ function AdminDash() {
       [e.target.name]: e.target.value,
     });
   };
+  console.log("admins", admins);
   return (
     <>
-      {/* <div className="content__container">
+      <ContentContainer>
         <AdminHeader />
-        <div className="content__card__container">
+        <ContentCardContainer>
           {admins &&
             admins.map((admin) => {
               return <AdminCard adminInfo={admin} />;
             })}
 
-          <div className="card__container__card">
+          <CardContainercard>
             <div></div>
             <div>
               {name}
@@ -87,9 +90,9 @@ function AdminDash() {
                 onChange={(e) => insertAdmin(e)}
               />
             </div>
-          </div>
-        </div>
-      </div> */}
+          </CardContainercard>
+        </ContentCardContainer>
+      </ContentContainer>
     </>
   );
 }
