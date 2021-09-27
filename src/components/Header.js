@@ -11,6 +11,7 @@ import {
   HeaderUserProfile,
   HeaderUserMenu,
 } from "../Styled/StyledHeader";
+import { useUserCredential } from "../useContext/UserCredentialContext";
 
 function Header({
   isHamburgureOpen,
@@ -20,6 +21,7 @@ function Header({
 }) {
   const [profileMenuIsOpen, setProfileMenuIsOpen] = useState(false);
   const { setIsAuth } = useAuth();
+  const { username } = useUserCredential();
   const history = useHistory();
 
   const changeonClick = async (e) => {
@@ -44,7 +46,7 @@ function Header({
       <HeaderUser onClick={() => setProfileMenuIsOpen(!profileMenuIsOpen)}>
         <HeaderUserProfile>
           <CgChevronDown />
-          <p>antoine</p>
+          <p>{username}</p>
           <CgProfile size={20} />
         </HeaderUserProfile>
 
