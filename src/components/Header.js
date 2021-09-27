@@ -9,7 +9,6 @@ import {
   StyledHeader,
   HeaderUser,
   HeaderUserProfile,
-  HeaderUserMenu,
 } from "../Styled/StyledHeader";
 import { useUserCredential } from "../useContext/UserCredentialContext";
 
@@ -57,7 +56,6 @@ function Header({
           unmountOnExit
         >
           <div className="header__user__menu">
-            <p>Add Admins</p>
             <p onClick={changeonClick}>Logout </p>
           </div>
         </CSSTransition>
