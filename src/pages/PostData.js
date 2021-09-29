@@ -48,12 +48,6 @@ function PostData() {
     date: null,
   });
 
-  // useEffect(async () => {
-  //   const cat = await fetch("http://localhost:8000/api/categories");
-  //   const facesResult = await cat.json();
-  //   setCategories(facesResult);
-  // }, []);
-
   useEffect(() => {
     FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
       console.log(res.data);
@@ -146,7 +140,7 @@ function PostData() {
         date: date,
       };
       const response = await axios.post(
-        `http://localhost:8000/api/post${MCategory}`,
+        `https://batata-harra-financial.herokuapp.com/api/post${MCategory}`,
         article,
         {
           headers,

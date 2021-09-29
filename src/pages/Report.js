@@ -17,7 +17,7 @@ const Report = () => {
   const onsubmitHandler = (id) => {
     console.log(id);
     axios
-      .get(`http://localhost:8000/api/getamount/${id}`)
+      .get(`https://batata-harra-financial.herokuapp.com/api/getamount/${id}`)
       .then(
         (res) => setAmount(res.data),
         setCurrentExpense(amount[0]),
@@ -32,7 +32,7 @@ const Report = () => {
   // console.log(items);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/categories")
+      .get("https://batata-harra-financial.herokuapp.com/api/categories")
       .then((res) => setItems(res.data.items))
       .catch((error) => console.log(error));
   }, []);
