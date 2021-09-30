@@ -34,7 +34,9 @@ const Report = () => {
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/categories")
-      .then((res) => setItems(res.data))
+      .then((res) => {
+        setItems(res.data);
+      })
       .catch((error) => console.log(error));
   }, []);
 
