@@ -33,6 +33,7 @@ function LoginPage(props) {
     if (result.success) {
       console.log({ result });
       localStorage.setItem("isAuth", "true");
+      localStorage.setItem("username", result.user.name);
       setIsAuth(true);
       setUsername(result.user.name);
       localStorage.setItem(

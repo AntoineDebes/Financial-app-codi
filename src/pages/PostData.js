@@ -48,12 +48,19 @@ function PostData() {
     date: null,
   });
 
-  useEffect(() => {
-    FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
-      console.log(res.data);
-      setCategories(res.data);
-    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async () => {
+    const cat = await fetch("http://localhost:8000/api/categories");
+    const facesResult = await cat.json();
+    setCategories(facesResult);
   }, []);
+
+  // useEffect(() => {
+  //   FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
+  //     console.log(res.data);
+  //     setCategories(res.data);
+  //   });
+  // }, []);
 
   const handleEventChange = (e) => {
     setPostData((x) => ({
@@ -139,8 +146,9 @@ function PostData() {
         repetition: repetition,
         date: date,
       };
+      console.log(article);
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}api/post${MCategory}`,
+        `http://localhost:8000/api/post${MCategory}`,
         article,
         {
           headers,

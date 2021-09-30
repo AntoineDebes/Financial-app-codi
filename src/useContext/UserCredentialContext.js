@@ -7,9 +7,8 @@ export function useUserCredential() {
 }
 
 export function UserCredentialProvider({ children }) {
-  // Chiildren = component (compnent is an route that you want to connect to the browserRoute)
-  //   const localStorageIsAuth = localStorage.getItem("isAuth") === "true"; // Checkes if isAuth inside the localstorage is true
-  const [username, setUsername] = useState("");
+  const localStorageUsername = localStorage.getItem("username"); // Checkes if isAuth inside the localstorage is true
+  const [username, setUsername] = useState(localStorageUsername);
 
   return (
     <>

@@ -17,12 +17,16 @@ export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
       },
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         res(response);
       })
       .catch((e) => {
         // console.log(e);
+
+        localStorage.clear();
         rej(e);
       });
   });
 };
+
+// http://batata-harra-financial.herokuapp.com/
