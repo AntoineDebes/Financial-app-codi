@@ -14,6 +14,7 @@ const Report = () => {
   const [fixedExpense, setFixedExpense] = useState("");
   const [fixedIncome, setFixedIncome] = useState("");
 
+
   const onsubmitHandler = (id) => {
     console.log(id);
     axios

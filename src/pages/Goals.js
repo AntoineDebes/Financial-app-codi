@@ -15,22 +15,45 @@ const Goals = () => {
     const [end_date, setEndDate] = useState(""); 
     const [data, setData] = useState([]);
     const[buttonPopUp,setButtonPopUp]=useState(false);
+    const [dunno, setDunno] = useState();
+    const [dataofGoals,setdataofGoals]=useState([]);
 
+   
+////////////////////////////////////////////////////////////
+    useEffect(()=>{
+     const testing =  data.map((item,index) => (
+        <tr key={index}>
+          <td>{ item.name }</td> 
+          <td>{ item.amount }</td>
+          <td>{ item.start_date}</td>
+          <td>{ item.end_date}</td>
+          <td> {dataofGoals[index]}</td>
+          <td> { dataofGoals[index]>=0?("achieved"):("Not achieved")
 
+          }</td>
+        </tr>
+      ))
+      setDunno(testing)
+      console.log(data)
+    },[data])
+    /////////////////////////////////////////////////////////////
+    useEffect(() => {
+      axios
+        .get("http://localhost:8000/api/CheckGoal")
+        .then((res) => setdataofGoals(res.data))
+        .catch((error) => console.log(error));
+    }, []);
+   ////////////////////////////////////////////////////////////// 
     const handleChange = async (e)=>{ 
       e.preventDefault();
-       let result =  await fetch(`http://localhost:8000/api/goals`);
-       let datarecieved =await result.json();
-       setData(state=>state,datarecieved)
-        console.log(datarecieved);
-      // .then(
-      //   (res) => setData(res.data),
-       
-      //   console.log("data:"+res.data)
-      // )
-      // .catch((error) => {
-      //   console.log(error);
-      // });
+       const result =  await fetch(`http://localhost:8000/api/goals`);
+       const resultOfCheckGoals =  await fetch(`http://localhost:8000/api/CheckGoal`);
+       const dataofCheckGoals=await resultOfCheckGoals.json();
+       setdataofGoals(dataofCheckGoals);
+       console.log(dataofGoals);
+       const  datarecieved =await result.json();
+       setData(datarecieved);
+
       setButtonPopUp(true);
     }
    ////////////////////////////////////////////////////////////////
@@ -49,7 +72,7 @@ const Goals = () => {
         });
         result= await result.json();
         console.log(result);
-     if(result.success == false){
+     if(result.success === false){
        console.log(result.success);
        toast.error('check the start date and end date ,the goal is not saved', {
         position: "top-center",
@@ -67,7 +90,7 @@ const Goals = () => {
        
     }
   
-
+/////////////////////////////////////////////////////////////////////////////////
   return (
     
     <div data-aos="fade-left" className="login">
@@ -118,7 +141,7 @@ const Goals = () => {
               <button onClick={changeonClick} >Add Goal</button>
               <button onClick={handleChange}  >Check Goals</button>
           </form>
-             <Popup trigger={buttonPopUp}>
+             <Popup trigger={buttonPopUp}  setTrigger={setButtonPopUp}>
             <table id="allData" >
                 <thead >
                   <tr>
@@ -126,10 +149,12 @@ const Goals = () => {
                     <th >Amount</th>
                     <th >Start_Date</th>
                     <th >End_Date</th>
+                    <th >Profit</th>
+                    <th >Achieved</th>
                   </tr>
                 </thead>
                 <tbody>
-            {  data.map((item,index) => (
+            {/* { data && data.map((item,index) => (
                 <tr key={index}>
                   <td>{ item.name   }</td> 
                   <td>{ item.amount }</td>
@@ -138,7 +163,8 @@ const Goals = () => {
                  
                 </tr>
               ))
-            }
+            } */}
+            {dunno && dunno}
           </tbody>
           </table>
 
