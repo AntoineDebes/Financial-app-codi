@@ -27,22 +27,22 @@ function ContentHeader({ headerName, handleCardDelete }) {
           </ContentContainerButtons>
           <ContentContainerHeader>
             <div>
-              <h2>Title</h2>
+              <h2>{headerName === "Admins" ? "Name" : "Title"}</h2>
             </div>
             <div>
-              <h2>description</h2>
+              <h2>{headerName === "Admins" ? "Email" : "Description"}</h2>
             </div>
             <div>
-              <h2>Quantity</h2>
+              <h2>{headerName === "Admins" ? "Verified" : "Quantity"}</h2>
             </div>
             <div>
-              <h2>Currency</h2>
+              <h2>{headerName === "Admins" ? "Created_at" : "Currency"}</h2>
             </div>
             <div>
-              <h2>Date-time</h2>
+              <h2>{headerName === "Admins" ? "Updated_at" : "Date-time"}</h2>
             </div>
             <div>
-              <h2>Category</h2>
+              <h2>{headerName === "Admins" ? "Auth" : "Category"}</h2>
             </div>
           </ContentContainerHeader>
         </>

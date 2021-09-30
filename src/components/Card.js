@@ -15,8 +15,15 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
   const [isWidthMobile, setisWidthMobile] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const { title, category, created_at, currency, description, quantity, id } =
-    productInfo;
+  const {
+    title,
+    category_title,
+    created_at,
+    currency,
+    description,
+    quantity,
+    id,
+  } = productInfo;
   const dateTime = created_at.slice(0, 10);
   const { width } = useWindowSize();
 
@@ -60,7 +67,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
               </div>
               <div>
                 <h4>category</h4>
-                <p>{category}</p>
+                <p>{category_title}</p>
               </div>
             </ContentCardPopupcontainer>
             <div className="container__button">
@@ -112,7 +119,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
           </div>
           <div>
             {isWidthMobile ? <p>category</p> : null}
-            <div>{category}</div>
+            <div>{category_title}</div>
           </div>
         </CardContainercard>
       </ContentCardContainer>

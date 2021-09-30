@@ -27,8 +27,10 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   }, [checkedItemIds, fetchApiUrl]);
 
   useEffect(() => {
+    console.log({ items });
     const getData = () => {
       getDataCall({
+        headerName,
         items,
         offset,
         perPage,
