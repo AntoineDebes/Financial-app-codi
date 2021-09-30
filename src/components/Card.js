@@ -17,7 +17,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
 
   const {
     title,
-    category_id,
+    category_title,
     created_at,
     currency,
     description,
@@ -67,7 +67,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
               </div>
               <div>
                 <h4>category</h4>
-                <p>{category_id}</p>
+                <p>{category_title}</p>
               </div>
             </ContentCardPopupcontainer>
             <div className="container__button">
@@ -119,7 +119,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
           </div>
           <div>
             {isWidthMobile ? <p>category</p> : null}
-            <div>{category_id}</div>
+            <div>{category_title}</div>
           </div>
         </CardContainercard>
       </ContentCardContainer>

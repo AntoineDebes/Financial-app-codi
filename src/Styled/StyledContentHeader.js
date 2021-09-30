@@ -27,7 +27,6 @@ export const ContentContainerHeader = styled.div`
   column-gap: 1.5%;
   height: 100%;
   div {
-    min-height: 70px;
     > h2 {
       margin-block-start: 0;
       margin-block-end: 0;

@@ -4,15 +4,18 @@ import { BrowserRouter } from "react-router-dom";
 import "./normalize.css";
 import Routes from "./components/Routes";
 import { IsAuthProvider } from "./useContext/IsAuthContext";
+import { UserCredentialProvider } from "./useContext/UserCredentialContext";
 
 function App() {
   return (
     <IsAuthProvider>
-      <BrowserRouter>
-        <div className="App">
-          <Routes />
-        </div>
-      </BrowserRouter>
+      <UserCredentialProvider>
+        <BrowserRouter>
+          <div className="App">
+            <Routes />
+          </div>
+        </BrowserRouter>
+      </UserCredentialProvider>
     </IsAuthProvider>
   );
 }

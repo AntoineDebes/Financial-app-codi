@@ -3,7 +3,7 @@ import Axios from "axios";
 export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
   const token = localStorage.getItem("login") ?? "";
 
-  console.log(method, fetchApiUrl, selectedIds);
+  console.log(method, fetchApiUrl, selectedIds, token);
   return new Promise((res, rej) => {
     Axios({
       method: method, // Method like GET, POST, DELETE, PUT ...
