@@ -50,7 +50,7 @@ function PostData() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
-    const cat = await fetch("http://localhost:8000/api/categories");
+    const cat = await fetch(`${process.env.REACT_APP_API_URL}api/categories`);
     const facesResult = await cat.json();
     setCategories(facesResult);
   }, []);
