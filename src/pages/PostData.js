@@ -140,7 +140,7 @@ function PostData() {
         date: date,
       };
       const response = await axios.post(
-        `https://batata-harra-financial.herokuapp.com/api/post${MCategory}`,
+        `http://localhost:8000/api/post${MCategory}`,
         article,
         {
           headers,
