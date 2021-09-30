@@ -145,6 +145,7 @@ function PostData() {
         repetition: repetition,
         date: date,
       };
+      console.log(article);
       const response = await axios.post(
         `http://localhost:8000/api/post${MCategory}`,
         article,
