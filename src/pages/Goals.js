@@ -30,7 +30,7 @@ const Goals = () => {
       </tr>
     ));
     setDunno(testing);
-    console.log(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   /////////////////////////////////////////////////////////////
   useEffect(() => {
@@ -48,7 +48,6 @@ const Goals = () => {
     );
     const dataofCheckGoals = await resultOfCheckGoals.json();
     setdataofGoals(dataofCheckGoals);
-    console.log(dataofGoals);
     const datarecieved = await result.json();
     setData(datarecieved);
 
@@ -62,21 +61,13 @@ const Goals = () => {
     formData.append("amount", amount);
     formData.append("start_date", start_date);
     formData.append("end_date", end_date);
-    console.log(
-      "name :" + name,
-      "amount " + amount,
-      " start_date" + start_date,
-      "end_date: " + end_date
-    );
 
     let result = await fetch(`${process.env.REACT_APP_API_URL}api/storeGoal`, {
       method: "POST",
       body: formData,
     });
     result = await result.json();
-    console.log(result);
     if (result.success === false) {
-      console.log(result.success);
       toast.error("check the start date and end date ,the goal is not saved", {
         position: "top-center",
         autoClose: 5000,

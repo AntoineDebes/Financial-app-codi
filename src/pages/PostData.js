@@ -4,7 +4,6 @@ import axios from "axios";
 import "./PostData.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FetchApi } from "../apis/Api";
 
 function PostData() {
   const [Categories, setCategories] = useState([]);
@@ -54,13 +53,6 @@ function PostData() {
     const facesResult = await cat.json();
     setCategories(facesResult);
   }, []);
-
-  // useEffect(() => {
-  //   FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
-  //     console.log(res.data);
-  //     setCategories(res.data);
-  //   });
-  // }, []);
 
   const handleEventChange = (e) => {
     setPostData((x) => ({
@@ -123,12 +115,7 @@ function PostData() {
   const getCategoryValue = (e) => {
     SetMCategory(e.value);
   };
-  const onChangeHandler = (e) => {
-    e.preventDefault();
-    const index = e.target.selectedIndex;
-    const el = e.target.childNodes[index];
-    const option = el.getAttribute("id");
-  };
+
   const hadleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -146,7 +133,6 @@ function PostData() {
         repetition: repetition,
         date: date,
       };
-      console.log(article);
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}api/post${MCategory}`,
         article,

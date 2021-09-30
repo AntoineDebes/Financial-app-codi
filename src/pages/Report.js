@@ -15,7 +15,6 @@ const Report = () => {
   const [fixedIncome, setFixedIncome] = useState("");
 
   const onsubmitHandler = (id) => {
-    console.log(id);
     axios
       .get(`${process.env.REACT_APP_API_URL}api/getamount/${id}`)
       .then((res) => {
@@ -24,13 +23,11 @@ const Report = () => {
         setCurrentIncome(amount[1]);
         setFixedExpense(amount[2]);
         setFixedIncome(amount[3]);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  // console.log(items);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}api/categories`)
@@ -45,10 +42,11 @@ const Report = () => {
       {
         <ul className="ul">
           {items &&
-            items.map((item) => (
+            items.map((item, key) => (
               <Link
                 to={`/Dashboard/Report/${item.id}`}
                 onClick={() => onsubmitHandler(item.id)}
+                key={key}
               >
                 {item.title}
               </Link>

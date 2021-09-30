@@ -41,7 +41,6 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
       .catch((e) => {
         console.log(e);
       });
-    console.log(categories);
   }, []);
 
   useEffect(() => {

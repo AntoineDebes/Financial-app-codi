@@ -30,12 +30,9 @@ export const handleCheckBoxCall = ({
   if (e.target.checked) {
     setCheckedItemIds({ ids: [...checkedItemIds.ids, mainId] });
   } else {
-    console.log("first", checkedItemIds.ids);
     setCheckedItemIds({
       ids: checkedItemIds.ids.filter((id) => id !== mainId),
     });
-
-    console.log("second", checkedItemIds.ids);
   }
 };
 
@@ -54,29 +51,27 @@ export const getDataCall = ({
 }) => {
   const data = items;
   const slice = data.slice(offset, offset + perPage);
-  const postData = slice.map((item) => {
-    return (
-      <>
-        {headerName === "Admins" ? (
-          <AdminCard
-            key={item.id}
-            checked={checkedItemIds.data}
-            productInfo={item}
-            mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
-            handleCheckBox={(e) => handleCheckBox(e)}
-          />
-        ) : (
-          <Card
-            categories={categories}
-            key={item.id}
-            checked={checkedItemIds.data}
-            productInfo={item}
-            mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
-            handleCheckBox={(e) => handleCheckBox(e)}
-          />
-        )}
-      </>
-    );
+  const postData = slice.map((item, index) => {
+    const itemCardInfos =
+      headerName === "Admins" ? (
+        <AdminCard
+          key={index}
+          checked={checkedItemIds.data}
+          productInfo={item}
+          mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
+          handleCheckBox={(e) => handleCheckBox(e)}
+        />
+      ) : (
+        <Card
+          key={index}
+          categories={categories}
+          checked={checkedItemIds.data}
+          productInfo={item}
+          mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
+          handleCheckBox={(e) => handleCheckBox(e)}
+        />
+      );
+    return itemCardInfos;
   });
   setCardData(postData);
   setPageCount(Math.ceil(data.length / perPage));
@@ -91,7 +86,6 @@ export const fetchApiCall = ({ method, fetchApiUrl, setItems, exitLogin }) => {
         checked: false,
       }));
 
-      // console.log("newItems", newItems);
       setItems(newItems);
     })
     .catch((error) => {
