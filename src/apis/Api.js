@@ -21,13 +21,9 @@ export const FetchApi = ({ method, fetchApiUrl, selectedIds }) => {
         res(response);
       })
       .catch((e) => {
-<<<<<<< HEAD
-        console.log(e);
-=======
         // console.log(e);
 
         localStorage.clear();
->>>>>>> fabe81d7fb98b76daa367a2a2c2b738efa57d9e2
         rej(e);
       });
   });

@@ -4,17 +4,18 @@ import FixedExpense from "../pages/FixedExpense";
 import CurrentIncome from "../pages/CurrentIncome";
 import CurrentExpense from "../pages/CurrentExpense";
 import AdminDash from "../pages/AdminDash";
-import Report from "../pages/Report"
-import AddAdmin from "../pages/AddAdmin"
-import Goals from"../pages/Goals"
+import Report from "../pages/Report";
+import AddAdmin from "../pages/AddAdmin";
+import Goals from "../pages/Goals";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import PostData from "../pages/PostData";
+import AddCategory from "../pages/AddCategory";
 
 function DashboardRoutes() {
   return (
     <>
       <ProtectedRoute path="/Dashboard/AddAdmin" component={AddAdmin} />
-      <ProtectedRoute path="/Dashboard/Categories" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Categories" component={AddCategory} />
       <ProtectedRoute path="/Dashboard/Postdata" component={PostData} />
       <ProtectedRoute path="/Dashboard/Admin" component={AdminDash} />
       <ProtectedRoute path="/Dashboard/FixedIncomes" component={FixedIncome} />
