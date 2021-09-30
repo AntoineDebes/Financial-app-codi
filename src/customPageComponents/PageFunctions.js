@@ -55,7 +55,7 @@ export const getDataCall = ({
     const itemCardInfos =
       headerName === "Admins" ? (
         <AdminCard
-          key={index}
+          key={item.id}
           checked={checkedItemIds.data}
           productInfo={item}
           mobileDeleteOneId={(e) => mobileDeleteOneId(e)}
@@ -63,7 +63,7 @@ export const getDataCall = ({
         />
       ) : (
         <Card
-          key={index}
+          key={item.id}
           categories={categories}
           checked={checkedItemIds.data}
           productInfo={item}

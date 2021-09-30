@@ -38,7 +38,7 @@ function LoginPage(props) {
         result.token_type + " " + result.access_token
       );
       props.history.push({
-        pathname: "/dashboard/categories",
+        pathname: "/dashboard/Admin",
       });
     }
   };

@@ -84,13 +84,13 @@ const Goals = () => {
 
   /////////////////////////////////////////////////////////////////////////////////
   return (
-    <div data-aos="fade-left" className="login">
+    <div className="loginToo">
       <div className="login_image">
         <div className="image_img">
           <img src={images} alt="login" />
         </div>
       </div>
-      <div className="Form">
+      <div className="Formm">
         <form encType="multipart/form-data">
           <label> Name of the Goal:</label>
           <input

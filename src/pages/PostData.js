@@ -4,6 +4,7 @@ import axios from "axios";
 import "./PostData.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FetchApi } from "../apis/Api";
 
 function PostData() {
   const [Categories, setCategories] = useState([]);
