@@ -16,7 +16,7 @@ function AddCategory() {
         category: categoryName,
       };
       const response = await axios.post(
-        `http://localhost:8000/api/addcategory`,
+        `${process.env.REACT_APP_API_URL}api/addcategory`,
         data,
         {
           headers,
