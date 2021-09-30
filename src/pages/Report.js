@@ -14,18 +14,18 @@ const Report = () => {
   const [fixedExpense, setFixedExpense] = useState("");
   const [fixedIncome, setFixedIncome] = useState("");
 
-
   const onsubmitHandler = (id) => {
     console.log(id);
     axios
       .get(`http://localhost:8000/api/getamount/${id}`)
-      .then(
-        (res) => setAmount(res.data),
-        setCurrentExpense(amount[0]),
-        setCurrentIncome(amount[1]),
-        setFixedExpense(amount[2]),
-        setFixedIncome(amount[3])
-      )
+      .then((res) => {
+        setAmount(res.data);
+        setCurrentExpense(amount[0]);
+        setCurrentIncome(amount[1]);
+        setFixedExpense(amount[2]);
+        setFixedIncome(amount[3]);
+        console.log(res);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -40,7 +40,6 @@ const Report = () => {
 
   return (
     <div className="Container">
-     
       {
         <ul className="ul">
           {items &&
