@@ -60,7 +60,7 @@ export const CardContainercard = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 0.7rem;
-  border: 1px solid gray;
+  border: 1px solid rgb(0 62 235 / 99%);
   border-radius: 12px;
   color: black;
   padding: 0.5rem 1.2rem;

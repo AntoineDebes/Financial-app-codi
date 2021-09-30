@@ -40,7 +40,7 @@ const Report = () => {
 
   return (
     <div className="Container">
-      {/* {items && JSON.stringify(items)} */}
+     
       {
         <ul className="ul">
           {items &&

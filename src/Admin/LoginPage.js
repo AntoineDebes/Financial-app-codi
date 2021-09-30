@@ -4,11 +4,13 @@ import "./LoginPage.css";
 import img from "../images/login.jpg";
 import { FaLock } from "react-icons/fa";
 import { useAuth } from "../useContext/IsAuthContext";
+import { useUserCredential } from "../useContext/UserCredentialContext";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setIsAuth } = useAuth();
+  const { setUsername } = useUserCredential();
 
   const changeonClick = async (e) => {
     e.preventDefault();
@@ -24,11 +26,12 @@ function LoginPage(props) {
         password,
       }),
     }).then((res) => res.json());
-
+    console.log({ result });
     if (result.success) {
       console.log({ result });
       localStorage.setItem("isAuth", "true");
       setIsAuth(true);
+      setUsername(result.user.name);
       localStorage.setItem(
         "login",
         result.token_type + " " + result.access_token
