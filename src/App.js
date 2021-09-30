@@ -10,16 +10,16 @@ import AddCategory from "./pages/AddCategory";
 
 function App() {
   return (
-    // <IsAuthProvider>
-    //   <UserCredentialProvider>
-    //     <BrowserRouter>
-    //       <div className="App">
-    //         <Routes />
-    //       </div>
-    //     </BrowserRouter>
-    //   </UserCredentialProvider>
-    // </IsAuthProvider>
-    <AddCategory />
+    <IsAuthProvider>
+      <UserCredentialProvider>
+        <BrowserRouter>
+          <div className="App">
+            <Routes />
+          </div>
+        </BrowserRouter>
+      </UserCredentialProvider>
+    </IsAuthProvider>
+    // <AddCategory />
   );
 }
 

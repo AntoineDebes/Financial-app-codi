@@ -6,7 +6,7 @@ import "./PostData.css";
 function AddCategory() {
   const [categoryName, setCategoryName] = useState("");
 
-  onsubmit = async (e) => {
+  const handleOnClick = async (e) => {
     e.preventDefault();
     try {
       const headers = {
@@ -47,7 +47,7 @@ function AddCategory() {
       <legend>Add Category</legend>
       <form>
         <input type="text" onChange={handleOnCahnge} />
-        <input type="Submit" onClick={onsubmit} />
+        <input type="Submit" onClick={handleOnClick} />
       </form>
     </div>
   );
