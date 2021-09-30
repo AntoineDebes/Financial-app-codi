@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run
 
 ### `yarn start`
 
@@ -69,11 +69,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-
 /////////////////
 to be added to check if the user is logged
- {localStorage.getItem("login",true) ?
+{localStorage.getItem("login",true) ?
 
-
-  : (<Redirect to="/login"/>) }
+: (<Redirect to="/login"/>) }
