@@ -11,13 +11,14 @@ import {
   CardContainercard,
 } from "../Styled/StyledCard";
 
-function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
+function Card({ productInfo, handleCheckBox, mobileDeleteOneId, categories }) {
   const [isWidthMobile, setisWidthMobile] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [categoryTitle, setCategoryTitle] = useState();
 
   const {
     title,
-    category_title,
+    category_id,
     created_at,
     currency,
     description,
@@ -26,6 +27,17 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
   } = productInfo;
   const dateTime = created_at.slice(0, 10);
   const { width } = useWindowSize();
+
+  useEffect(() => {
+    console.log(categories);
+    setCategoryTitle(
+      categories.map((item) => {
+        if (item.id === category_id) {
+          return item.title;
+        }
+      })
+    );
+  }, []);
 
   useEffect(() => {
     setisWidthMobile(width < 400 ? true : false);
@@ -67,7 +79,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
               </div>
               <div>
                 <h4>category</h4>
-                <p>{category_title}</p>
+                <p>{categoryTitle}</p>
               </div>
             </ContentCardPopupcontainer>
             <div className="container__button">
@@ -119,7 +131,7 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId }) {
           </div>
           <div>
             {isWidthMobile ? <p>category</p> : null}
-            <div>{category_title}</div>
+            <div>{categoryTitle}</div>
           </div>
         </CardContainercard>
       </ContentCardContainer>

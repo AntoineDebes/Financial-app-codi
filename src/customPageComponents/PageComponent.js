@@ -12,6 +12,7 @@ import {
   ContentContainer,
   ContentContainerPagination,
 } from "../Styled/StyledPageCompnent";
+import Axios from "axios";
 
 const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [items, setItems] = useState([]);
@@ -21,13 +22,29 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   const [pageCount, setPageCount] = useState(0);
   const [checkedItemIds, setCheckedItemIds] = useState({ ids: [] });
   const { setIsAuth } = useAuth();
+  const [categories, setCategories] = useState();
 
   useEffect(() => {
-    fetchApiCall({ method: "get", fetchApiUrl, setItems });
+    const exitLogin = () => {
+      setIsAuth(false);
+    };
+    fetchApiCall({ method: "get", fetchApiUrl, setItems, exitLogin });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkedItemIds, fetchApiUrl]);
 
   useEffect(() => {
-    console.log({ items });
+    Axios.get(`${process.env.REACT_APP_API_URL}api/categories`)
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    console.log(categories);
+  }, []);
+
+  useEffect(() => {
     const getData = () => {
       getDataCall({
         headerName,
@@ -39,6 +56,7 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
         setPageCount,
         checkedItemIds,
         mobileDeleteOneId,
+        categories,
       });
     };
     const handleCheckBox = (e) => {

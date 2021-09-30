@@ -17,14 +17,15 @@ const Report = () => {
   const onsubmitHandler = (id) => {
     console.log(id);
     axios
-      .get(`http://localhost:8000/api/getamount/${id}`)
-      .then(
-        (res) => setAmount(res.data),
-        setCurrentExpense(amount[0]),
-        setCurrentIncome(amount[1]),
-        setFixedExpense(amount[2]),
-        setFixedIncome(amount[3])
-      )
+      .get(`${process.env.REACT_APP_API_URL}api/getamount/${id}`)
+      .then((res) => {
+        setAmount(res.data);
+        setCurrentExpense(amount[0]);
+        setCurrentIncome(amount[1]);
+        setFixedExpense(amount[2]);
+        setFixedIncome(amount[3]);
+        console.log(res);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -32,14 +33,15 @@ const Report = () => {
   // console.log(items);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/categories")
-      .then((res) => setItems(res.data.items))
+      .get(`${process.env.REACT_APP_API_URL}api/categories`)
+      .then((res) => {
+        setItems(res.data);
+      })
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div className="Container">
-      {items && JSON.stringify(items)}
       {
         <ul className="ul">
           {items &&

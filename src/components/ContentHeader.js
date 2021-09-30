@@ -36,10 +36,10 @@ function ContentHeader({ headerName, handleCardDelete }) {
               <h2>{headerName === "Admins" ? "Verified" : "Quantity"}</h2>
             </div>
             <div>
-              <h2>{headerName === "Admins" ? "Created_at" : "Currency"}</h2>
+              <h2>{headerName === "Admins" ? "Created" : "Currency"}</h2>
             </div>
             <div>
-              <h2>{headerName === "Admins" ? "Updated_at" : "Date-time"}</h2>
+              <h2>{headerName === "Admins" ? "Updated" : "Date-time"}</h2>
             </div>
             <div>
               <h2>{headerName === "Admins" ? "Auth" : "Category"}</h2>

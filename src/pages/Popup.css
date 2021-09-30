@@ -1,0 +1,20 @@
+.popup{
+    height:2000px;
+    width: 500px;
+
+  }
+ .popup-inner{
+     position:relative;
+     padding:32px;
+     height:2000px;
+     width: 500px;
+     background-color: skyblue;
+ }  
+ .popup-inner  .close-btn{
+     position:absolute;
+     top:16px;
+     right:-35px;
+ }   
+ td{
+     padding:0.5rem;
+ }

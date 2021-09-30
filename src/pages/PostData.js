@@ -49,6 +49,7 @@ function PostData() {
   });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   useEffect(async () => {
     const cat = await fetch("http://localhost:8000/api/categories");
     const facesResult = await cat.json();
@@ -60,6 +61,13 @@ function PostData() {
       setCategories(res.data);
     });
 >>>>>>> ea93eccfe4025834fd17ff7d24f4f362d7cc7c42
+=======
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async () => {
+    const cat = await fetch(`${process.env.REACT_APP_API_URL}api/categories`);
+    const facesResult = await cat.json();
+    setCategories(facesResult);
+>>>>>>> fabe81d7fb98b76daa367a2a2c2b738efa57d9e2
   }, []);
 
   // useEffect(() => {
@@ -155,7 +163,7 @@ function PostData() {
       };
       console.log(article);
       const response = await axios.post(
-        `http://localhost:8000/api/post${MCategory}`,
+        `${process.env.REACT_APP_API_URL}api/post${MCategory}`,
         article,
         {
           headers,

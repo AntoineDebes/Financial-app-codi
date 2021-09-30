@@ -10,7 +10,6 @@ export const handleCardDeleteCall = ({
   setCheckedItemIds,
   setIsAuth,
 }) => {
-  console.log("here", selectedIds);
   FetchApi({ method, fetchApiUrl, selectedIds })
     .then(() => {
       setCheckedItemIds && setCheckedItemIds({ ids: [] });
@@ -28,7 +27,6 @@ export const handleCheckBoxCall = ({
 }) => {
   // function for inserting and removing inside the ids array to send them to the backend
   const mainId = e.target.id;
-  console.log(checkedItemIds.ids);
   if (e.target.checked) {
     setCheckedItemIds({ ids: [...checkedItemIds.ids, mainId] });
   } else {
@@ -52,10 +50,10 @@ export const getDataCall = ({
   setPageCount,
   checkedItemIds,
   mobileDeleteOneId, // Gaby is the king of coding
+  categories,
 }) => {
   const data = items;
   const slice = data.slice(offset, offset + perPage);
-  console.log(data);
   const postData = slice.map((item) => {
     return (
       <>
@@ -69,6 +67,7 @@ export const getDataCall = ({
           />
         ) : (
           <Card
+            categories={categories}
             key={item.id}
             checked={checkedItemIds.data}
             productInfo={item}
@@ -83,19 +82,20 @@ export const getDataCall = ({
   setPageCount(Math.ceil(data.length / perPage));
 };
 
-export const fetchApiCall = ({ method, fetchApiUrl, setItems }) => {
+export const fetchApiCall = ({ method, fetchApiUrl, setItems, exitLogin }) => {
   // function that can be called to fetch the ids usually after deleting or when logging in
   FetchApi({ method, fetchApiUrl })
     .then((res) => {
-      console.log(res);
       const newItems = res.data.items.map((item) => ({
         ...item,
         checked: false,
       }));
+
       // console.log("newItems", newItems);
       setItems(newItems);
     })
     .catch((error) => {
+      exitLogin();
       console.log("error", error);
     });
 };

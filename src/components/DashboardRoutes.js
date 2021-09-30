@@ -4,8 +4,9 @@ import FixedExpense from "../pages/FixedExpense";
 import CurrentIncome from "../pages/CurrentIncome";
 import CurrentExpense from "../pages/CurrentExpense";
 import AdminDash from "../pages/AdminDash";
-import Report from "../pages/Report";
-import AddAdmin from "../pages/AddAdmin";
+import Report from "../pages/Report"
+import AddAdmin from "../pages/AddAdmin"
+import Goals from"../pages/Goals"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import PostData from "../pages/PostData";
 
@@ -29,7 +30,7 @@ function DashboardRoutes() {
         path="/Dashboard/CurrentExpenses"
         component={CurrentExpense}
       />
-      <ProtectedRoute path="/Dashboard/Goals" component={AdminDash} />
+      <ProtectedRoute path="/Dashboard/Goals" component={Goals} />
       <ProtectedRoute path="/Dashboard/Report" component={Report} />
     </>
   );

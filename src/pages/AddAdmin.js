@@ -26,7 +26,7 @@ const AddAdmin = () => {
     setPasswordConfirmation("");
 
     axios
-      .post("http://localhost:8000/api/auth/register", formData)
+      .post(`${process.env.REACT_APP_API_URL}api/auth/register`, formData)
       .then((res) => console.log(res.data))
       .catch((error) => {
         console.log(error);
