@@ -48,27 +48,12 @@ function PostData() {
     date: null,
   });
 
-<<<<<<< HEAD
-   useEffect(async () => {
-     const cat = await fetch("http://localhost:8000/api/categories");
-     const facesResult = await cat.json();
-     setCategories(facesResult);
-   }, []);
-
-  // useEffect(() => {
-  //   FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
-  //     console.log(res.data);
-  //     setCategories(res.data);
-  //   });
-  // }, []);
-=======
   useEffect(() => {
     FetchApi({ method: "get", fetchApiUrl: "api/categories" }).then((res) => {
       console.log(res.data);
       setCategories(res.data);
     });
   }, []);
->>>>>>> b8fc0a47241fd20351cbb694374129733511ca2e
 
   const handleEventChange = (e) => {
     setPostData((x) => ({
