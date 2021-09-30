@@ -45,9 +45,9 @@ function AddCategory() {
   return (
     <div className="main-div">
       <legend>Add Category</legend>
-      <form onSubmit={onsubmit}>
+      <form>
         <input type="text" onChange={handleOnCahnge} />
-        <input type="Submit" />
+        <input type="Submit" onClick={onsubmit} />
       </form>
     </div>
   );
