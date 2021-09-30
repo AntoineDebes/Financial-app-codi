@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { Link, Redirect } from "react-router-dom";
 import img from "../images/login.jpg";
 import { FaLock } from "react-icons/fa";
 
@@ -11,7 +9,6 @@ const AddAdmin = () => {
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
 
-  console.log(name, email, password, password_confirmation);
   const changeonClick = (e) => {
     e.preventDefault();
     const formData = new FormData();

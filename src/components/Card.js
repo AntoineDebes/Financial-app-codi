@@ -31,11 +31,14 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId, categories }) {
   useEffect(() => {
     setCategoryTitle(
       categories.map((item) => {
+        let itemTitle = "";
         if (item.id === category_id) {
-          return item.title;
+          return (itemTitle = item.title);
         }
+        return itemTitle;
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

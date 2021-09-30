@@ -14,7 +14,6 @@ function LoginPage(props) {
 
   const changeonClick = async (e) => {
     e.preventDefault();
-    console.log(email, password);
     const result = await fetch(
       `${process.env.REACT_APP_API_URL}api/auth/login`,
       {
@@ -29,9 +28,7 @@ function LoginPage(props) {
         }),
       }
     ).then((res) => res.json());
-    console.log({ result });
     if (result.success) {
-      console.log({ result });
       localStorage.setItem("isAuth", "true");
       localStorage.setItem("username", result.user.name);
       setIsAuth(true);

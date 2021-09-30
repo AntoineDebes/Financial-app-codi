@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { CgProfile, CgChevronDown } from "react-icons/cg";
 import { CSSTransition } from "react-transition-group";
@@ -21,19 +20,16 @@ function Header({
   const [profileMenuIsOpen, setProfileMenuIsOpen] = useState(false);
   const { setIsAuth } = useAuth();
   const { username } = useUserCredential();
-  const history = useHistory();
 
   const changeonClick = async (e) => {
     e.preventDefault();
     localStorage.removeItem("login");
 
-    console.log({ firstTime: history });
     props.history.push({
       pathname: "/",
     });
     setIsAuth(false);
     localStorage.clear();
-    console.log({ SecondTime: history });
   };
 
   return (
