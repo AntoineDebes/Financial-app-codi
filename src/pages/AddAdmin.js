@@ -6,11 +6,10 @@ import img from "../images/login.jpg";
 import { FaLock } from "react-icons/fa";
 
 const AddAdmin = () => {
-   
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [password_confirmation, setPasswordConfirmation] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password_confirmation, setPasswordConfirmation] = useState("");
 
   console.log(name, email, password, password_confirmation);
   const changeonClick = (e) => {
@@ -27,7 +26,7 @@ const AddAdmin = () => {
     setPasswordConfirmation("");
 
     axios
-      .post("http://localhost:8000/api/auth/register", formData)
+      .post(`${process.env.REACT_APP_API_URL}api/auth/register`, formData)
       .then((res) => console.log(res.data))
       .catch((error) => {
         console.log(error);

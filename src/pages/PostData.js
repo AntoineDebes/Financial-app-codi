@@ -140,7 +140,7 @@ function PostData() {
         date: date,
       };
       const response = await axios.post(
-        `http://localhost:8000/api/post${MCategory}`,
+        `${process.env.REACT_APP_API_URL}api/post${MCategory}`,
         article,
         {
           headers,

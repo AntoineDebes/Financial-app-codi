@@ -17,7 +17,7 @@ const Report = () => {
   const onsubmitHandler = (id) => {
     console.log(id);
     axios
-      .get(`http://localhost:8000/api/getamount/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}api/getamount/${id}`)
       .then((res) => {
         setAmount(res.data);
         setCurrentExpense(amount[0]);
@@ -33,7 +33,7 @@ const Report = () => {
   // console.log(items);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/categories")
+      .get(`${process.env.REACT_APP_API_URL}api/categories`)
       .then((res) => {
         setItems(res.data);
       })

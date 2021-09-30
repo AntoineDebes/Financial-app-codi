@@ -15,17 +15,20 @@ function LoginPage(props) {
   const changeonClick = async (e) => {
     e.preventDefault();
     console.log(email, password);
-    const result = await fetch("http://localhost:8000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    }).then((res) => res.json());
+    const result = await fetch(
+      `${process.env.REACT_APP_API_URL}api/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    ).then((res) => res.json());
     console.log({ result });
     if (result.success) {
       console.log({ result });
