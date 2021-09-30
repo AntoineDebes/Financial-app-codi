@@ -5,8 +5,6 @@ import "./normalize.css";
 import Routes from "./components/Routes";
 import { IsAuthProvider } from "./useContext/IsAuthContext";
 import { UserCredentialProvider } from "./useContext/UserCredentialContext";
-import PostData from "./pages/PostData";
-import AddCategory from "./pages/AddCategory";
 
 function App() {
   return (
@@ -19,7 +17,6 @@ function App() {
         </BrowserRouter>
       </UserCredentialProvider>
     </IsAuthProvider>
-    // <AddCategory />
   );
 }
 

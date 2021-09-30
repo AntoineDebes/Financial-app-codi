@@ -34,14 +34,17 @@ const PageComponent = ({ fetchApiUrl, headerName }) => {
   }, [checkedItemIds, fetchApiUrl]);
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_URL}api/categories`)
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    console.log(categories);
+    const test = async () => {
+      await Axios.get(`${process.env.REACT_APP_API_URL}api/categories`)
+        .then((res) => {
+          setCategories(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      console.log(categories);
+    };
+    test();
   }, []);
 
   useEffect(() => {

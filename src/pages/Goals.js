@@ -151,16 +151,15 @@ const Goals = () => {
               </tr>
             </thead>
             <tbody>
-              {/* { data && data.map((item,index) => (
-                <tr key={index}>
-                  <td>{ item.name   }</td> 
-                  <td>{ item.amount }</td>
-                  <td>{ item.start_date       }</td>
-                  <td>{ item.end_date}</td>
-                 
-                </tr>
-              ))
-            } */}
+              {data &&
+                data.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.amount}</td>
+                    <td>{item.start_date}</td>
+                    <td>{item.end_date}</td>
+                  </tr>
+                ))}
               {dunno && dunno}
             </tbody>
           </table>

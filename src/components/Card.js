@@ -29,7 +29,6 @@ function Card({ productInfo, handleCheckBox, mobileDeleteOneId, categories }) {
   const { width } = useWindowSize();
 
   useEffect(() => {
-    console.log(categories);
     setCategoryTitle(
       categories.map((item) => {
         if (item.id === category_id) {

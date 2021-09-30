@@ -25,7 +25,7 @@ function AddCategory() {
       notify(response.data.message);
       console.log(response.data.message);
     } catch (e) {
-      //   console.log(e);
+      console.log("this one");
       notify("something wrong please try again later !");
     }
   };
@@ -39,6 +39,7 @@ function AddCategory() {
       draggable: true,
       progress: undefined,
     });
+
   const handleOnCahnge = (e) => {
     setCategoryName(e.target.value);
   };
