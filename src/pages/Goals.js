@@ -142,7 +142,7 @@ const Goals = () => {
               </tr>
             </thead>
             <tbody>
-              {data &&
+              {/* {data &&
                 data.map((item, index) => (
                   <tr key={index}>
                     <td>{item.name}</td>
@@ -150,7 +150,7 @@ const Goals = () => {
                     <td>{item.start_date}</td>
                     <td>{item.end_date}</td>
                   </tr>
-                ))}
+                ))} */}
               {dunno && dunno}
             </tbody>
           </table>

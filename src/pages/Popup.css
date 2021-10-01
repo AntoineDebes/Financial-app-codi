@@ -1,20 +1,23 @@
-.popup{
-    height:2000px;
-    width: 500px;
-
-  }
- .popup-inner{
-     position:relative;
-     padding:32px;
-     height:2000px;
-     width: 500px;
-     background-color: skyblue;
- }  
- .popup-inner  .close-btn{
-     position:absolute;
-     top:16px;
-     right:-35px;
- }   
- td{
-     padding:0.5rem;
- }
+.popup {
+  height: 100%;
+  min-height: 250px;
+  width: 500px;
+  position: absolute;
+  top: 0;
+}
+.popup-inner {
+  position: relative;
+  padding: 32px;
+  min-height: 250px;
+  height: 100%;
+  width: 500px;
+  background-color: skyblue;
+}
+.popup-inner .close-btn {
+  position: absolute;
+  top: 16px;
+  right: -35px;
+}
+td {
+  padding: 0.5rem;
+}
